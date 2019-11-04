@@ -1,0 +1,120 @@
+﻿@model OurTeam
+    <form id="ourTeam-createForm" class="createForm" enctype="multipart/form-data">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label asp-for="Name"></label>
+                    <input asp-for="Name" type="text" class="form-control" />
+                    <span asp-validation-for="Name" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Image"></label>
+                    <input id="logo" name="image" type="file" class="form-control" />
+                    <span asp-validation-for="Image" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label asp-for="DepartmentId"></label>
+                    <select id="departmentId" asp-for="DepartmentId" asp-items="ViewBag.Departments" class="form-control" style="width: 100%;">
+                        <option value="0">---Select---</option>
+                    </select>
+                    <span asp-validation-for="DepartmentId" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="DesignationId"></label>
+                    <select id="designationId" asp-for="DesignationId" asp-items="ViewBag.Designation" class="form-control" style="width: 100%;">
+                        <option value="0">---Select---</option>
+                    </select>
+                    <span asp-validation-for="DesignationId" class="text-danger"></span>
+                </div>
+            </div>
+
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-group">
+                    <label asp-for="Description"></label>
+                    <textarea id="description" asp-for="Description"></textarea>
+                    <span asp-validation-for="Description" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Facebook"></label>
+                    <input asp-for="Facebook" type="text" class="form-control" />
+                    <span asp-validation-for="Facebook" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Twitter"></label>
+                    <input asp-for="Twitter" type="text" class="form-control" />
+                    <span asp-validation-for="Twitter" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="LinkedIn"></label>
+                    <input asp-for="LinkedIn" type="text" class="form-control" />
+                    <span asp-validation-for="LinkedIn" class="text-danger"></span>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <div id="logo-preview" class="image-preview" style="display: none;">
+                    <div id="text" style="display: none;"></div>
+                    <img id="preview" src="#" />
+                </div>
+            </div>
+        </div>
+        <br />
+        <div id="alert"></div>
+        <button class="btn btn-success form-control" type="submit">Save</button>
+
+    </form>
+
+<script>
+
+     $("#description").summernote({
+        height:120
+    });
+
+    $("#departmentId").select2({
+        dropdownParent: $("#ourTeam-createModal")
+    });
+     $("#designationId").select2({
+        dropdownParent: $("#ourTeam-createModal")
+    });
+     $("#ourTeam-createForm").on("submit", function (e) {
+        e.preventDefault();
+         let formData = new FormData();
+
+        let ourTeam = objectifyForm($(this).serializeArray());
+         formData.append("image", $("#logo")[0].files[0]);
+     
+
+        for (var key in ourTeam) {
+            formData.append(key, ourTeam[key]);
+        }
+
+      //  let data = objectifyForm($(this).serializeArray());
+        $.ajax({
+            url: "/OurTeams/Create",
+            type: "POST",
+            data: formData,
+            processData: false,
+            contentType: false,
+            success: function (response) {
+                $("#ourTeam-createFormDiv").html(response);
+                dataTable.fnFilter();
+            }
+        });
+     });
+    $("#logo").on("change", function () {
+        let maxWidth = 5000;
+        let maxHeight = 5000;
+        let input = $(this);
+        let preview = $("#preview");
+        let logo_preview = $("#logo-preview");
+        fileOnSelect(input, maxWidth, maxHeight, preview, logo_preview);
+
+    });
+</script>

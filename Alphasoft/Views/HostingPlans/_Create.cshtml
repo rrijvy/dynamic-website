@@ -1,0 +1,78 @@
+﻿@model HostingPlan
+
+    <form id="hosting-createForm" class="createForm">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-group">
+                    <label asp-for="Name"></label>
+                    <input asp-for="Name" type="text" class="form-control" />
+                    <span asp-validation-for="Name" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Space"></label>
+                    <input asp-for="Space" type="text" class="form-control" />
+                    <span asp-validation-for="Space" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Bandwidth"></label>
+                    <input asp-for="Bandwidth" type="text" class="form-control" />
+                    <span asp-validation-for="Bandwidth" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Domain"></label>
+                    <input asp-for="Domain" type="text" class="form-control" />
+                    <span asp-validation-for="Domain" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="SubDomain"></label>
+                    <input asp-for="SubDomain" type="text" class="form-control" />
+                    <span asp-validation-for="SubDomain" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Alias"></label>
+                    <input asp-for="Alias" type="text" class="form-control" />
+                    <span asp-validation-for="Alias" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Email"></label>
+                    <input asp-for="Email" type="text" class="form-control" />
+                    <span asp-validation-for="Email" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="CPanel"></label>
+                    <br />
+                    <input asp-for="CPanel" type="radio" value="True" />Yes
+                    <input asp-for="CPanel" type="radio" value="False" /> No
+                    <span asp-validation-for="CPanel" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Price"></label>
+                    <input asp-for="Price" type="text" class="form-control" />
+                    <span asp-validation-for="Price" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="PriceUnit"></label>
+                    <input asp-for="PriceUnit" type="text" class="form-control" />
+                    <span asp-validation-for="PriceUnit" class="text-danger"></span>
+                </div>
+            </div>
+        </div>
+        <div id="alert"></div>
+        <button class="btn btn-success form-control" type="submit">Save</button>
+    </form>
+    <script>
+        $("#hosting-createForm").on("submit", function (e) {
+            e.preventDefault();
+            let data = objectifyForm($(this).serializeArray());
+            $.ajax({
+                url: "/HostingPlans/Create",
+                type: "POST",
+                data: data,
+                success: function (response) {
+                    $("#hosting-createFormDiv").html(response);
+                    dataTable.fnFilter();
+                }
+            });
+        });
+
+    </script>

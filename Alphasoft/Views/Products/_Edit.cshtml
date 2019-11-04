@@ -1,0 +1,120 @@
+﻿@model Product
+
+<form id="product-editForm" class="editForm" method="post" enctype="multipart/form-data">
+    <div class="row">
+        <input asp-for="Id" type="hidden" />
+        <div class="col-md-4">
+            <div class="form-group">
+                <label asp-for="Name"></label>
+                <input asp-for="Name" type="text" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="RetailPrice"></label>
+                <input asp-for="RetailPrice" type="number" step="0.01" class="form-control" />
+                <span asp-validation-for="RetailPrice" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="form-group">
+                <label asp-for="ProductCategoryId"></label>
+                <select id="productCategoryId" asp-for="ProductCategoryId" asp-items="ViewBag.ProductCategories" class="form-control" style="width: 100%;">
+                    <option value="0">Select...</option>
+                </select>
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="WholeSellPrice"></label>
+                <input asp-for="WholeSellPrice" type="number" step="0.01" class="form-control" />
+                <span asp-validation-for="WholeSellPrice" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="form-group">
+                <label asp-for="PurchasePrice"></label>
+                <input asp-for="PurchasePrice" type="number" step="0.01" class="form-control" />
+                <span asp-validation-for="PurchasePrice" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Discount"></label>
+                <input asp-for="Discount" type="number" step="0.01" class="form-control" />
+                <span asp-validation-for="Discount" class="text-danger"></span>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-9">
+            <div class="form-group">
+                <label asp-for="Image"></label>
+                <input id="image" asp-for="Image" name="Image" type="file" class="form-control" />
+                <span asp-validation-for="Image" class="text-danger"></span>
+                <span id="imageSizeWarning"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ShortDescription"></label>
+                <textarea class="shortDescription form-control" asp-for="ShortDescription" maxlength="100"></textarea>
+                <span asp-validation-for="ShortDescription" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Description"></label>
+                <textarea class="description" asp-for="Description"></textarea>
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ReleaseDate"></label>
+                <input asp-for="ReleaseDate" type="date" class="form-control" />
+                <span asp-validation-for="ReleaseDate" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div id="image-preview" class="image-preview" style="display: block;">
+                <div id="text" style="display: block;"></div>
+                <img id="preview" src="@Model.Image" />
+            </div>
+        </div>
+    </div>
+    <div id="alert"></div>
+    <button class="btn btn-success form-control" type="submit">Save</button>
+</form>
+
+
+<script>
+    (function () {
+        $("productCategoryId").select2({
+            dropdownParent: $("#product-createModal")
+        });
+
+         $(".description").summernote({
+            height:200
+         });
+
+        $("#product-editForm").on("submit", function (e) {
+            e.preventDefault();
+            let data = objectifyForm($(this).serializeArray());
+            $.ajax({
+                type: "POST",
+                url: "/Products/Edit",
+                data: data,
+                success: function (response) {
+                    $("#product-editFormDiv").html(response);
+                    dataTable.fnFilter();
+                }
+            });
+        });
+
+        $("#image").on("change", function () {
+
+            let maxWidth = 640;
+            let maxHeight = 640;
+
+            let input = $(this);
+
+            let preview = $("#preview");
+
+            let image_preview = $("#image-preview");            
+
+            fileOnSelect(input, maxWidth, maxHeight, preview, image_preview);                     
+        });
+    })();
+</script>

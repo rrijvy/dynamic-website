@@ -1,0 +1,78 @@
+﻿
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewData["Title"] = "Index";
+}
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h4>Blogs Information</h4>
+        <button id="blog-createmodalBtn" class="btn btn-primary panel-header-create-btn" data-toggle="modal" data-target="#blog-createModal">Create</button>
+    </div>
+    <div class="panel-body">
+        <table id="blogDatatable" class="table table-bordered table-hover">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Thumbnail</th>
+                    <th>Title</th>
+                    <th>Description</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody id="blogTableBody"></tbody>
+        </table>
+    </div>
+</div>
+
+
+<div id="blog-createModal"
+     class="modal fade"
+     tabindex="-1"
+     role="dialog"
+     aria-labelledby="myModalLabel">
+    <div class="modal-dialog modal-rx" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title">Create Blogs Description</h4>
+            </div>
+            <div class="modal-body">
+                <div id="blog-createFormDiv"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div id="blogs-editModal"
+     class="modal fade"
+     tabindex="-1"
+     role="dialog"
+     aria-labelledby="myModalLabel">
+    <div class="modal-dialog modal-rx" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title">Edit Blogs Description</h4>
+            </div>
+            <div class="modal-body">
+                <div id="blog-editFormDiv"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+
+    <script src="~/js/Blogs/blog.js"></script>
+
+
+
+}
+
+

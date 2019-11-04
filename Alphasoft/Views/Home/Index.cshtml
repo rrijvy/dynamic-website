@@ -1,0 +1,346 @@
+﻿@model HomeViewModel
+
+@{
+    ViewData["Title"] = "Home";
+}
+
+<div class="slider-container light rev_slider_wrapper" style="height: 650px;">
+    <div id="revolutionSlider" class="slider rev_slider" data-version="5.4.8" data-plugin-revolution-slider data-plugin-options="{'delay': 9000, 'gridwidth': 1170, 'gridheight': 650, 'disableProgressBar': 'on', 'responsiveLevels': [4096,1200,992,500], 'navigation' : {'arrows': { 'enable': true, 'style': 'arrows-style-1 arrows-big arrows-dark' }, 'bullets': {'enable': false, 'style': 'bullets-style-1 bullets-color-primary', 'h_align': 'center', 'v_align': 'bottom', 'space': 7, 'v_offset': 70, 'h_offset': 0}}}">
+        <ul>
+            @if (Model.BannerList.Count() > 0)
+            {
+                for (int i = 0; i < Model.BannerList.Count(); i++)
+                {
+                    if (i % 2 == 1)
+                    {
+                        <li data-transition="fade">
+                            <img src="@Model.BannerList[i].Image"
+                                 alt=""
+                                 data-bgposition="center center"
+                                 data-bgfit="cover"
+                                 data-bgrepeat="no-repeat"
+                                 class="rev-slidebg">
+
+                            <div class="tp-caption text-color-dark font-weight-normal"
+                                 data-x="['left','left','center','center']" data-hoffset="['152','152','0','0']"
+                                 data-y="center" data-voffset="['-60','-50','-50','-75']"
+                                 data-start="700"
+                                 data-fontsize="['25','25','22','40']"
+                                 data-lineheight="['25','25','25','45']"
+                                 data-transform_in="y:[-50%];opacity:0;s:500;">
+                                @Html.Raw(Model.BannerList[i].SolganOne)
+                            </div>
+
+                            <h1 class="tp-caption font-weight-extra-bold text-color-dark negative-ls-2"
+                                data-frames='[{"delay":1000,"speed":2000,"frame":"0","from":"sX:1.5;opacity:0;fb:20px;","to":"o:1;fb:0;","ease":"Power3.easeInOut"},{"delay":"wait","speed":300,"frame":"999","to":"opacity:0;fb:0;","ease":"Power3.easeInOut"}]'
+                                data-x="['left','left','center','center']" data-hoffset="['152','152','0','0']"
+                                data-y="center"
+                                data-fontsize="['50','50','50','90']"
+                                data-lineheight="['55','55','55','95']"
+                                data-letterspacing="-1">
+                                @Html.Raw(Model.BannerList[i].SolganTwo)
+                            </h1>
+
+                            <div class="tp-caption font-weight-light text-color-dark"
+                                 data-frames='[{"from":"opacity:0;","speed":300,"to":"o:1;","delay":2000,"split":"chars","splitdelay":0.05,"ease":"Power2.easeInOut"},{"delay":"wait","speed":1000,"to":"y:[100%];","mask":"x:inherit;y:inherit;s:inherit;e:inherit;","ease":"Power2.easeInOut"}]'
+                                 data-x="['left','left','center','center']" data-hoffset="['152','152','0','0']"
+                                 data-y="center" data-voffset="['60','40','40','80']"
+                                 data-fontsize="['25','25','18','50']"
+                                 data-lineheight="['20','20','20','55']">
+                                @Html.Raw(Model.BannerList[i].SolganThree)
+                            </div>
+                        </li>
+                    }
+                    else if (i % 2 == 0)
+                    {
+                        <li data-transition="fade">
+                            <img src="@Model.BannerList[i].Image"
+                                 alt=""
+                                 data-bgposition="right center"
+                                 data-bgpositionend="center center"
+                                 data-bgfit="cover"
+                                 data-bgrepeat="no-repeat"
+                                 data-kenburns="on"
+                                 data-duration="9000"
+                                 data-ease="Linear.easeNone"
+                                 data-scalestart="110"
+                                 data-scaleend="100"
+                                 data-rotatestart="0"
+                                 data-rotateend="0"
+                                 data-offsetstart="0 0"
+                                 data-offsetend="0 0"
+                                 data-bgparallax="0"
+                                 class="rev-slidebg">
+
+                            <div class="tp-caption font-weight-extra-bold text-color-dark negative-ls-2"
+                                 data-frames='[{"delay":1000,"speed":2000,"frame":"0","from":"sX:1.5;opacity:0;fb:20px;","to":"o:1;fb:0;","ease":"Power3.easeInOut"},{"delay":"wait","speed":300,"frame":"999","to":"opacity:0;fb:0;","ease":"Power3.easeInOut"}]'
+                                 data-x="center"
+                                 data-y="center" data-voffset="['-55','-50','-50','-75']"
+                                 data-fontsize="['50','50','50','90']"
+                                 data-lineheight="['55','55','55','95']">
+                                @Html.Raw(Model.BannerList[i].SolganOne)
+                            </div>
+
+                            <div class="tp-caption font-weight-bold text-color-dark"
+                                 data-frames='[{"from":"opacity:0;","speed":300,"to":"o:1;","delay":2000,"split":"chars","splitdelay":0.05,"ease":"Power2.easeInOut"},{"delay":"wait","speed":1000,"to":"y:[100%];","mask":"x:inherit;y:inherit;s:inherit;e:inherit;","ease":"Power2.easeInOut"}]'
+                                 data-x="center"
+                                 data-y="center"
+                                 data-fontsize="['30','30','30','30']"
+                                 data-lineheight="['20','20','20','55']"
+                                 style="color: #b5b5b5;">
+                                @Html.Raw(Model.BannerList[i].SolganTwo)
+                            </div>
+
+                            <a class="tp-caption btn btn-primary font-weight-bold"
+                               href="#"
+                               data-frames='[{"delay":3000,"speed":2000,"frame":"0","from":"y:50%;opacity:0;","to":"y:0;o:1;","ease":"Power3.easeInOut"},{"delay":"wait","speed":300,"frame":"999","to":"opacity:0;fb:0;","ease":"Power3.easeInOut"}]'
+                               data-x="center" data-hoffset="0"
+                               data-y="center" data-voffset="75"
+                               data-paddingtop="['15','15','15','30']"
+                               data-paddingbottom="['1','1','1','30']"
+                               data-paddingleft="['40','40','40','57']"
+                               data-paddingright="['50','50','50','57']"
+                               data-fontsize="['13','13','13','25']"
+                               data-lineheight="['20','20','20','25']">
+                                @Html.Raw(Model.BannerList[i].SolganThree) <i class="fas fa-arrow-right ml-1" style="position: absolute; right: 19px; top: 21px;"></i>
+                            </a>
+
+                        </li>
+                    }
+                }
+            }
+        </ul>
+    </div>
+</div>
+
+<hr class="my-0">
+
+<section class="section bg-color-light border-0 m-0">
+    <div class="container">
+        <h2 class="font-weight-normal text-color-dark text-center text-7 pb-2 pt-5">Why <strong class="font-weight-extra-bold">Choose</strong> Us</h2>
+        <div class="row text-center text-md-left mt-4 pt-5">
+            <div class="owl-carousel owl-theme mb-0 pt-5" data-plugin-options="{'responsive': {'0': {'items': 1}, '476': {'items': 2}, '768': {'items': 2}, '992': {'items': 3}, '1200': {'items': 3}}, 'autoplay': true, 'autoplayTimeout': 3000, 'dots': false}">
+                @if (Model.ChooseUsList.Count() > 0)
+                {
+                    foreach (var item in Model.ChooseUsList)
+                    {
+                        char[] shortDescriptionArray = item.ShortDescription.ToCharArray();
+
+                        if (shortDescriptionArray.Length > 60)
+                        {
+                            string shortDescription = string.Empty;
+
+                            for (int i = 0; i < 60; i++)
+                            {
+                                shortDescription += shortDescriptionArray[i];
+                            }
+
+                            <div class="col-md-12 mb-4 mb-md-0 appear-animation" data-appear-animation="fadeInLeftShorter" data-appear-animation-delay="200">
+                                <div class="row justify-content-center justify-content-md-start">
+                                    <div class="col-4">
+                                        <img class="img-fluid mb-5" src="~/porto_7.4.0/img/icons/seo-grey.png" alt="">
+                                    </div>
+                                    <div class="col-lg-8">
+                                        <h2 class="font-weight-bold text-5 line-height-5 mb-1">@Html.Raw(item.Title)</h2>
+                                        <p class="mb-0">@shortDescription</p>
+                                        <a href="#">more . . .</a>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                        else
+                        {
+                            <div class="col-md-12 mb-4 mb-md-0 appear-animation" data-appear-animation="fadeInLeftShorter" data-appear-animation-delay="200">
+                                <div class="row justify-content-center justify-content-md-start">
+                                    <div class="col-4">
+                                        <img class="img-fluid mb-5" src="~/porto_7.4.0/img/icons/seo-grey.png" alt="">
+                                    </div>
+                                    <div class="col-lg-8">
+                                        <h2 class="font-weight-bold text-5 line-height-5 mb-1">@Html.Raw(item.Title)</h2>
+                                        <p class="mb-0">@item.ShortDescription</p>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    }
+                }
+            </div>
+        </div>
+    </div>
+</section>
+
+<hr class="my-0">
+
+<div class="container-fluid">
+    <div class="row py-5 my-5">
+        <div class="col">
+            <h2 class="font-weight-normal text-color-dark text-center text-7 pb-5">Our Honourable <strong class="font-weight-extra-bold">Clients</strong></h2>
+            <div class="owl-carousel owl-theme mb-0 pt-3" data-plugin-options="{'responsive': {'0': {'items': 1}, '476': {'items': 1}, '768': {'items': 5}, '992': {'items': 7}, '1200': {'items': 9}}, 'autoplay': true, 'autoplayTimeout': 3000, 'dots': false}">
+                @if (Model.ClientList.Count() > 0)
+                {
+                    foreach (var item in Model.ClientList)
+                    {
+                        <div style="padding: 0px 25px; height: 100px; width: 185px;">
+                            <img class="img-fluid opacity-2" src="@item.Logo" alt="" style="height: 100%; width: 100%; object-fit: contain;" />
+                        </div>
+                    }
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+<hr class="my-0">
+
+<div class="container">
+    <h2 class="font-weight-normal text-color-dark text-center text-7 pb-2 pt-5">Our <strong class="font-weight-extra-bold">Popular</strong> Products</h2>
+    <div class="row justify-content-center py-4 my-5">
+        <div class="col-lg-12">
+            <div class="tabs tabs-bottom tabs-center tabs-simple">
+                <ul class="nav nav-tabs mb-3">
+                    @foreach (var item in Model.ProductList)
+                    {
+                        <li class="nav-item appear-animation" data-appear-animation="fadeInLeftShorter" data-appear-animation-delay="200" style="width: 200px; height: 200px;">
+                            <a class="nav-link" href="#tabsNavigationSimpleIcons_@item.Id" data-toggle="tab">
+                                <img src="@item.Image" class="img-fluid hover-effect-2" alt="" style="width: 120px; height: 100px; object-fit: contain;">
+                                <h4 class="font-weight-bold text-color-dark text-3 mb-0 pb-0 mt-2">@item.Name</h4>
+                            </a>
+                        </li>
+                    }
+                </ul>
+
+                <div class="tab-content appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="300">
+                    @foreach (var item in Model.ProductList)
+                    {
+                        <div class="tab-pane" id="tabsNavigationSimpleIcons_@item.Id">
+                            <div class="text-center">
+                                <p class="lead mb-4">@Html.Raw(item.Description)</p>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<hr class="my-0">
+
+<div class="container pt-5">
+    <h2 class="font-weight-normal text-color-dark text-center text-7 pb-5">Our <strong class="font-weight-extra-bold">Hosting Plans</strong></h2>
+    <div class="rx mb-5 mt-5 pb-3 pt-3">
+        @foreach (var item in Model.HostingPlans)
+        {
+            <div class="rx_box">
+                <div class="rx_content">
+                    <h3 style="margin-bottom: 42px;">
+                        <span style="border-bottom: 1px solid #eee; padding-bottom: 7px;">@item.Name</span>
+                    </h3>
+                    <p>Amount of space: @item.Space</p>
+                    <p>Bandwidth: @item.Bandwidth</p>
+                    <p>Domain: @item.Domain</p>
+                    <p>Subdomain: @item.SubDomain</p>
+                    <p>Alias: @item.Alias</p>
+                    <p>Email: @item.Email</p>
+                    <p>CPanel: @item.CPanel</p>
+                    <h3 style="margin: 22px 0px;">@item.Price &#2547; / @item.PriceUnit</h3>
+                    <a href="#"><b>Get @item.Name</b></a>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+<hr class="my-0">
+
+<section class="section section-height-3 bg-color-grey m-0 border-0">
+    <div class="container py-4">
+        <h2 class="font-weight-normal text-color-dark text-center text-7 pb-2 pt-5">Our <strong class="font-weight-extra-bold">Products</strong></h2>
+        <div class="row">
+            <div class="owl-carousel owl-theme mb-0 pt-2" data-plugin-options="{'responsive': {'0': {'items': 1}, '476': {'items': 2}, '768': {'items': 4}, '992': {'items': 4}, '1200': {'items': 4}}, 'autoplay': true, 'autoplayTimeout': 3000, 'dots': true}">
+                @foreach (var item in Model.ProductList)
+                {
+                    <div class="col-sm-12 col-md-12 mb-4 mb-md-0">
+                        <article>
+                            <div class="row" style="height: 170px;">
+                                <div class="col">
+                                    <a href="/ClientView/Product/@item.Id" class="text-decoration-none">
+                                        <img src="@item.Image" class="img-fluid hover-effect-2 mb-3" alt="" style="width: 100%; height: 100%; object-fit: contain;">
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <h5 class="text-color-primary text-4 mb-1">
+                                        <a href="/ClientView/Product/@item.Id">@item.Name</a>
+                                    </h5>
+                                    <p class="text-color-dark text-2 opacity-7 mb-3">@Html.Raw(item.ShortDescription)</p>
+                                    <a href="/ClientView/Product/@item.Id" class="read-more text-color-primary font-weight-semibold text-2">VIEW MORE <i class="fas fa-chevron-right text-3 ml-2"></i></a>
+                                </div>
+                            </div>
+
+                        </article>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</section>
+
+<hr class="my-0">
+
+<section class="bg-color-light border-0 pt-5 mt-0">
+    <div class="container pb-5 mb-5">
+        <div class="row justify-content-center">
+            <div class="col-md-9 col-lg-6">
+                <h2 class="font-weight-normal text-color-dark text-center text-8 mb-4"><strong class="font-weight-extra-bold">Contact</strong> Us</h2>
+                <p class="text-4 opacity-8 text-center mb-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus blandit massa enim. Nullam id varius nunc. Vivamus bibendum</p>
+                <form id="contactForm" class="contact-form form-style-3" action="php/contact-form.php" method="POST" novalidate="novalidate">
+                    <div class="contact-form-success alert alert-success d-none" id="contactSuccess">
+                        Message has been sent to us.
+                    </div>
+
+                    <div class="contact-form-error alert alert-danger d-none" id="contactError">
+                        Error sending your message.
+                        <span class="mail-error-message text-1 d-block" id="mailErrorMessage"></span>
+                    </div>
+
+                    <input type="hidden" value="Contact Form" name="subject" id="subject">
+                    <div class="form-row">
+                        <div class="form-group col-md-6 pr-md-2">
+                            <input type="text" value="" data-msg-required="Please enter your name." maxlength="100" class="form-control" placeholder="Your Name..." name="name" id="name" required="">
+                        </div>
+                        <div class="form-group col-md-6 pl-md-2">
+                            <input type="text" value="" data-msg-required="Please enter your phone." maxlength="100" class="form-control" placeholder="Your Phone..." name="phone" id="phone" required="">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" value="" data-msg-required="Please enter your email address." data-msg-email="Please enter a valid email address." maxlength="100" class="form-control" placeholder="Your Email Address..." name="email" id="email" required="">
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col">
+                            <textarea maxlength="5000" data-msg-required="Please enter your message." rows="4" class="form-control" placeholder="Your Message..." name="message" id="message" required=""></textarea>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col text-center">
+                            <input type="submit" value="SUBMIT" class="btn btn-primary font-weight-semibold text-3 px-5 btn-py-2" data-loading-text="Loading...">
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+<hr class="my-0">
+
+<form id="newsletterForm" method="POST" class="mw-100">
+    <div class="input-group input-group-rounded">
+        <input class="form-control form-control-sm bg-light px-4 text-3" placeholder="Email Address..." name="newsletterEmail" id="newsletterEmail" type="text">
+        <span class="input-group-append">
+            <button class="btn btn-primary text-color-light text-2 py-3 px-4" type="submit"><strong>SUBSCRIBE!</strong></button>
+        </span>
+    </div>
+</form>

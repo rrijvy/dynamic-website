@@ -1,0 +1,100 @@
+﻿@model Client
+
+<form id="client-createForm" class="createForm">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label asp-for="Name"></label>
+                <input asp-for="Name" type="text" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Address"></label>
+                <input asp-for="Address" type="text" class="form-control" />
+                <span asp-validation-for="Address" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Logo"></label>
+                <input id="logo" type="file" class="form-control" />
+                <span asp-validation-for="Logo" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label asp-for="Email"></label>
+                <input asp-for="Email" type="text" class="form-control" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Phone"></label>
+                <input asp-for="Phone" type="text" class="form-control" />
+                <span asp-validation-for="Phone" class="text-danger"></span>
+            </div>
+           
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-9">
+            <div class="form-group">
+                <label asp-for="ClientSaysAboutUs"></label>
+                <textarea id="clientSaysAboutUs" asp-for="ClientSaysAboutUs"></textarea>
+                <span asp-validation-for="ClientSaysAboutUs" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div id="logo-preview" class="logo-preview" style="display: none;">
+                <div id="text" style="display: none;"></div>
+                <img id="preview" src="#" />
+            </div>
+        </div>
+    </div>
+    <div id="alert"></div>
+    <button class="btn btn-success form-control" type="submit">Save</button>
+</form>
+
+<script>
+
+    $("#client-createForm").on("submit", function (e) {
+        e.preventDefault();
+
+        let formData = new FormData();
+
+        let client = objectifyForm($(this).serializeArray());
+
+        formData.append("file", $("#logo")[0].files[0]);
+
+        for (var key in client) {
+            formData.append(key, client[key]);
+        }
+        $.ajax({
+            url: "/Clients/Create",
+            type: "POST",
+            processData: false,
+            contentType: false,
+            data: formData,
+            success: function (response) {
+                $("#client-createFormDiv").html(response);
+                dataTable.fnFilter();
+            }
+        });
+    });
+
+    $("#clientSaysAboutUs").summernote({
+        height: 150
+    });
+
+    $("#logo").on("change", function () {
+
+        let maxWidth = 5000;
+        let maxHeight = 5000;
+
+        let input = $(this);
+
+        let preview = $("#preview");
+
+        let logo_preview = $("#logo-preview");
+
+        fileOnSelect(input, maxWidth, maxHeight, preview, logo_preview);
+    });
+
+</script>

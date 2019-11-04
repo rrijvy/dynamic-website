@@ -1,0 +1,79 @@
+﻿
+@{
+     Layout = "_Layout";
+    ViewData["Title"] = "Hosting Plans";
+}
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h4>Hosting List</h4>
+        <button id="hosting-modalBtn" class="btn btn-primary panel-header-create-btn" data-toggle="modal" data-target="#hosting-createModal">Create</button>
+    </div>
+    <div class="panel-body">
+        <table id="hostingDatatable" class="table table-bordered table-hover">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Name</th>
+                    <th>Space</th>
+                    <th>Bandwidth</th>
+                    <th>Domain</th>
+                    <th>SubDomain</th>
+                    <th>Alias</th>
+                    <th>Email</th>
+                    <th>CPanel</th>
+                    <th>Price</th>
+                    <th>PriceUnit</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody id="hostingTableBody"></tbody>
+        </table>
+    </div>
+</div>
+
+
+<div id="hosting-createModal"
+     class="modal fade"
+     tabindex="-1"
+     role="dialog"
+     aria-labelledby="myModalLabel">
+    <div class="modal-dialog modal-rx" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h3 class="modal-title text-success">Create hosting with Text</h3>
+            </div>
+            <div class="modal-body">
+                <div id="hosting-createFormDiv"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="hosting-editModal"
+     class="modal fade"
+     tabindex="-1"
+     role="dialog"
+     aria-labelledby="myModalLabel">
+    <div class="modal-dialog modal-rx" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h3 class="modal-title text-success">Edit hosting With Text</h3>
+            </div>
+            <div class="modal-body">
+                <div id="hosting-editFormDiv"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+    <script src="~/js/HostingPlan/hostingplan.js"></script>
+
+}

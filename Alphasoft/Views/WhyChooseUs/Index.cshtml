@@ -1,0 +1,74 @@
+﻿
+@{
+    Layout = "_Layout";
+    ViewData["Title"] = "Why-ChooseUs";
+}
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h4>Why Chose Us ?</h4>
+        <button id="chose-modalBtn" class="btn btn-primary panel-header-create-btn" data-toggle="modal" data-target="#chose-createModal">Create</button>
+    </div>
+    <div class="panel-body">
+        <table id="choseDatatable" class="table table-bordered table-hover">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Title</th>
+                    <th>ShortDescription</th>
+                    <th>Description</th>
+                    <th>Order</th>
+                    <th>IsActive</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody id="whyChooseusTableBody"></tbody>
+        </table>
+    </div>
+</div>
+
+
+<div id="chose-createModal"
+     class="modal fade"
+     tabindex="-1"
+     role="dialog"
+     aria-labelledby="myModalLabel">
+    <div class="modal-dialog modal-rx" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title">Why ChoseUs?</h4>
+            </div>
+            <div class="modal-body">
+                <div id="choseus-createFormDiv"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="choses-editModal"
+     class="modal fade"
+     tabindex="-1"
+     role="dialog"
+     aria-labelledby="myModalLabel">
+    <div class="modal-dialog modal-rx" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title">Why ChoseUs?</h4>
+            </div>
+            <div class="modal-body">
+                <div id="choseus-editFormDiv"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts{ 
+    <script src="~/js/ChoseUs/choseus.js"></script>
+
+}

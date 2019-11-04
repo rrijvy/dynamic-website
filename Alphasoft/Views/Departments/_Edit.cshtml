@@ -1,0 +1,39 @@
+﻿
+@model Department
+
+
+<form id="department-editForm" class="editForm" method="post">
+    <div class="row">
+        <input asp-for="Id" type="hidden" />
+        <div class="col-md-12">
+            <div class="form-group">
+                <label asp-for="Name"></label>
+                <input asp-for="Name" type="text" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+              
+        </div>
+    </div>
+    
+    <div id="alert"></div>
+    <button class="btn btn-success form-control" type="submit">Save</button>
+</form>
+
+<script>
+
+       $("#department-editForm").on("submit", function (e) {
+            e.preventDefault();
+
+            let data = objectifyForm($(this).serializeArray());
+
+            $.ajax({
+                type: "POST",
+                url: "/Departments/Edit",
+                data: data,
+                success: function (response) {
+                    $("#department-editFormDiv").html(response);
+                    dataTable.fnFilter();
+                }
+            });
+        });
+</script>

@@ -1,0 +1,79 @@
+﻿@model Menu
+@{
+    Layout = "_Layout";
+    ViewData["Title"] = "Menu";
+}
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h4>Menu List</h4>
+        <button id="menu-modalBtn" class="btn btn-primary panel-header-create-btn" data-toggle="modal" data-target="#menu-createModal">Create</button>
+    </div>
+    <div class="panel-body">
+        <table id="menuDatatable" class="table table-bordered table-hover">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Name</th>
+                    <th>ControllerName</th>
+                    <th>ActionName</th>
+                    <th>Is Active</th>
+                    <th>Parent</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody id="menuTableBody"></tbody>
+        </table>
+    </div>
+</div>
+
+
+<div id="menu-createModal"
+     class="modal fade"
+     tabindex="-1"
+     role="dialog"
+     aria-labelledby="myModalLabel">
+    <div class="modal-dialog modal-rx" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title">Create Menu Item</h4>
+            </div>
+            <div class="modal-body">
+                <div id="menu-createFormDiv"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div id="menu-editModal"
+     class="modal fade"
+     tabindex="-1"
+     role="dialog"
+     aria-labelledby="myModalLabel">
+    <div class="modal-dialog modal-rx" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title">Update Menue Item</h4>
+            </div>
+            <div class="modal-body">
+                <div id="menu-editFormDiv"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts{ 
+
+    <script src="~/js/Menus/menu.js"></script>
+
+}
+
+
+

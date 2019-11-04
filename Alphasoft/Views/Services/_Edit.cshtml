@@ -1,0 +1,76 @@
+﻿@model Service
+
+<form id="service-createForm" class="createForm">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label asp-for="Name"></label>
+                <input asp-for="Name" type="text" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Price"></label>
+                <input asp-for="Price" type="number" step="0.01" class="form-control" />
+                <span asp-validation-for="Price" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label asp-for="ServiceCategoryId"></label>
+                <select id="serviceCategoryId" asp-for="ServiceCategoryId" asp-items="ViewBag.ServiceCategories" class="form-control" style="width: 100%;">
+                    <option value="0">Select...</option>
+                </select>
+                <span asp-validation-for="ServiceCategoryId" class="text-danger"></span>
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label asp-for="ShortDescription"></label>
+        <textarea class="form-control" maxlength="100" asp-for="ShortDescription" placeholder="maximum length 100 Character"></textarea>
+        <span asp-validation-for="ShortDescription" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Description"></label>
+        <textarea class="description" asp-for="Description"></textarea>
+        <span asp-validation-for="Description" class="text-danger"></span>
+    </div>
+    <div id="alert"></div>
+    <button class="btn btn-success form-control" type="submit">Save</button>
+</form>
+
+<script>
+    (function () {
+        //let description = $(".description");
+        //let shortDescription = $(".shortDescription");
+
+        $("serviceCategoryId").select2({
+            dropdownParent: $("#service-editModal")
+        });
+
+
+        $(".shortDescription").summernote({
+            height: 150
+        });
+
+       $(".description").summernote({
+            height: 150
+        });
+
+        $("#service-editForm").on("submit", function (e) {
+            e.preventDefault();
+
+            let data = objectifyForm($(this).serializeArray());
+
+            $.ajax({
+                type: "POST",
+                url: "/Services/Edit",
+                data: data,
+                success: function (response) {
+                    $("#service-editFormDiv").html(response);
+                    dataTable.fnFilter();
+                }
+            });
+        });
+    })();
+</script>
+

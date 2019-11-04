@@ -1,0 +1,80 @@
+﻿
+@model SubMenu
+@{
+    Layout = "_Layout";
+    ViewData["Title"] = "Sub-Menu";
+}
+
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h4>Sub-Menu List</h4>
+        <button id="subMenu-modalBtn" class="btn btn-primary panel-header-create-btn" data-toggle="modal" data-target="#submenus-createModal">Create</button>
+    </div>
+    <div class="panel-body">
+        <table id="submenuDatatable" class="table table-bordered table-hover">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Name</th>
+                    <th>ControllerName</th>
+                    <th>ActionName</th>
+                    <th>IsActive</th>
+                    <th>SubMenuId</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody id="submenuTableBody"></tbody>
+        </table>
+    </div>
+</div>
+
+
+
+
+<div id="submenus-createModal"
+     class="modal fade"
+     tabindex="-1"
+     role="dialog"
+     aria-labelledby="myModalLabel">
+    <div class="modal-dialog modal-rx" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title">Create SubMenu Item</h4>
+            </div>
+            <div class="modal-body">
+                <div id="subMenu-createFormDiv"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div id="submenus-editModal"
+     class="modal fade"
+     tabindex="-1"
+     role="dialog"
+     aria-labelledby="myModalLabel">
+    <div class="modal-dialog modal-rx" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title">Create SubMenu Item</h4>
+            </div>
+            <div class="modal-body">
+                <div id="subMenu-editFormDiv"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@section Scripts{ 
+    <script src="~/js/SubMenus/subMenus.js"></script>
+
+}

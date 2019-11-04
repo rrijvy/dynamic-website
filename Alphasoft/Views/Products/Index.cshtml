@@ -1,0 +1,85 @@
+﻿
+@{
+    Layout = "_Layout";
+    ViewData["Title"] = "Products";
+}
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h4>Products information</h4>
+        <button id="product-modalBtn" class="btn btn-primary panel-header-create-btn" data-toggle="modal" data-target="#product-createModal">Create</button>
+    </div>
+    <div class="panel-body">
+        <table id="productDatatable" class="table table-bordered table-hover">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Name</th>
+                    <th>Category</th>
+                    <th>Purchase Price</th>
+                    <th>Retail Price</th>
+                    <th>Whole Sell Price</th>
+                    <th>Discount</th>
+                    <th>Short Description</th>
+                    <th>Description</th>
+                    <th>Relise Date</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody id="productTableBody"></tbody>
+        </table>
+    </div>
+</div>
+
+
+<div id="product-createModal"
+     class="modal fade"
+     tabindex="-1"
+     role="dialog"
+     aria-labelledby="myModalLabel">
+    <div class="modal-dialog modal-rx" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title">Create Product</h4>
+            </div>
+            <div class="modal-body">
+                <div id="product-createFormDiv"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="product-editModal"
+     class="modal fade"
+     tabindex="-1"
+     role="dialog"
+     aria-labelledby="myModalLabel">
+    <div class="modal-dialog modal-rx" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title">Update Product</h4>
+            </div>
+            <div class="modal-body">
+                <div id="product-editFormDiv"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+@section Styles{
+    <link href="~/css/Products/products.css" rel="stylesheet" />
+}
+
+@section Scripts{
+    <script src="~/js/Products/products.js"></script>
+}
+

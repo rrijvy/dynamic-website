@@ -1,0 +1,109 @@
+﻿@model Product
+
+<form id="product-createForm" class="createForm" method="post" enctype="multipart/form-data"
+      data-ajax-url="/Products/Create"
+      data-ajax="true"
+      data-ajax-method="post"
+      data-ajax-update="#product-createFormDiv"
+      data-ajax-success="OnSuccessProductCreate(data)"
+      data-ajax-failure="OnFailureProductCreate()">
+    <div class="row">
+        <div class="col-md-4">
+            <div class="form-group">
+                <label asp-for="Name"></label>
+                <input asp-for="Name" type="text" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="RetailPrice"></label>
+                <input asp-for="RetailPrice" type="number" step="0.01" class="form-control" />
+                <span asp-validation-for="RetailPrice" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="form-group">
+                <label asp-for="ProductCategoryId"></label>
+                <select id="productCategoryId" asp-for="ProductCategoryId" asp-items="ViewBag.ProductCategories" class="form-control" style="width: 100%;">
+                    <option value="0">Select...</option>
+                </select>
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="WholeSellPrice"></label>
+                <input asp-for="WholeSellPrice" type="number" step="0.01" class="form-control" />
+                <span asp-validation-for="WholeSellPrice" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="form-group">
+                <label asp-for="PurchasePrice"></label>
+                <input asp-for="PurchasePrice" type="number" step="0.01" class="form-control" />
+                <span asp-validation-for="PurchasePrice" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Discount"></label>
+                <input asp-for="Discount" type="number" step="0.01" class="form-control" />
+                <span asp-validation-for="Discount" class="text-danger"></span>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-9">
+            <div class="form-group">
+                <label asp-for="Image"></label>
+                <input id="image" asp-for="Image" name="Image" type="file" class="form-control" />
+                <span asp-validation-for="Image" class="text-danger"></span>
+                <span id="imageSizeWarning"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ShortDescription"></label>
+                <textarea id="shortDescription" asp-for="ShortDescription" maxlength="100" class="form-control" placeholder="Maximum length 100 character"></textarea>
+                <span asp-validation-for="ShortDescription" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Description"></label>
+                <textarea id="description" asp-for="Description"></textarea>
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ReleaseDate"></label>
+                <input asp-for="ReleaseDate" type="date" class="form-control" />
+                <span asp-validation-for="ReleaseDate" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div id="image-preview" class="image-preview" style="display: none;">
+                <div id="text" style="display: none;"></div>
+                <img id="preview" src="#" />
+            </div>
+        </div>
+    </div>
+    <div id="alert"></div>
+    <button class="btn btn-success form-control" type="submit">Save</button>
+</form>
+
+
+<script>
+    $("#productCategoryId").select2({
+        dropdownParent: $("#product-createModal")
+    });
+
+     $("#description").summernote({
+        height:200
+    });
+
+    $("#image").on("change", function () {
+
+        let maxWidth = 5000;
+        let maxHeight = 5000;
+
+        let input = $(this);
+
+        let preview = $("#preview");
+
+        let image_preview = $("#image-preview");
+
+        fileOnSelect(input, maxWidth, maxHeight, preview, image_preview);
+    });
+</script>

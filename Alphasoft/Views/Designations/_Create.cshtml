@@ -1,0 +1,39 @@
+﻿@model Designation
+
+<form id="designation-createForm" class="createForm">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="form-group">
+                <label asp-for="Name"></label>
+                <input asp-for="Name" type="text" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+        </div>
+    </div>
+    <div id="alert"></div>
+    <button class="btn btn-success form-control" type="submit">Save</button>
+</form>
+
+
+
+
+<script>
+    $("#designation-createForm").on("submit", function (e) {
+        e.preventDefault();
+
+        let data = objectifyForm($(this).serializeArray());
+
+        $.ajax({
+            type: "POST",
+            url: "/Designations/Create",
+            data: data,
+            success: function (response) {
+                $("#designation-createFormDiv").html(response);
+                dataTable.fnFilter();
+            }
+        });
+    });
+</script>
+
+
+

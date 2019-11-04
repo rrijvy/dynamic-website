@@ -1,0 +1,72 @@
+﻿
+@{
+    Layout = "_Layout";
+    ViewData["Title"] = "ClientProducts";
+}
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h4>Client Products List</h4>
+        <button id="clientsProjects-modalBtn" class="btn btn-primary panel-header-create-btn" data-toggle="modal" data-target="#clientproject-createModal">Create</button>
+    </div>
+    <div class="panel-body">
+        <table id="clientprojectDatatable" class="table table-bordered table-hover">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Client Name</th>
+                    <th>Product Name</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody id="clientProductTableBody"></tbody>
+        </table>
+    </div>
+</div>
+
+
+<div id="clientproject-createModal"
+     class="modal fade"
+     tabindex="-1"
+     role="dialog"
+     aria-labelledby="myModalLabel">
+    <div class="modal-dialog modal-rx" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h3 class="modal-title text-success">Create Client Product with Text</h3>
+            </div>
+            <div class="modal-body">
+                <div id="clientprojects-createFormDiv"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="clientproject-editModal"
+     class="modal fade"
+     tabindex="-1"
+     role="dialog"
+     aria-labelledby="myModalLabel">
+    <div class="modal-dialog modal-rx" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h3 class="modal-title text-success">Edit Client Product With Text</h3>
+            </div>
+            <div class="modal-body">
+                <div id="clientproject-editFormDiv"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts{
+
+    <script src="~/js/ClientProject/clientprojects.js"></script>
+
+}

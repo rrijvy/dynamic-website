@@ -1,0 +1,57 @@
+﻿
+@model ContactUs
+
+<form id="contact-editForm" class="createForm">
+    <div class="row">
+        <div class="col-md-12">
+            <input type="hidden" asp-for="Id" />
+            <div class="form-group">
+                <label asp-for="Name"></label>
+                <input asp-for="Name" type="text" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Email"></label>
+                <input asp-for="Email" type="text" class="form-control" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Phone"></label>
+                <input asp-for="Phone" type="text" class="form-control" />
+                <span asp-validation-for="Phone" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Message"></label>
+                <input asp-for="Message" type="text" class="form-control" />
+                <span asp-validation-for="Message" class="text-danger"></span>
+            </div>
+
+        </div>
+    </div>
+
+    <div id="alert"></div>
+    <button class="btn btn-success form-control" type="submit">Save</button>
+</form>
+
+<script>
+
+    $("#contact-editForm").on("submit", function (e) {
+        e.preventDefault();
+        let data = objectifyForm($(this).serializeArray());
+        $.ajax({
+            url: "/Contactus/Edit",
+            type: "POST",
+            data: data,
+            success: function (response) {
+                $("#contact-editFormDiv").html(response);
+                dataTable.fnFilter();
+            }
+
+        });
+
+
+    });
+
+
+</script>

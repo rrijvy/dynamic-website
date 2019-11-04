@@ -1,0 +1,87 @@
+﻿
+@{
+    Layout = "_Layout";
+    ViewData["Title"] = "Company";
+}
+
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h4 class="text-info">Company Information</h4>
+        <button id="company-createmodalBtn" class="btn btn-primary panel-header-create-btn" data-toggle="modal" data-target="#companies-createModal">Create</button>
+    </div>
+    <div class="panel-body">
+        <table id="companyDatatable" class="table table-bordered table-hover table-responsive">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Name</th>
+                    <th>Logo</th>
+                    <th>Slogan</th>
+                    <th>Address</th>
+                    <th>Phone </th>
+                    <th>Email</th>
+                    <th>Facebook</th>
+                    <th>LinkedIn</th>
+                    <th>Twitter</th>
+                    <th>Youtube</th>
+                    <th>Favicon</th>
+                    <th>ShortDescription</th>
+                    <th>Description</th>
+                    <th>GoogleMapLocation</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody id="companyTableBody"></tbody>
+        </table>
+    </div>
+</div>
+
+<div id="companies-createModal"
+     class="modal fade"
+     tabindex="-1"
+     role="dialog"
+     aria-labelledby="myModalLabel">
+    <div class="modal-dialog modal-rx" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title text-info">Create Company Description</h4>
+            </div>
+            <div class="modal-body">
+                <div id="company-createFormDiv"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div id="companies-editModal"
+     class="modal fade"
+     tabindex="-1"
+     role="dialog"
+     aria-labelledby="myModalLabel">
+    <div class="modal-dialog modal-rx" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title">Edit Company Description</h4>
+            </div>
+            <div class="modal-body">
+                <div id="company-editFormDiv"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@section Scripts{
+
+    <script src="~/js/Company/company.js"></script>
+
+
+}

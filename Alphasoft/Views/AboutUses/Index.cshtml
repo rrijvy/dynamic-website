@@ -1,0 +1,86 @@
+﻿
+@{
+     Layout = "_Layout";
+    ViewData["Title"] = "AboutUs";
+}
+
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h4>AboutUs Information</h4>
+        <button id="aboutus-modalBtn" class="btn btn-primary panel-header-create-btn" data-toggle="modal" data-target="#aboutUs-createModal">Create</button>
+    </div>
+    <div class="panel-body">
+        <table id="aboutUsDatatable" class="table table-bordered table-hover">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>About Main Sologan</th>
+                    <th>About Main Sologan Description</th>
+                    <th>Our Mission</th>
+                    <th>Our Mission Description</th>
+                    <th>Our Vission</th>
+                    <th>Our Vission Description</th>
+                    <th>WhyUs</th>
+                    <th>WhyUs Description</th>
+                    <th>Who WeAre</th>
+                    <th>Who WeAre Description</th>
+                    <th>ImageOne</th>
+                    <th>ImageTwo</th>
+                    <th>ImageThree</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody id="aboutusTableBody"></tbody>
+        </table>
+    </div>
+</div>
+
+
+
+<div id="aboutUs-createModal"
+     class="modal fade"
+     tabindex="-1"
+     role="dialog"
+     aria-labelledby="myModalLabel">
+    <div class="modal-dialog modal-rx" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title">Create AboutUs Description</h4>
+            </div>
+            <div class="modal-body">
+                <div id="aboutus-createFormDiv"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<div id="aboutus-editModal"
+     class="modal fade"
+     tabindex="-1"
+     role="dialog"
+     aria-labelledby="myModalLabel">
+    <div class="modal-dialog modal-rx" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title">Edit AboutUs Description</h4>
+            </div>
+            <div class="modal-body">
+                <div id="aboutus-editFormDiv"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts{ 
+    <script src="~/js/AboutUs/aboutUs.js"></script>
+
+}

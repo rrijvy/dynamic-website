@@ -1,0 +1,84 @@
+﻿.btn-rx {
+    background-color: #2aa086;
+    border: none;
+    color: #fff;
+}
+
+    .btn-rx:hover {
+        background-color: #2a947d;
+        border: none;
+        color: #fff;
+    }
+
+.panel-header-create-btn {
+    font-size: 100%;
+    position: absolute;
+    right: 20px;
+    top: 13px;
+}
+
+.panel-heading{
+    position: relative !important;
+}
+
+.createForm input, .createForm select, .createForm textarea {
+    font-size: 95%;
+}
+
+.go-right {
+    position: absolute;
+    right: 12px;
+}
+
+.btn-table {
+    width: 35px;
+}
+
+.modal-rx {
+    max-width: 83.4% !important;
+    width: 83.4% !important;
+    margin: 70px 15.8% !important;
+}
+
+h4{
+    font-weight: 600;
+}
+
+.modal-body form col-md-6{
+    padding: 0 !important;
+}
+
+table tr td p {
+    margin: 0 !important;
+}
+
+.image-preview{
+    width: 100%;
+    height: 400px;
+    padding: 10px;
+    border: 1px solid #333;
+    margin-top: 10%;
+}
+.logo-preview {
+    width: 100%;
+    height: 400px;
+    padding: 10px;
+    border: 1px solid #333;
+    margin-top: 10%;
+}
+
+#preview {
+    width: 100%;
+    height: 380px;
+    object-fit: contain;
+}
+#imgpreview{
+    width: 100%;
+    height: 380px;
+    object-fit: contain;
+}
+
+a p{
+    padding: 0;
+    margin: 0;
+}

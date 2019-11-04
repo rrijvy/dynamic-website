@@ -1,0 +1,42 @@
+﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification\ 
+for details on configuring this project to bundle and minify static web assets. */
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+/* Wrapping element */
+/* Set some basic padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+table thead tr th {
+    font-size: 90% !important;
+    height: 20px !important;
+    vertical-align: middle !important;
+}
+
+table tbody tr td {
+    font-size: 90% !important;
+    vertical-align: middle !important;
+}
+
+table td, table th {
+    padding: 0.4rem !important;
+}
+
+.text_center{
+    text-align: center;
+}
+
+.card-header{
+    text-transform: uppercase !important;
+    font-size: 120%;
+    font-weight: 700;
+}

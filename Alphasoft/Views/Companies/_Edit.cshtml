@@ -1,0 +1,170 @@
+﻿@model Company
+    <form id="company-editForm" class="createForm">
+        <div class="row">
+            <div class="col-md-4">
+                <input type="hidden" asp-for="Id"  />
+                <div class="form-group">
+                    <label asp-for="Name"></label>
+                    <input asp-for="Name" type="text" class="form-control" />
+                    <span asp-validation-for="Name" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Slogan"></label>
+                    <input asp-for="Slogan" type="text" class="form-control" />
+                    <span asp-validation-for="Slogan" class="text-danger"></span>
+                </div>
+
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label asp-for="Address"></label>
+                    <input asp-for="Address" type="text" class="form-control" />
+                    <span asp-validation-for="Address" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Phone"></label>
+                    <input asp-for="Phone" type="text" class="form-control" />
+                    <span asp-validation-for="Phone" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Email"></label>
+                    <input asp-for="Email" type="text" class="form-control" />
+                    <span asp-validation-for="Email" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label asp-for="Facebook"></label>
+                    <input asp-for="Facebook" type="text" class="form-control" />
+                    <span asp-validation-for="Facebook" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="LinkedIn"></label>
+                    <input asp-for="LinkedIn" type="text" class="form-control" />
+                    <span asp-validation-for="LinkedIn" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Twitter"></label>
+                    <input asp-for="Twitter" type="text" class="form-control" />
+                    <span asp-validation-for="Twitter" class="text-danger"></span>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label asp-for="Youtube"></label>
+                    <input asp-for="Youtube" type="text" class="form-control" />
+                    <span asp-validation-for="Youtube" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label asp-for="GoogleMapLocation"></label>
+                    <input asp-for="GoogleMapLocation" type="text" class="form-control" />
+                    <span asp-validation-for="GoogleMapLocation" class="text-danger"></span>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label asp-for="Logo"></label>
+                    <input id="logo" name="image" type="file" class="form-control" />
+                    <span asp-validation-for="Logo" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label asp-for="Favicon"></label>
+                    <input id="favicon" type="file" class="form-control" />
+                    <span asp-validation-for="Favicon" class="text-danger"></span>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-9">
+                <div class="form-group">
+                    <label asp-for="ShortDescription"></label>
+                    <textarea class="form-control" maxlength="100" asp-for="ShortDescription" placeholder="maximum length 100 Character"></textarea>
+                    <span asp-validation-for="ShortDescription" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div id="logo-preview" class="image-preview" style="display: none;">
+                    <div id="text" style="display: none;"></div>
+                    <img id="preview" src="#" />
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-9">
+                <div class="form-group">
+                    <label asp-for="Description"></label>
+                    <textarea class="company-Description" asp-for="Description"></textarea>
+                    <span asp-validation-for="Description" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div id="fav-preview" class="image-preview" style="display: none;">
+                    <div id="text" style="display: none;"></div>
+                    <img id="imgpreview" src="#" />
+                </div>
+            </div>
+
+
+        </div>
+        <div id="alert"></div>
+        <button class="btn btn-success form-control" type="submit">Save</button>
+    </form>
+
+
+
+
+<script>
+    $("#company-editForm").on("submit", function (e) {
+        e.preventDefault();
+        let formData = new FormData();
+       let company = objectifyForm($(this).serializeArray());
+         formData.append("logo", $("#logo")[0].files[0]);
+        formData.append("favicon", $("#favicon")[0].files[0]);
+
+        for (var key in company) {
+            formData.append(key, company[key]);
+        }
+        $.ajax({
+            url: "/Companies/Edit",
+            type: "POST",
+            processData: false,
+            contentType: false,
+            data: formData,
+            success: function (response) {
+                $("#company-editFormDiv").html(response);
+                dataTable.fnFilter();
+            }
+        });
+    });
+    $(".company-Description").summernote({
+        height:140
+    });
+    $("#logo").on("change", function () {
+        let maxWidth = 5000;
+        let maxHeight = 5000;
+        let input = $(this);
+        let preview = $("#preview");
+        let logo_preview = $("#logo-preview");
+        fileOnSelect(input, maxWidth, maxHeight, preview, logo_preview);
+
+    });
+    $("#favicon").on("change", function () {
+        let maxWidth = 350;
+        let maxHeight = 350;
+        let input = $(this);
+        let imgpreview = $("#imgpreview");
+        let fav_preview = $("#fav-preview");
+        fileOnSelect(input, maxWidth, maxHeight, imgpreview, fav_preview);
+
+    });
+</script>

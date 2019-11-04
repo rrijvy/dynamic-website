@@ -1,0 +1,74 @@
+﻿
+@{
+    Layout = "_Layout";
+    ViewData["Title"] = "Banners";
+}
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h4>Banner List</h4>
+        <button id="banner-modalBtn" class="btn btn-primary panel-header-create-btn" data-toggle="modal" data-target="#banner-createModal">Create</button>
+    </div>
+    <div class="panel-body">
+        <table id="bannerDatatable" class="table table-bordered table-hover">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Image</th>
+                    <th>SolganOne</th>
+                    <th>SolganTwo</th>
+                    <th>SolganThree</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody id="bannerTableBody"></tbody>
+        </table>
+    </div>
+</div>
+
+
+<div id="banner-createModal"
+     class="modal fade"
+     tabindex="-1"
+     role="dialog"
+     aria-labelledby="myModalLabel">
+    <div class="modal-dialog modal-rx" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h3 class="modal-title text-success">Create Banner with Text</h3>
+            </div>
+            <div class="modal-body">
+                <div id="banner-createFormDiv"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="banner-editModal"
+     class="modal fade"
+     tabindex="-1"
+     role="dialog"
+     aria-labelledby="myModalLabel">
+    <div class="modal-dialog modal-rx" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h3 class="modal-title text-success">Edit Banner With Text</h3>
+            </div>
+            <div class="modal-body">
+                <div id="banner-editFormDiv"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts{ 
+    <script src="~/js/Banner/banners.js"></script>
+
+
+}

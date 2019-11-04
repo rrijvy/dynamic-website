@@ -1,0 +1,42 @@
+﻿@model ClientProduct
+
+    <form id="clientProject-createForm" class="createForm">
+        <div class="row">        
+            <div class="col-md-12">
+                <div class="form-group">
+                    <label asp-for="ClientId"></label>
+                    <select id="menuId" asp-for="ClientId" asp-items="ViewBag.ClientId" class="form-control" style="width: 100%;">
+                        <option value="0">---Select---</option>
+                    </select>
+                    <span asp-validation-for="ClientId" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="ProductId"></label>
+                    <select id="menuId" asp-for="ProductId" asp-items="ViewBag.ProductId" class="form-control" style="width: 100%;">
+                        <option value="0">---Select---</option>
+                    </select>
+                    <span asp-validation-for="ProductId" class="text-danger"></span>
+                </div>
+            </div>
+        </div>
+        <div id="alert"></div>
+        <button class="btn btn-success form-control" type="submit">Save</button>
+    </form>
+
+
+    <script>
+        $("#clientProject-createForm").on("submit", function (e) {
+            e.preventDefault();
+            let data = objectifyForm($(this).serializeArray());
+            $.ajax({
+                url: "/ClientProducts/Create",
+                type: "POST",
+                data: data,
+                success: function (response) {
+                    $("#clientprojects-createFormDiv").html(response);
+                    dataTable.fnFilter();
+                }
+            });
+        });
+
+    </script>

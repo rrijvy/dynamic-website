@@ -1,0 +1,75 @@
+﻿@{
+     Layout = "_Layout";
+    ViewData["Title"] = "Faq";
+}
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h4>FAQ Information</h4>
+        <button id="faq-modalBtn" class="btn btn-primary panel-header-create-btn" data-toggle="modal" data-target="#faq-createModal">Create</button>
+    </div>
+    <div class="panel-body">
+        <table id="faqDatatable" class="table table-bordered table-hover">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Question</th>
+                    <th>Answer</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody id="faqTableBody"></tbody>
+        </table>
+    </div>
+</div>
+
+
+
+
+<div id="faq-createModal"
+     class="modal fade"
+     tabindex="-1"
+     role="dialog"
+     aria-labelledby="myModalLabel">
+    <div class="modal-dialog modal-rx" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title">Create FAQ Information</h4>
+            </div>
+            <div class="modal-body">
+                <div id="faq-createFormDiv"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div id="faqs-editModal"
+     class="modal fade"
+     tabindex="-1"
+     role="dialog"
+     aria-labelledby="myModalLabel">
+    <div class="modal-dialog modal-rx" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title">Edit FAQ Information</h4>
+            </div>
+            <div class="modal-body">
+                <div id="faq-editFormDiv"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@section Scripts{
+
+    <script src="~/js/Faq/faqs.js"></script>
+
+
+}

@@ -1,0 +1,70 @@
+﻿@model ProductCategory
+
+@{
+    Layout = "_Layout";
+    ViewData["Title"] = "Products-Category";
+}
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h4>Product Category</h4>
+        <button id="productCategory-modalBtn" class="btn btn-primary panel-header-create-btn" data-toggle="modal" data-target="#productCategories-createModal">Create</button>
+    </div>
+    <div class="panel-body">
+        <table id="productDatatable" class="table table-bordered table-hover">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Name</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody id="productCategoriesTableBody"></tbody>
+        </table>
+    </div>
+</div>
+
+
+<div id="productCategories-createModal"
+     class="modal fade"
+     tabindex="-1"
+     role="dialog"
+     aria-labelledby="myModalLabel">
+    <div class="modal-dialog modal-rx" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title">Create Product Category</h4>
+            </div>
+            <div class="modal-body">
+                <div id="productCategories-createFormDiv"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="productCategories-editModal"
+     class="modal fade"
+     tabindex="-1"
+     role="dialog"
+     aria-labelledby="myModalLabel">
+    <div class="modal-dialog modal-rx" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title">Update Product Category</h4>
+            </div>
+            <div class="modal-body">
+                <div id="productCategories-editFormDiv"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+    <script src="~/js/ProductCategories/productCategories.js"></script>
+}

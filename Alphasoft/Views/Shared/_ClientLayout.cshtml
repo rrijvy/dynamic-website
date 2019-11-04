@@ -1,0 +1,321 @@
+﻿<!DOCTYPE html>
+
+@inject Alphasoft.UnitOfWork.IUnitOfWork _work
+
+@{
+
+    Company isCompanyExist = _work.Companies.FirstOrDefault();
+    Company company = isCompanyExist == null ? new Company() : isCompanyExist;
+
+    List<Menu> menuList = _work.Menus.GetAll();
+    List<Menu> menus = menuList.Where(x => x.ParentId == 0).ToList();
+    List<Menu> subMenus = new List<Menu>();
+
+}
+
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>@company.Name</title>
+
+    <meta name="keywords" content="@company.Name" />
+    <meta name="description" content="@company.Name" />
+    <meta name="author" content="@company.Name" />
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="~/porto_7.4.0/img/favicon.ico" type="image/x-icon" />
+    <link rel="apple-touch-icon" href="~/porto_7.4.0/img/apple-touch-icon.png">
+
+    <!-- Mobile Metas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1.0, shrink-to-fit=no">
+
+    <!-- Web Fonts  -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800%7CShadows+Into+Light%7CPlayfair+Display:400" rel="stylesheet" type="text/css">
+
+    <!-- Vendor CSS -->
+    <link href="~/porto_7.4.0/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/porto_7.4.0/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" />
+    <link href="~/porto_7.4.0/vendor/animate/animate.min.css" rel="stylesheet" />
+    <link href="~/porto_7.4.0/vendor/simple-line-icons/css/simple-line-icons.min.css" rel="stylesheet" />
+    <link href="~/porto_7.4.0/vendor/owl.carousel/assets/owl.carousel.min.css" rel="stylesheet" />
+    <link href="~/porto_7.4.0/vendor/owl.carousel/assets/owl.theme.default.min.css" rel="stylesheet" />
+    <link href="~/porto_7.4.0/vendor/magnific-popup/magnific-popup.min.css" rel="stylesheet" />
+
+    <!-- Theme CSS -->
+    <link href="~/porto_7.4.0/css/theme.css" rel="stylesheet" />
+    <link href="~/porto_7.4.0/css/theme-elements.css" rel="stylesheet" />
+    <link href="~/porto_7.4.0/css/theme-blog.css" rel="stylesheet" />
+    <link href="~/porto_7.4.0/css/theme-shop.css" rel="stylesheet" />
+
+    <!-- Current Page CSS -->
+    <link href="~/porto_7.4.0/vendor/rs-plugin/css/settings.css" rel="stylesheet" />
+    <link href="~/porto_7.4.0/vendor/rs-plugin/css/layers.css" rel="stylesheet" />
+    <link href="~/porto_7.4.0/vendor/rs-plugin/css/navigation.css" rel="stylesheet" />
+
+    <!-- Skin CSS -->
+    <link href="~/porto_7.4.0/css/skins/skin-corporate-3.css" rel="stylesheet" />
+
+    <!-- Theme Custom CSS -->
+    <link href="~/porto_7.4.0/css/custom.css" rel="stylesheet" />
+
+    <!-- rx -->
+    <link href="~/css/rx-card.css" rel="stylesheet" />
+
+    <!-- Head Libs -->
+    <script src="~/porto_7.4.0/vendor/modernizr/modernizr.min.js"></script>
+
+
+</head>
+<body>    
+    <div class="body">
+        <header id="header" data-plugin-options="{'stickyEnabled': true, 'stickyEnableOnBoxed': true, 'stickyEnableOnMobile': true, 'stickyStartAt': 148, 'stickySetTop': '-148px', 'stickyChangeLogo': true}">
+            <div class="header-body border-color-primary border-top-0 box-shadow-none">
+                <div class="header-top header-top-default border-bottom-0 border-top-0">
+                    <div class="container">
+                        <div class="header-row py-2">
+                            <div class="header-column justify-content-start">
+                                <div class="header-row">
+                                    <nav class="header-nav-top">
+                                        <ul class="nav nav-pills text-uppercase text-2">
+                                            <li class="nav-item nav-item-anim-icon">
+                                                <a class="nav-link pl-0" asp-controller="ClientView" asp-action="AboutUs"><i class="fas fa-angle-right"></i> About Us</a>
+                                            </li>
+                                            <li class="nav-item nav-item-anim-icon">
+                                                <a class="nav-link" asp-controller="ClietView" asp-action="ContactUs"><i class="fas fa-angle-right"></i> Contact Us</a>
+                                            </li>
+                                        </ul>
+                                    </nav>
+                                </div>
+                            </div>
+                            <div class="header-column justify-content-lg-center" style="display: flex; flex-flow: row nowrap; justify-content: space-between; align-items: center;">
+                                <i class="far fa-clock" style="font-size: 70%;"></i>
+                                <span style="margin-left: 5px; font-size: 80%;">@DateTime.Now.ToString("h:mm tt") - @DateTime.Now.ToString("dd MMMM yyyy")</span>
+                            </div>
+                            <div class="header-column justify-content-end">
+                                <div class="header-row">
+                                    <ul class="header-social-icons social-icons d-none d-sm-block social-icons-clean">
+                                        <li class="social-icons-facebook"><a href="@company.Facebook" target="_blank" title="Facebook"><i class="fab fa-facebook-f"></i></a></li>
+                                        <li class="social-icons-twitter"><a href="@company.Twitter" target="_blank" title="Twitter"><i class="fab fa-twitter"></i></a></li>
+                                        <li class="social-icons-linkedin"><a href="@company.LinkedIn" target="_blank" title="Linkedin"><i class="fab fa-linkedin-in"></i></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="header-container container z-index-2">
+                    <div class="header-row py-2">
+                        <div class="header-column">
+                            <div class="header-row">
+                                <div class="header-logo header-logo-sticky-change">
+                                    <a href="/Home/Index">
+                                        <img class="header-logo-sticky opacity-0 companyLogo" alt="Porto" width="100" height="48" data-sticky-width="89" data-sticky-height="43" data-sticky-top="88" src="~/images/alphalogo.png">
+                                        <img class="header-logo-non-sticky opacity-0 companyLogo" alt="Porto" width="100" height="48" src="@company.Logo">
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="header-column justify-content-end">
+                            <div class="header-row">
+                                <ul class="header-extra-info d-flex align-items-center">
+                                    <li class="d-none d-sm-inline-flex">
+                                        <div class="header-extra-info-text">
+                                            <label>SEND US AN EMAIL</label>
+                                            <strong><a href="mailto:@company.Email" style="text-transform: uppercase;">@company.Email</a></strong>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="header-extra-info-text">
+                                            <label>CALL US NOW</label>
+                                            <strong><a href="tel:@company.Phone">@company.Phone</a></strong>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="header-nav-bar bg-primary" data-sticky-header-style="{'minResolution': 991}" data-sticky-header-style-active="{'background-color': 'transparent'}" data-sticky-header-style-deactive="{'background-color': '#0088cc'}">
+                    <div class="container">
+                        <div class="header-row">
+                            <div class="header-column">
+                                <div class="header-row justify-content-end">
+                                    <div class="header-nav header-nav-force-light-text justify-content-start py-2 py-lg-3" data-sticky-header-style="{'minResolution': 991}" data-sticky-header-style-active="{'margin-left': '135px'}" data-sticky-header-style-deactive="{'margin-left': '0'}">
+                                        <div id="navigationMenuBar" class="header-nav-main header-nav-main-effect-1 header-nav-main-sub-effect-1">
+                                            <nav class="collapse">
+                                                <ul class="nav nav-pills" id="mainNav">
+                                                    @foreach (var menu in menus)
+                                                    {
+                                                        subMenus = menuList.Where(x => x.ParentId == menu.Id).ToList();
+
+                                                        <li class="dropdown dropdown-full-color dropdown-light">
+                                                            <a class="dropdown-item dropdown-toggle" asp-controller="@menu.ControllerName" asp-action="@menu.ActionName">
+                                                                @menu.Name
+                                                            </a>
+                                                            @if (subMenus.Count() > 0)
+                                                            {
+                                                                <ul class="dropdown-menu">
+
+                                                                    @foreach (var subMenu in subMenus)
+                                                                    {
+                                                                        <li>
+                                                                            <a class="dropdown-item" asp-controller="@subMenu.ControllerName" asp-action="@subMenu.ActionName">
+                                                                                @subMenu.Name
+                                                                            </a>
+                                                                        </li>
+                                                                    }
+                                                                </ul>
+                                                            }
+                                                        </li>
+                                                    }
+                                                </ul>
+                                            </nav>
+                                        </div>
+                                        <button class="btn header-btn-collapse-nav my-2" data-toggle="collapse" data-target=".header-nav-main nav">
+                                            <i class="fas fa-bars"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <div>
+            @RenderBody()
+        </div>
+        <footer id="footer" class="border-0">
+            <div class="py-5" style="width: 80% !important; margin: auto;">
+                <div class="row justify-content-md-center py-4 mt-3">
+                    <div class="col-md-12 col-lg-12">
+                        <div class="row">
+                            <div class="col-4 col-md-2 mb-5 mb-lg-0">
+                                <h5 class="text-4 mb-2">Quick Links</h5>
+                                <ul class="list list-icons list-icons-sm">
+                                    <li><i class="fas fa-angle-right"></i><a href="page-services.html" class="link-hover-style-1 ml-1"> Our Services</a></li>
+                                    <li><i class="fas fa-angle-right"></i> <a class="link-hover-style-1 ml-1" asp-controller="ClientView" asp-action="AboutUs">About Us</a></li>
+                                    <li><i class="fas fa-angle-right"></i> <a class="link-hover-style-1 ml-1" asp-controller="ClientView" asp-action="AboutUs">ContactUs</a></li>
+                                    <li><i class="fas fa-angle-right"></i> <a class="link-hover-style-1 ml-1" asp-controller="ClientView" asp-action="AboutUs">Home</a></li>
+                                    <li><i class="fas fa-angle-right"></i> <a class="link-hover-style-1 ml-1" asp-controller="ClientView" asp-action="AboutUs">About Us</a></li>
+                                </ul>
+                            </div>
+                            <div class="col-4 col-md-2 mb-5 mb-lg-0">
+                                <ul class="list list-icons list-icons-sm" style="margin-top:40px;">
+                                    <li><i class="fas fa-angle-right"></i> <a class="link-hover-style-1 ml-1" asp-controller="ClientView" asp-action="AboutUs">About Us</a></li>
+                                    <li><i class="fas fa-angle-right"></i> <a class="link-hover-style-1 ml-1" asp-controller="ClientView" asp-action="AboutUs">ContactUs</a></li>
+                                    <li><i class="fas fa-angle-right"></i> <a class="link-hover-style-1 ml-1" asp-controller="ClientView" asp-action="AboutUs">Home</a></li>
+                                    <li><i class="fas fa-angle-right"></i> <a class="link-hover-style-1 ml-1" asp-controller="ClientView" asp-action="AboutUs">About Us</a></li>
+                                </ul>
+                            </div>
+                            <div class="col-4 col-md-2 mb-5 mb-lg-0">
+                                <h5 class="text-4 mb-2">G S T Link</h5>
+                                <ul class="list list-icons list-icons-sm">
+                                    <li><i class="fas fa-angle-right"></i><a href="page-faq.html" class="link-hover-style-1 ml-1">Pronali ERP</a></li>
+                                    <li><i class="fas fa-angle-right"></i><a href="sitemap.html" class="link-hover-style-1 ml-1">Dynamic website</a></li>
+                                    <li><i class="fas fa-angle-right"></i><a href="sitemap.html" class="link-hover-style-1 ml-1">Marge ERP</a></li>
+                                </ul>
+                            </div>
+                            <div class="col-4 col-md-2 mb-5 mb-lg-0">
+                                <h5 class="text-4 mb-2">General Features</h5>
+                                <ul class="list list-icons list-icons-sm">
+                                    <li><i class="fas fa-angle-right"></i><a href="page-faq.html" class="link-hover-style-1 ml-1"> FAQ's</a></li>
+                                    <li><i class="fas fa-angle-right"></i><a href="sitemap.html" class="link-hover-style-1 ml-1"> Sitemap</a></li>
+                                </ul>
+                            </div>
+
+                            <div class="col-4 col-md-2 mb-5 mb-lg-0">
+                                <h5 class="text-4 mb-2" style="margin-left:10px;">Social Links</h5>
+                                <ul class="list list-icons list-icons-sm">
+                                    <li>
+                                        <button class="btn btn-default" style="width:43px;color:#1da1f2;">
+                                            <i class="fab fa-facebook"></i>
+                                        </button>
+                                        <a class="btn  btn-link" href="@company.Facebook" target="_blank" title="Facebook">Facebook</a>
+                                    </li>
+                                    <li>
+                                        <button class="btn btn-default" style="width:43px;color:#1da1f2;">
+                                            <i class="fab fa-twitter-square"></i>
+                                        </button>
+                                        <a class="btn  btn-link" href="@company.Twitter" target="_blank" title="Twitter">Twitter</a>
+                                    </li>
+                                    <li>
+                                        <button type="button" class="btn btn-default" style="width:43px;color:#1da1f2;">
+                                            <i class="fab fa-linkedin-in pr-1"></i>
+                                        </button>
+                                        <a class="btn  btn-link" href="@company.LinkedIn" target="_blank" title="LinkedIn">LinkedIn</a>
+                                    </li>
+                                    <li>
+                                        <button type="button" class="btn btn-default" style="width:43px;height:40px;color:red;">
+                                            <i class="fab fa-youtube pr-1"></i>
+                                        </button>
+                                        <a class="btn  btn-link" href="@company.Youtube" target="_blank" title="Youtube">Youtube</a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="col-4 col-md-2 mb-5 mb-lg-0">
+                                <h5 class="text-4 mb-3">Video Playlist & Channels</h5>
+
+                                @*<iframe class="embed-responsive-item" src="https://www.youtube.com/embed/v64KOxKVLVg" allowfullscreen></iframe>*@
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-copyright footer-copyright-style-2 background-transparent footer-top-light-border">
+                <div class="container py-2">
+                    <div class="row py-4">
+                        <div class="col d-flex align-items-center justify-content-center mb-4 mb-lg-0">
+                            <p class="font-weight-semibold text-3">&copy; Copyright 2019. @company.Name</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+
+
+    <!-- Vendor -->
+    <script src="~/porto_7.4.0/vendor/jquery/jquery.min.js"></script>
+    <script src="~/porto_7.4.0/vendor/jquery.appear/jquery.appear.min.js"></script>
+    <script src="~/porto_7.4.0/vendor/jquery.easing/jquery.easing.min.js"></script>
+    <script src="~/porto_7.4.0/vendor/jquery.cookie/jquery.cookie.min.js"></script>
+    <script src="~/porto_7.4.0/vendor/popper/umd/popper.min.js"></script>
+    <script src="~/porto_7.4.0/vendor/bootstrap/js/bootstrap.min.js"></script>
+    <script src="~/porto_7.4.0/vendor/common/common.min.js"></script>
+    <script src="~/porto_7.4.0/vendor/jquery.validation/jquery.validate.min.js"></script>
+    <script src="~/porto_7.4.0/vendor/jquery.easy-pie-chart/jquery.easypiechart.min.js"></script>
+    <script src="~/porto_7.4.0/vendor/jquery.gmap/jquery.gmap.min.js"></script>
+    <script src="~/porto_7.4.0/vendor/jquery.lazyload/jquery.lazyload.min.js"></script>
+    <script src="~/porto_7.4.0/vendor/isotope/jquery.isotope.min.js"></script>
+    <script src="~/porto_7.4.0/vendor/owl.carousel/owl.carousel.min.js"></script>
+    <script src="~/porto_7.4.0/vendor/magnific-popup/jquery.magnific-popup.min.js"></script>
+    <script src="~/porto_7.4.0/vendor/vide/jquery.vide.min.js"></script>
+    <script src="~/porto_7.4.0/vendor/vivus/vivus.min.js"></script>
+
+    <!-- Theme Base, Components and Settings -->
+    <script src="~/porto_7.4.0/js/theme.js"></script>
+
+    <!-- Current Page Vendor and Views -->
+    <script src="~/porto_7.4.0/vendor/rs-plugin/js/jquery.themepunch.tools.min.js"></script>
+    <script src="~/porto_7.4.0/vendor/rs-plugin/js/jquery.themepunch.revolution.min.js"></script>
+
+    <!-- Current Page Vendor and Views -->
+    <script src="~/porto_7.4.0/js/views/view.contact.js"></script>
+
+    <!-- Theme Custom -->
+    <script src="~/porto_7.4.0/js/custom.js"></script>
+
+    <!-- Theme Initialization Files -->
+    <script src="~/porto_7.4.0/js/theme.init.js"></script>
+
+    <script src="~/js/ClientJS/clientLayout.js"></script>
+
+    @RenderSection("Styles", required: false)
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

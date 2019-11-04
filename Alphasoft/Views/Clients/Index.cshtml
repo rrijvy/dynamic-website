@@ -1,0 +1,77 @@
+﻿
+@{
+    Layout = "_Layout";
+    ViewData["Title"] = "Clients";
+
+}
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h4>Clients Information</h4>
+        <button id="client-createmodalBtn" class="btn btn-primary panel-header-create-btn" data-toggle="modal" data-target="#client-createModal">Create</button>
+    </div>
+    <div class="panel-body">
+        <table id="clientDatatable" class="table table-bordered table-hover">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Logo</th>
+                    <th>Phone</th>                   
+                    <th>ClientSaysAboutUs </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody id="clientTableBody"></tbody>
+        </table>
+    </div>
+</div>
+
+
+<div id="client-createModal"
+     class="modal fade"
+     tabindex="-1"
+     role="dialog"
+     aria-labelledby="myModalLabel">
+    <div class="modal-dialog modal-rx" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title">Create Client Description</h4>
+            </div>
+            <div class="modal-body">
+                <div id="client-createFormDiv"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div id="clients-editModal"
+     class="modal fade"
+     tabindex="-1"
+     role="dialog"
+     aria-labelledby="myModalLabel">
+    <div class="modal-dialog modal-rx" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title">Edit Client Description</h4>
+            </div>
+            <div class="modal-body">
+                <div id="client-editFormDiv"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@section Scripts{
+    <script src="~/js/Client/clients.js"></script>
+
+
+}

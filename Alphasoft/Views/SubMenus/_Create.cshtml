@@ -1,0 +1,63 @@
+﻿@model SubMenu
+<form id="subMenu-createForm" class="createForm">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label asp-for="Name"></label>
+                <input asp-for="Name" type="text" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ControllerName"></label>
+                <input asp-for="ControllerName" type="text" class="form-control" />
+                <span asp-validation-for="ControllerName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="IsActive"></label>
+                <br />
+                <input asp-for="IsActive" type="radio" value="True" /> True
+                <input asp-for="IsActive" type="radio" value="False" /> False
+                <span asp-validation-for="IsActive" class="text-danger"></span>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="form-group">
+                <label asp-for="MenuId"></label>
+                <select id="menuId" asp-for="MenuId" asp-items="ViewBag.Menus" class="form-control" style="width: 100%;">
+                    <option value="0">---Select---</option>
+                </select>
+                <span asp-validation-for="MenuId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ActionName"></label>
+                <input asp-for="ActionName" type="text" class="form-control" />
+                <span asp-validation-for="ActionName" class="text-danger"></span>
+            </div>
+        </div>
+    </div>
+    <div id="alert"></div>
+    <button class="btn btn-success form-control" type="submit">Save</button>
+</form>
+
+<script>
+    $("#menuId").select2({
+        dropdownParent: $("#submenus-createModal")
+    });
+
+    $("#subMenu-createForm").on("submit", function (e) {
+        e.preventDefault();
+        let data = objectifyForm($(this).serializeArray());
+
+        console.log(data);
+        $.ajax({
+            url: "/SubMenus/Create",
+            data: data,
+            type: "POST",
+            success: function (response) {
+                $("#subMenu-createFormDiv").html(response);
+                dataTable.fnFilter();
+            }
+        });
+    });
+</script>
