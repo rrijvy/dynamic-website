@@ -60,20 +60,26 @@
     <!-- Theme Custom CSS -->
     <link href="~/porto_7.4.0/css/custom.css" rel="stylesheet" />
 
+    <!-- jQuery UI -->
+    <link href="~/lib/jquery-ui-1.12.1/jquery-ui.min.css" rel="stylesheet" />
+
     <!-- rx -->
     <link href="~/css/rx-card.css" rel="stylesheet" />
+    <link href="~/css/rx-form.css" rel="stylesheet" />
+    <link href="~/css/custom.css" rel="stylesheet" />
 
     <!-- Head Libs -->
     <script src="~/porto_7.4.0/vendor/modernizr/modernizr.min.js"></script>
 
 
 </head>
-<body>    
+<body>
     <div class="body">
         <header id="header" data-plugin-options="{'stickyEnabled': true, 'stickyEnableOnBoxed': true, 'stickyEnableOnMobile': true, 'stickyStartAt': 148, 'stickySetTop': '-148px', 'stickyChangeLogo': true}">
             <div class="header-body border-color-primary border-top-0 box-shadow-none">
                 <div class="header-top header-top-default border-bottom-0 border-top-0">
                     <div class="container">
+                        <div id="contactUsFormDiv" class="contactUsFormDiv"></div>
                         <div class="header-row py-2">
                             <div class="header-column justify-content-start">
                                 <div class="header-row">
@@ -82,7 +88,7 @@
                                             <li class="nav-item nav-item-anim-icon">
                                                 <a class="nav-link pl-0" asp-controller="ClientView" asp-action="AboutUs"><i class="fas fa-angle-right"></i> About Us</a>
                                             </li>
-                                            <li class="nav-item nav-item-anim-icon">
+                                            <li id="contactUs" class="nav-item nav-item-anim-icon">
                                                 <a class="nav-link" asp-controller="ClietView" asp-action="ContactUs"><i class="fas fa-angle-right"></i> Contact Us</a>
                                             </li>
                                         </ul>
@@ -312,6 +318,9 @@
 
     <!-- Theme Initialization Files -->
     <script src="~/porto_7.4.0/js/theme.init.js"></script>
+
+    <!-- jQuery UI -->
+    <script src="~/lib/jquery-ui-1.12.1/jquery-ui.min.js"></script>
 
     <script src="~/js/ClientJS/clientLayout.js"></script>
 

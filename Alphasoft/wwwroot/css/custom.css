@@ -82,3 +82,13 @@ a p{
     padding: 0;
     margin: 0;
 }
+
+.contactUsFormDiv {
+    position: absolute;
+    width: auto;
+    height: auto;
+    left: 8.7%;
+    top: 52.6px;
+    z-index: 500;
+    display: none;
+}

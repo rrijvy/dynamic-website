@@ -45,6 +45,9 @@
     <None Include="Views\ClientView\TeamView.cshtml" />
     <None Include="Views\ClientView\TeamViewDetails.cshtml" />
     <None Include="wwwroot\js\AboutUs\aboutUs.js" />
+    <None Include="wwwroot\lib\jquery-ui-1.12.1\external\jquery\jquery.js" />
+    <None Include="wwwroot\lib\jquery-ui-1.12.1\jquery-ui.js" />
+    <None Include="wwwroot\lib\jquery-ui-1.12.1\jquery-ui.min.js" />
     <None Include="wwwroot\porto_7.4.0\css\fonts\minicart-font.svg" />
     <None Include="wwwroot\porto_7.4.0\css\fonts\star.svg" />
     <None Include="wwwroot\porto_7.4.0\img\curved-border.svg" />

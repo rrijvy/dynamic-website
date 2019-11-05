@@ -86,5 +86,10 @@ namespace Alphasoft.Controllers
 
             return RedirectToAction(nameof(Index));
         }
+
+        public IActionResult ContactUsFormShow()
+        {
+            return PartialView("_ContactUsForm");
+        }
     }
 }

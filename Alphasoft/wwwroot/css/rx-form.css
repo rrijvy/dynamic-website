@@ -1,0 +1,123 @@
+﻿.rx_login {
+    text-align: center;
+    width: 350px;
+    box-sizing: border-box;
+    padding: 25px;
+    background: rgba(22, 24, 27, 0.61);
+}
+
+    .rx_login h2 {
+        margin: 0 0 20px;
+        padding: 0;
+        font-size: 22px;
+        text-transform: uppercase;
+        color: #fff;
+        font-weight: 700;
+    }
+
+    .rx_login .input-group {
+        position: relative;
+        width: 100%;
+        margin-bottom: 30px;
+    }
+
+        .rx_login .input-group input {
+            height: 47px;
+            width: 100%;
+            padding: 0 20px;
+            box-sizing: border-box;
+            font-size: 12px;
+            outline: none;
+            border: 1px solid #000;
+        }
+
+        .rx_login .input-group span {
+            position: absolute;
+            top: 10px;
+            left: 18px;
+            padding: 0;
+            transition: 0.5s;
+            pointer-events: none;
+            background: #fff;
+            text-transform: uppercase;
+            font-size: 12px;
+        }
+
+        .rx_login .input-group input:focus ~ span,
+        .rx_login .input-group input:valid ~ span {
+            top: -20px;
+            left: 12px;
+            font-size: 10px;
+            padding: 2px 8px;
+            border: 1px solid #000;
+            background: #ff0;
+            color: #000;
+            font-weight: 700;
+        }
+
+        .rx_login .input-group input[type="submit"] {
+            background: #ff0;
+            border: none;
+            box-shadow: none;
+            text-transform: uppercase;
+            cursor: pointer;
+            font-weight: 600;
+        }
+
+            .rx_login .input-group input[type="submit"]:hover {
+                background: #ffc107;
+            }
+
+
+
+
+        .rx_login .input-group textarea {
+            height: 100px;
+            width: 100%;
+            padding: 8px 20px 4px 20px;
+            box-sizing: border-box;
+            font-size: 12px;
+            outline: none;
+            border: 1px solid #000;
+        }
+
+        .rx_login .input-group span {
+            position: absolute;
+            top: 8px;
+            left: 18px;
+            padding: 0;
+            transition: 0.5s;
+            pointer-events: none;
+            background: #fff;
+            text-transform: uppercase;
+            font-size: 12px;
+        }
+
+        .rx_login .input-group textarea:focus ~ span {
+            top: -20px;
+            left: 12px;
+            font-size: 10px;
+            padding: 2px 8px;
+            border: 1px solid #000;
+            background: #ff0;
+            color: #000;
+            font-weight: 700;
+        }
+
+
+
+
+
+
+    .rx_login a {
+        color: #262626;
+        text-decoration: none;
+        display: block;
+        text-align: left;
+        color: #666;
+    }
+
+        .rx_login a span {
+            color: #262626;
+            font-weight: 600;
+        }
