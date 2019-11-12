@@ -74,7 +74,7 @@
         .rx_login .input-group textarea {
             height: 100px;
             width: 100%;
-            padding: 8px 20px 4px 20px;
+            padding: 10px 20px;
             box-sizing: border-box;
             font-size: 12px;
             outline: none;
@@ -83,7 +83,7 @@
 
         .rx_login .input-group span {
             position: absolute;
-            top: 8px;
+            top: 10px;
             left: 18px;
             padding: 0;
             transition: 0.5s;
@@ -93,7 +93,8 @@
             font-size: 12px;
         }
 
-        .rx_login .input-group textarea:focus ~ span {
+        .rx_login .input-group textarea:focus ~ span,
+        .rx_login .input-group textarea:valid ~ span {
             top: -20px;
             left: 12px;
             font-size: 10px;
@@ -103,9 +104,6 @@
             color: #000;
             font-weight: 700;
         }
-
-
-
 
 
 
