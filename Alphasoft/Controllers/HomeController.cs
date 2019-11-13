@@ -91,5 +91,10 @@ namespace Alphasoft.Controllers
         {
             return PartialView("_ContactUsForm");
         }
+
+        public IActionResult AjaxErrorView()
+        {
+            return PartialView("_AjaxErrorView");
+        }
     }
 }

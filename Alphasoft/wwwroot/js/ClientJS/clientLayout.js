@@ -1,72 +1,14 @@
 ﻿(function () {
-    $(window).scroll(function () {
-        console.clear();
 
+    //let images = $("img.lazy");
 
-        let numberOfSections = 7;
-        let numberOfVisitedSection = 3;
-
-        let windowBottomPosition = $(window).scrollTop() + $(window).height();
-        let sectionPosition = $(`#sec${numberOfVisitedSection}`).position().top;
-
-        if ((windowBottomPosition + 700) > sectionPosition) {
-
-            if (numberOfVisitedSection >= 7) {
-
-                $.ajax({
-                    url: `/Home/Section_${numberOfVisitedSection}`,
-                    type: "GET",
-                    success: function (response) {
-                        $(`#sec${numberOfVisitedSection}`).html(response);
-
-                        ++numberOfVisitedSection;
-                    },
-                    error: function (response) {
-
-                        $.ajax({
-                            url: "/Home/Section_0",
-                            type: "GET",
-                            success: function (response) {
-                                $(`#sec${numberOfVisitedSection}`).html(response);
-
-                                ++numberOfVisitedSection;
-                            },
-                            error: function (response) {
-
-                                $.ajax({
-                                    url: "/Home/AjaxErrorView",
-                                    type: "GET",
-                                    success: function (response) {
-                                        $(`#sec${numberOfVisitedSection}`).html(response);
-
-                                        ++numberOfVisitedSection;
-                                    }
-                                });
-
-                            }
-                        });
-
-                    }
-                });
-            }
-        }
-
-        
-
-
-        //if ($(window).scrollTop() == $(document).height() - $(window).height()) {
-        //    console.log($(window).scrollTop());
-        //    console.log($(document).height());
-        //    console.log($(window).height());
-        //}
-    });
-
+    //lazyload(images);
 
     const selector = {
         navigatonMenuBar: $("#navigationMenuBar"),
         companyLogo: $(".companyLogo"),
         contactUsFormDiv: $("#contactUsFormDiv"),
-        contactUs: $("#contactUs")
+        contactUs: $("#contactUs"),
     };
 
     selector.contactUs.on("click", function (e) {
@@ -79,5 +21,69 @@
                 selector.contactUsFormDiv.html(response).slideToggle("fast", "swing");
             }
         });
+    });
+
+
+    let numberOfSections = 7;
+    let numberOfVisitedSection = 2;
+
+
+
+    $(window).scroll(function () {
+
+        console.clear();
+
+        console.log(numberOfSections);
+        console.log(numberOfVisitedSection);
+
+        let windowBottomPosition = $(window).scrollTop() + $(window).height();
+        let sectionPosition = $(`#sec_${numberOfVisitedSection}`).position().top;
+
+        console.log(windowBottomPosition);
+        console.log(sectionPosition);
+
+        if ((windowBottomPosition + 700) > sectionPosition) {
+
+            if (numberOfVisitedSection <= numberOfSections) {
+
+                $.ajax({
+                    url: `/ClientView/Section_${numberOfVisitedSection}`,
+                    type: "GET",
+                    success: function (response) {
+                        console.log(response);
+
+                        $(`#sec_${numberOfVisitedSection}`).html(response);
+
+                        ++numberOfVisitedSection;
+                    },
+                    error: function (response) {
+
+                        $.ajax({
+                            url: `/ClientView/Section_${numberOfVisitedSection}`,
+                            type: "GET",
+                            success: function (response) {
+                                $(`#sec_${numberOfVisitedSection}`).html(response);
+
+                                ++numberOfVisitedSection;
+                            },
+                            error: function (response) {
+
+                                $.ajax({
+                                    url: "/Home/AjaxErrorView",
+                                    type: "GET",
+                                    success: function (response) {
+                                        $(`#sec_${numberOfVisitedSection}`).html(response);
+
+                                        ++numberOfVisitedSection;
+                                    }
+                                });
+
+                            }
+                        });
+
+                    }
+                });
+            }
+        }
     });
 })();

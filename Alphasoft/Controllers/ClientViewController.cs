@@ -77,5 +77,48 @@ namespace Alphasoft.Controllers
             };
             return View(aboutUsVm);
         }
+
+        public IActionResult Section_2()
+        {
+            var whyChooseUs = _work.ChooseUs.GetAll();
+            return PartialView("_Section2", whyChooseUs);
+        }
+
+        public IActionResult Section_3()
+        {
+            var ourClients = _work.Client.GetAll();
+            return PartialView("_Section3", ourClients);
+        }
+
+        public IActionResult Section_4()
+        {
+            var popularProducts = _work.Products.GetAllWithCategory();
+            return PartialView("_Section4", popularProducts);
+        }
+
+        public IActionResult Section_5()
+        {
+            var hostingPlans = _work.HostingPlan.GetAll();
+            return PartialView("_Section5", hostingPlans);
+        }
+
+
+        public IActionResult Section_6()
+        {
+            var ourProducts = _work.Products.GetAll();
+            return PartialView("_Section6", ourProducts);
+        }
+
+
+        public IActionResult Section_7()
+        {
+            return PartialView("_Section7");
+        }
+
+        public IActionResult Section_8()
+        {
+            var whyChooseUs = _work.ChooseUs.GetAll();
+            return PartialView("_Section8", whyChooseUs);
+        }
     }
 }
