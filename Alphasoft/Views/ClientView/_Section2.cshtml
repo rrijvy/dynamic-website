@@ -1,62 +1,31 @@
-﻿@model List<ChooseUs>
+﻿@model List<Client>
 
-<div class="container" style="padding: 0;">
-    <h2 class="font-weight-normal text-color-dark text-center text-7 pb-2 pt-5">Why <strong class="font-weight-extra-bold">Choose</strong> Us</h2>
-    <div id="whyChooseUsSection" data-slick='{"slidesToShow": 3, "slidesToScroll": 3}'>
-        @if (Model.Count() > 0)
-        {
-            foreach (var item in Model)
+<div class="row py-5 my-5">
+    <div class="col">
+        <h2 class="font-weight-normal text-color-dark text-center text-7 pb-5">Our Honourable <strong class="font-weight-extra-bold">Clients</strong></h2>
+        <div class="owl-carousel owl-theme mb-0 pt-3">
+            @if (Model.Count() > 0)
             {
-                char[] shortDescriptionArray = item.ShortDescription.ToCharArray();
-
-                if (shortDescriptionArray.Length > 60)
+                foreach (var item in Model)
                 {
-                    string shortDescription = string.Empty;
-
-                    for (int i = 0; i < 60; i++)
-                    {
-                        shortDescription += shortDescriptionArray[i];
-                    }
-
-                    <div class="col-md-12 mb-4 mb-md-0">
-                        <div class="row justify-content-center justify-content-md-start">
-                            <div class="col-4">
-                                <img class="lazy img-fluid" src="~/porto_7.4.0/img/icons/seo-grey.png" alt="">
-                            </div>
-                            <div class="col-lg-8">
-                                <h2 class="font-weight-bold text-5 line-height-5 mb-1">@Html.Raw(item.Title)</h2>
-                                <p class="mb-0">@shortDescription</p>
-                                <a href="#">more . . .</a>
-                            </div>
-                        </div>
-                    </div>
-                }
-                else
-                {
-                    <div class="col-md-12 mb-4 mb-md-0">
-                        <div class="row justify-content-center justify-content-md-start">
-                            <div class="col-4">
-                                <img class="lazy img-fluid" src="~/porto_7.4.0/img/icons/seo-grey.png" alt="">
-                            </div>
-                            <div class="col-lg-8">
-                                <h2 class="font-weight-bold text-5 line-height-5 mb-1">@Html.Raw(item.Title)</h2>
-                                <p class="mb-0">@item.ShortDescription</p>
-                            </div>
-                        </div>
+                    <div style="padding: 0px 25px; height: 100px; width: 185px;">
+                        <img class="img-fluid opacity-2" src="@item.Logo" alt="" style="height: 100%; width: 100%; object-fit: contain;" />
                     </div>
                 }
             }
-        }
+        </div>
     </div>
 </div>
 
+
 <script>
-    $("#whyChooseUsSection").slick({
+    var owl = $('.owl-carousel');
+    owl.owlCarousel({
+        items: 7,
+        loop: true,
+        margin: 10,
         autoplay: true,
-        arrows: false,
-        autoplaySpeed: 2000,
-        easing: 'linear',
-        infinite: true,
-        pauseOnHover: true
+        autoplayTimeout: 1000,
+        autoplayHoverPause: true
     });
 </script>

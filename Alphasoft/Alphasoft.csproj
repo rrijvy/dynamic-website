@@ -34,6 +34,7 @@
 
   <ItemGroup>
     <Folder Include="Areas\Identity\Services\" />
+    <Folder Include="wwwroot\images\Banners\" />
   </ItemGroup>
 
   <ItemGroup>
@@ -42,10 +43,12 @@
     <None Include="Views\ClientView\AboutUsView.cshtml" />
     <None Include="Views\ClientView\Faq.cshtml" />
     <None Include="Views\ClientView\Product.cshtml" />
-    <None Include="Views\ClientView\_Section3.cshtml" />
+    <None Include="Views\ClientView\Section_8.cshtml" />
+    <None Include="Views\ClientView\_Section2.cshtml" />
     <None Include="Views\ClientView\TeamView.cshtml" />
     <None Include="Views\ClientView\TeamViewDetails.cshtml" />
-    <None Include="Views\ClientView\_Section2.cshtml" />
+    <None Include="Views\ClientView\_Section1.cshtml" />
+    <None Include="Views\ClientView\_Section3.cshtml" />
     <None Include="Views\ClientView\_Section4.cshtml" />
     <None Include="Views\ClientView\_Section5.cshtml" />
     <None Include="Views\ClientView\_Section6.cshtml" />
@@ -120,24 +123,6 @@
     <None Include="wwwroot\lib\jquery-ui-1.12.1\external\jquery\jquery.js" />
     <None Include="wwwroot\lib\jquery-ui-1.12.1\jquery-ui.js" />
     <None Include="wwwroot\lib\jquery-ui-1.12.1\jquery-ui.min.js" />
-    <None Include="wwwroot\lib\lazyload\lazyload.js" />
-    <None Include="wwwroot\lib\lazyload\lazyload.min.js" />
-    <None Include="wwwroot\lib\lazyload\LICENSE.md" />
-    <None Include="wwwroot\lib\lazyload\README.md" />
-    <None Include="wwwroot\lib\slick-1.8.1\.gitignore" />
-    <None Include="wwwroot\lib\slick-1.8.1\CONTRIBUTING.markdown" />
-    <None Include="wwwroot\lib\slick-1.8.1\ISSUE_TEMPLATE.md" />
-    <None Include="wwwroot\lib\slick-1.8.1\LICENSE" />
-    <None Include="wwwroot\lib\slick-1.8.1\Makefile" />
-    <None Include="wwwroot\lib\slick-1.8.1\README.markdown" />
-    <None Include="wwwroot\lib\slick-1.8.1\slick\config.rb" />
-    <None Include="wwwroot\lib\slick-1.8.1\slick\fonts\slick.svg" />
-    <None Include="wwwroot\lib\slick-1.8.1\slick\slick-theme.less" />
-    <None Include="wwwroot\lib\slick-1.8.1\slick\slick-theme.scss" />
-    <None Include="wwwroot\lib\slick-1.8.1\slick\slick.js" />
-    <None Include="wwwroot\lib\slick-1.8.1\slick\slick.less" />
-    <None Include="wwwroot\lib\slick-1.8.1\slick\slick.min.js" />
-    <None Include="wwwroot\lib\slick-1.8.1\slick\slick.scss" />
     <None Include="wwwroot\porto_7.4.0\css\fonts\minicart-font.svg" />
     <None Include="wwwroot\porto_7.4.0\css\fonts\star.svg" />
     <None Include="wwwroot\porto_7.4.0\img\curved-border.svg" />
