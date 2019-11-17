@@ -114,6 +114,8 @@ namespace Alphasoft.Controllers
                     PriceUnit = item.PriceUnit,
 
                 });
+
+                _work.
             }
 
             //total number of rows count     
