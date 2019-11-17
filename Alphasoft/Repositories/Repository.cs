@@ -29,7 +29,7 @@ namespace Alphasoft.Repositories
         {
             return _db.ToList();
         }
-      
+
         public List<T> Find(Expression<Func<T, bool>> predicate)
         {
             return _db.Where(predicate).ToList();
@@ -67,7 +67,7 @@ namespace Alphasoft.Repositories
 
         public void Update(T entity)
         {
-               _db.Update(entity);
+            _db.Update(entity);
         }
 
         public void Remove(T entity)

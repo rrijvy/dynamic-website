@@ -24,7 +24,8 @@
         { "data": "alias", "name": "Alias", "autowidth": true },
         { "data": "email", "name": "Email", "autowidth": true },
         { "data": "cPanel", "name": "CPanel", "autowidth": true },
-        { "data": "price", "name": "Price", "autowidth": true },
+        { "data": "yearlyPrice", "name": "YearlyPrice", "autowidth": true },
+        { "data": "monthlyPrice", "name": "MonthlyPrice", "autowidth": true },
         { "data": "priceUnit", "name": "PriceUnit", "autowidth": true },
 
 

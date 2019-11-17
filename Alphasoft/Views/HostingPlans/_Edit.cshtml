@@ -2,7 +2,7 @@
     <form id="hosting-editForm" class="createForm">
         <div class="row">
             <div class="col-md-12">
-                <input type="hidden" asp-for="Id"  />
+                <input type="hidden" asp-for="Id" />
                 <div class="form-group">
                     <label asp-for="Name"></label>
                     <input asp-for="Name" type="text" class="form-control" />
@@ -46,9 +46,14 @@
                     <span asp-validation-for="CPanel" class="text-danger"></span>
                 </div>
                 <div class="form-group">
-                    <label asp-for="Price"></label>
-                    <input asp-for="Price" type="text" class="form-control" />
-                    <span asp-validation-for="Price" class="text-danger"></span>
+                    <label asp-for="MonthlyPrice"></label>
+                    <input asp-for="MonthlyPrice" type="text" class="form-control" />
+                    <span asp-validation-for="MonthlyPrice" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="YearlyPrice"></label>
+                    <input asp-for="YearlyPrice" type="text" class="form-control" />
+                    <span asp-validation-for="YearlyPrice" class="text-danger"></span>
                 </div>
                 <div class="form-group">
                     <label asp-for="PriceUnit"></label>

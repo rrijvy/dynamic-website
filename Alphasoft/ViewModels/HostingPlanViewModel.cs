@@ -16,7 +16,8 @@ namespace Alphasoft.ViewModels
         public string Alias { get; set; }
         public string Email { get; set; }
         public bool CPanel { get; set; }
-        public decimal Price { get; set; }
+        public decimal YearlyPrice { get; set; }
+        public decimal MonthlyPrice { get; set; }
         public string PriceUnit { get; set; }
     }
 }

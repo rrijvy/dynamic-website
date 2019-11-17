@@ -109,7 +109,8 @@ namespace Alphasoft.Controllers
                     Alias = item.Alias,
                     Email = item.Email,
                     CPanel = item.CPanel,
-                    Price = item.Price,
+                    YearlyPrice = item.YearlyPrice,
+                    MonthlyPrice = item.MonthlyPrice,
                     PriceUnit = item.PriceUnit,
 
                 });
