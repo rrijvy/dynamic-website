@@ -85,8 +85,11 @@ namespace Alphasoft.Controllers
         {
             ProductsViewModel productsViewModel = new ProductsViewModel
             {
-                Products = _work.Products.GetAllWithCategory()
+                Products = _work.Products.GetAllWithCategory(),
             };
+
+            productsViewModel.CategoryProducts = _work.QueryHelper.GetCategoryProducts(productsViewModel.Products);
+            
             return View(productsViewModel);
         }
 

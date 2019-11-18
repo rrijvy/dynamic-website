@@ -3,9 +3,10 @@ using System.Collections.Generic;
 
 namespace Alphasoft.ViewModels.ClientViewModels
 {
-    public class ProductsViewModel
+    public class CategoryProduct
     {
+        public int ProductCategory { get; set; }
+        public string ProductCategoryName { get; set; }
         public List<Product> Products { get; set; }
-        public List<CategoryProduct> CategoryProducts { get; set; }
     }
 }

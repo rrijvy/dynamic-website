@@ -1,6 +1,8 @@
 ﻿using Alphasoft.Data;
 using Alphasoft.IRepositories;
+using Alphasoft.IServices;
 using Alphasoft.Repositories;
+using Alphasoft.Services;
 
 namespace Alphasoft.UnitOfWork
 {
@@ -47,7 +49,10 @@ namespace Alphasoft.UnitOfWork
             ClientProducts = new ClientProductRepository(_context);
 
             AboutUs = new AboutUsRepository(_context);
+
             HostingPlan = new HostingPlanRepository(_context);
+
+            QueryHelper = new QueryHelper();
 
         }
 
@@ -70,6 +75,7 @@ namespace Alphasoft.UnitOfWork
         public IClientProductRepository ClientProducts { get; private set; }
         public IAboutUsRepository AboutUs { get; private set; }
         public IHostingPlanRepository HostingPlan { get; private set; }
+        public IQueryHelper QueryHelper { get; private set; }
 
         public int Complete()
         {

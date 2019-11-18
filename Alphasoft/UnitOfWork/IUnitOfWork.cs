@@ -1,4 +1,5 @@
 ﻿using Alphasoft.IRepositories;
+using Alphasoft.IServices;
 using Alphasoft.Repositories;
 using System;
 
@@ -25,6 +26,7 @@ namespace Alphasoft.UnitOfWork
         IClientProductRepository ClientProducts { get; }
         IAboutUsRepository AboutUs { get; }
         IHostingPlanRepository HostingPlan { get; }
+        IQueryHelper QueryHelper { get; }
 
         int Complete();
     }

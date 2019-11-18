@@ -12,6 +12,7 @@ namespace Alphasoft.Repositories
     {
         public HostingPlanRepository(ApplicationDbContext context):base(context)
         {
+
         }
         public  ApplicationDbContext context
         {
