@@ -115,7 +115,6 @@ namespace Alphasoft.Controllers
 
                 });
 
-                _work.
             }
 
             //total number of rows count     
