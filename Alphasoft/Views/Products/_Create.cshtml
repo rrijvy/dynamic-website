@@ -71,6 +71,12 @@
                 <input asp-for="ReleaseDate" type="date" class="form-control" />
                 <span asp-validation-for="ReleaseDate" class="text-danger"></span>
             </div>
+            <div class="form-group">
+                <label asp-for="IsPopular"></label>
+                <br />
+                <input asp-for="IsPopular" type="hidden" value="true" />
+                <input id="toggle_checkbox" type="checkbox" data-toggle="toggle" data-onstyle="success" data-offstyle="danger" checked>
+            </div>
         </div>
         <div class="col-md-3">
             <div id="image-preview" class="image-preview" style="display: none;">
@@ -85,25 +91,47 @@
 
 
 <script>
-    $("#productCategoryId").select2({
-        dropdownParent: $("#product-createModal")
-    });
+    (function () {
+        $('#toggle_checkbox').bootstrapToggle({
+            on: 'True',
+            off: 'False',
+            width: 100
+        });
 
-     $("#description").summernote({
-        height:200
-    });
+        $('#toggle_checkbox').change(function () {
+            let value = $('#toggle_checkbox')[0].checked;
 
-    $("#image").on("change", function () {
+            if (value == true) {
+                $('#IsPopular').val(true);
+                $('#IsPopular').attr('data-val', true);
+            }
 
-        let maxWidth = 5000;
-        let maxHeight = 5000;
+            if (value == false) {
+                $('#IsPopular').val(false);
+                $('#IsPopular').attr('data-val', false);
+            }
+        });
 
-        let input = $(this);
+        $("#productCategoryId").select2({
+            dropdownParent: $("#product-createModal")
+        });
 
-        let preview = $("#preview");
+        $("#description").summernote({
+            height: 200
+        });
 
-        let image_preview = $("#image-preview");
+        $("#image").on("change", function () {
 
-        fileOnSelect(input, maxWidth, maxHeight, preview, image_preview);
-    });
+            let maxWidth = 5000;
+            let maxHeight = 5000;
+
+            let input = $(this);
+
+            let preview = $("#preview");
+
+            let image_preview = $("#image-preview");
+
+            fileOnSelect(input, maxWidth, maxHeight, preview, image_preview);
+        });
+    })();
 </script>

@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 using System.Linq.Dynamic.Core;
 using Alphasoft.Models;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Alphasoft.Constants;
 
 namespace Alphasoft.Controllers
 {
@@ -127,7 +128,7 @@ namespace Alphasoft.Controllers
                     ActionName = item.ActionName,
                     IsActive = item.IsActive,
                     ParentId = item.ParentId,
-                    DropdownType = item.DropdownType
+                    DropdownType = string.IsNullOrEmpty(item.DropdownType) ? string.Empty : ((DropdownList)(int.Parse(item.DropdownType))).ToString()
                 });
             }
 

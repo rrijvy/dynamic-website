@@ -16,7 +16,7 @@
             </div>
             <div class="form-group">
                 <label asp-for="DropdownType"></label>
-                <select asp-for="DropdownType" asp-items="@Html.GetEnumSelectList<DropdownList>()"></select>
+                <select asp-for="DropdownType" asp-items="@Html.GetEnumSelectList<DropdownList>()" class="form-control"></select>
                 <span asp-validation-for="DropdownType" class="text-danger"></span>
             </div>
         </div>
@@ -36,9 +36,8 @@
             <div class="form-group">
                 <label asp-for="IsActive"></label>
                 <br />
-                <input asp-for="IsActive" type="radio" value="True" /> True
-                <input asp-for="IsActive" type="radio" value="False" /> False
-                <span asp-validation-for="IsActive" class="text-danger"></span>
+                <input asp-for="IsActive" id="isActive_edit" type="hidden"/>
+                <input id="toggle_checkbox_edit" type="checkbox" data-toggle="toggle" data-onstyle="success" data-offstyle="danger">
             </div>
         </div>
     </div>
@@ -47,21 +46,52 @@
 </form>
 
 <script>
+    (function () {
+        let checkbox_value = $("#isActive_edit").val();
 
-    $("#menu-editForm").on("submit", function (e) {
-        e.preventDefault();
+        if (checkbox_value == true || checkbox_value == "True") {
+            $('#toggle_checkbox_edit').prop('checked', true).change();
+        }
 
-        let data = objectifyForm($(this).serializeArray());
+        if (checkbox_value == false || checkbox_value == "False") {
+            $('#toggle_checkbox_edit').prop('checked', false).change();
+        }
 
-        $.ajax({
-            url: "/Menus/Edit",
-            type: "POST",
-            data: data,
-            success: function (response) {
-                $("#menu-editFormDiv").html(response);
-                dataTable.fnFilter();
+        $('#toggle_checkbox_edit').bootstrapToggle({
+            on: 'Enabled',
+            off: 'Disabled',
+            width: 100
+        });
+
+        $('#toggle_checkbox_edit').change(function () {
+            let value = $('#toggle_checkbox_edit')[0].checked;
+
+            if (value == true) {
+                $('#isActive_edit').val(true);
+                $('#isActive_edit').attr('data-val', true);
+            }
+
+            if (value == false) {
+                $('#isActive_edit').val(false);
+                $('#isActive_edit').attr('data-val', false);
             }
         });
 
-    });
+        $("#menu-editForm").on("submit", function (e) {
+            e.preventDefault();
+
+            let data = objectifyForm($(this).serializeArray());
+
+            $.ajax({
+                url: "/Menus/Edit",
+                type: "POST",
+                data: data,
+                success: function (response) {
+                    $("#menu-editFormDiv").html(response);
+                    dataTable.fnFilter();
+                }
+            });
+
+        });
+    })();
 </script>

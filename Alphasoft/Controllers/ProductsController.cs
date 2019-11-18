@@ -112,6 +112,7 @@ namespace Alphasoft.Controllers
                 product.Description = productmodel.Description;
                 product.ShortDescription = productmodel.ShortDescription;
                 product.ProductCategoryId = productmodel.ProductCategoryId;
+                product.IsPopular = productmodel.IsPopular;
 
                 _work.Products.Update(product);
 
@@ -181,7 +182,8 @@ namespace Alphasoft.Controllers
                     Description = item.Description,
                     ShortDescription = item.ShortDescription,
                     ReleaseDate = item.ReleaseDate,
-                    Image = item.Image
+                    Image = item.Image,
+                    IsPopular= item.IsPopular
                 });
             }
 

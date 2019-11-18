@@ -9,7 +9,7 @@ namespace Alphasoft.Models
         public string Name { get; set; }
         public string Image { get; set; }
 
-        [Display(Name="Purchase Price")]
+        [Display(Name = "Purchase Price")]
         public double? PurchasePrice { get; set; }
 
         [Display(Name = "Retail Price")]
@@ -23,6 +23,9 @@ namespace Alphasoft.Models
 
         [Display(Name = "Short Description")]
         public string ShortDescription { get; set; }
+
+        [Display(Name="Mark as Popular Product")]
+        public bool IsPopular { get; set; }
 
         [Display(Name = "Product Category")]
         public int ProductCategoryId { get; set; }

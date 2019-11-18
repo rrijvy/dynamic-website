@@ -17,6 +17,7 @@ namespace Alphasoft.ViewModels
         public string Description { get; set; }
         public string ShortDescription { get; set; }
         public DateTime ReleaseDate { get; set; }
+        public bool IsPopular { get; set; }
         public string Image { get; set; }
     }
 }

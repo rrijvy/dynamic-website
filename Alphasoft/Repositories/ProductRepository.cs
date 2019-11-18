@@ -20,5 +20,15 @@ namespace Alphasoft.Repositories
         {
             return Context.Products.Include(x => x.ProductCategory).ToList();
         }
+
+        public Product GetProductWithCategory(int productId)
+        {
+            return Context.Products.Where(x => x.Id == productId).Include(x => x.ProductCategory).FirstOrDefault();
+        }
+
+        public List<Product> GetPopularProducts()
+        {
+            return Context.Products.Where(x => x.IsPopular == true).ToList();
+        }
     }
 }

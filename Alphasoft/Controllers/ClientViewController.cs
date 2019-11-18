@@ -25,9 +25,13 @@ namespace Alphasoft.Controllers
         {
             ClientProductVM clientProduct = new ClientProductVM
             {
-                Product = _work.Products.Get(id),
+                Company = _work.Companies.FirstOrDefault(),
+
+                Product = _work.Products.GetProductWithCategory(id),
 
                 Products = _work.Products.GetAll().Where(x => x.Id != id).ToList(),
+
+                ProductCategories = _work.ProductCategories.GetAll(),
 
                 ClientProjects = _work.ClientProducts.ClientProjectsByProduct(id)
             };
@@ -76,6 +80,14 @@ namespace Alphasoft.Controllers
                 about = _work.AboutUs.GetWithAbout(),
             };
             return View(aboutUsVm);
+        }
+        public IActionResult Products()
+        {
+            ProductsViewModel productsViewModel = new ProductsViewModel
+            {
+                Products = _work.Products.GetAllWithCategory()
+            };
+            return View(productsViewModel);
         }
 
         public IActionResult Section_1()

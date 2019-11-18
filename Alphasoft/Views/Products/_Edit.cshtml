@@ -66,6 +66,12 @@
                 <input asp-for="ReleaseDate" type="date" class="form-control" />
                 <span asp-validation-for="ReleaseDate" class="text-danger"></span>
             </div>
+            <div class="form-group">
+                <label asp-for="IsPopular"></label>
+                <br />
+                <input asp-for="IsPopular" id="isPopular_edit" type="hidden" />
+                <input id="toggle_checkbox_edit" type="checkbox" data-toggle="toggle" data-onstyle="success" data-offstyle="danger">
+            </div>
         </div>
         <div class="col-md-3">
             <div id="image-preview" class="image-preview" style="display: block;">
@@ -81,6 +87,36 @@
 
 <script>
     (function () {
+        let checkbox_value = $("#isPopular_edit").val();
+
+        if (checkbox_value == true || checkbox_value == "True") {
+            $('#toggle_checkbox_edit').prop('checked', true).change();
+        }
+
+        if (checkbox_value == false || checkbox_value == "False") {
+            $('#toggle_checkbox_edit').prop('checked', false).change();
+        }
+
+        $('#toggle_checkbox_edit').bootstrapToggle({
+            on: 'Enabled',
+            off: 'Disabled',
+            width: 100
+        });
+
+        $('#toggle_checkbox_edit').change(function () {
+            let value = $('#toggle_checkbox_edit')[0].checked;
+
+            if (value == true) {
+                $('#isPopular_edit').val(true);
+                $('#isPopular_edit').attr('data-val', true);
+            }
+
+            if (value == false) {
+                $('#isPopular_edit').val(false);
+                $('#isPopular_edit').attr('data-val', false);
+            }
+        });
+
         $("productCategoryId").select2({
             dropdownParent: $("#product-createModal")
         });
