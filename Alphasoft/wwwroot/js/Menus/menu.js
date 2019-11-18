@@ -18,6 +18,7 @@
         { "data": "id", "name": "Id", "autowidth": true, "className": "text_center" },
         { "data": "name", "name": "Name", "autowidth": true },
         { "data": "controllerName", "name": "ControllerName ", "autowidth": true },
+        { "data": "dropdownType", "name": "DropdownType", "autowidth": true },
         { "data": "actionName", "name": "ActionName", "autowidth": true },
         { "data": "isActive", "name": "IsActive", "autowidth": true },
         { "data": "parentId", "name": "ParentId", "autowidth": true },

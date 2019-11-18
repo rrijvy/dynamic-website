@@ -126,7 +126,8 @@ namespace Alphasoft.Controllers
                     ControllerName = item.ControllerName,
                     ActionName = item.ActionName,
                     IsActive = item.IsActive,
-                    ParentId = item.ParentId
+                    ParentId = item.ParentId,
+                    DropdownType = item.DropdownType
                 });
             }
 

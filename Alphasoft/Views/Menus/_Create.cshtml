@@ -14,11 +14,9 @@
                 <span asp-validation-for="ControllerName" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="IsActive"></label>
-                <br />
-                <input asp-for="IsActive" type="radio" value="True"/> True
-                <input asp-for="IsActive" type="radio" value="False" /> False
-                <span asp-validation-for="IsActive" class="text-danger"></span>
+                <label asp-for="DropdownType"></label>
+                <select asp-for="DropdownType" asp-items="@Html.GetEnumSelectList<DropdownList>()"></select>
+                <span asp-validation-for="DropdownType" class="text-danger"></span>
             </div>
         </div>
         <div class="col-md-6">
@@ -33,6 +31,13 @@
                 <label asp-for="ActionName"></label>
                 <input asp-for="ActionName" type="text" class="form-control" />
                 <span asp-validation-for="ActionName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="IsActive"></label>
+                <br />
+                <input asp-for="IsActive" type="radio" value="True" /> True
+                <input asp-for="IsActive" type="radio" value="False" /> False
+                <span asp-validation-for="IsActive" class="text-danger"></span>
             </div>
         </div>
     </div>

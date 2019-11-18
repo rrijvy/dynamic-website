@@ -23,5 +23,6 @@ namespace Alphasoft.Models
         public bool IsActive { get; set; }
         public int ParentId { get; set; }
         public List<SubMenu> SubMenus { get; set; }
+        public string DropdownType { get; set; }
     }
 }
