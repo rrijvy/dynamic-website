@@ -4,14 +4,16 @@ using Alphasoft.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Alphasoft.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20191119152718_ServiceUpdate")]
+    partial class ServiceUpdate
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -155,23 +157,6 @@ namespace Alphasoft.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Blogs");
-                });
-
-            modelBuilder.Entity("Alphasoft.Models.Career", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("OportunityDescription");
-
-                    b.Property<string>("OurBenifiteDescription");
-
-                    b.Property<string>("OurCultureDescription");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Careers");
                 });
 
             modelBuilder.Entity("Alphasoft.Models.ChooseUs", b =>
@@ -446,29 +431,6 @@ namespace Alphasoft.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("HostingPlan");
-                });
-
-            modelBuilder.Entity("Alphasoft.Models.Job", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<DateTime>("DeadLine");
-
-                    b.Property<string>("Description");
-
-                    b.Property<DateTime>("JobCreateDate");
-
-                    b.Property<string>("Location");
-
-                    b.Property<string>("Qualification");
-
-                    b.Property<int>("Title");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Jobs");
                 });
 
             modelBuilder.Entity("Alphasoft.Models.Menu", b =>

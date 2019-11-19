@@ -1,0 +1,126 @@
+﻿@model ServiceVM
+@{
+    int animationDelay = 500;
+}
+<div role="main" class="main">
+    <div class="container pb-1">
+        <div class="row">
+            <div class="featured-boxes featured-boxes-style-2" style="width: 100%;">
+                <div class="row">
+                    @foreach (var item in Model.Services)
+                    {
+                        animationDelay = animationDelay + 200;
+                        <div class="col-md-6 col-lg-4 appear-animation" data-appear-animation="fadeInRightShorter" data-appear-animation-delay="@animationDelay">
+                            <div class="featured-box featured-box-effect-4">
+                                <div class="box-content">
+                                    <i class="icon-featured @item.IconClassName icons text-color-primary bg-color-grey"></i>
+                                    <h4 class="font-weight-bold">@item.Name</h4>
+                                    <p class="px-3">@item.ShortDescription</p>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <section class="section section-primary border-top-0 mb-0">
+        <div class="container">
+            <div class="row counters counters-sm counters-text-light">
+                <div class="col-sm-6 col-lg-3 mb-5 mb-lg-0">
+                    <div class="counter">
+                        <strong data-to="30000" data-append="+">0</strong>
+                        <label class="opacity-5 text-4 mt-1">Happy Clients</label>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-lg-3 mb-5 mb-lg-0">
+                    <div class="counter">
+                        <strong data-to="3500" data-append="+">0</strong>
+                        <label class="opacity-5 text-4 mt-1">Answered Tickets</label>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-lg-3 mb-5 mb-sm-0">
+                    <div class="counter">
+                        <strong data-to="16">0</strong>
+                        <label class="opacity-5 text-4 mt-1">Pre-made Demos</label>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-lg-3">
+                    <div class="counter">
+                        <strong data-to="3000" data-append="+">0</strong>
+                        <label class="opacity-5 text-4 mt-1">Development Hours</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="container-fluid">
+        @foreach (var item in Model.ServiceCategories)
+        {
+            <div class="row align-items-center bg-color-grey">
+                <div class="col-lg-6 p-0">
+                    <section class="parallax section section-parallax custom-parallax-bg-pos-left custom-sec-left h-100 m-0" data-plugin-parallax data-plugin-options="{'speed': 1.5, 'horizontalPosition': '100%'}" data-image-src="/porto_7.4.0/img/generic/generic-corporate-3-1-full.jpg" style="min-height: 315px;">
+                    </section>
+                </div>
+                <div class="col-lg-6 p-0">
+                    <section class="section section-no-border h-100 m-0">
+                        <div class="row m-0">
+                            <div class="col-half-section col-half-section-left">
+                                <div class="overflow-hidden">
+                                    <h4 class="mb-0 appear-animation" data-appear-animation="maskUp"><a href="#" class="text-4 font-weight-bold pt-2 d-block text-dark text-decoration-none pb-1">Mobile Apps</a></h4>
+                                </div>
+                                <div class="overflow-hidden mb-2">
+                                    <p class="mb-0 lead text-4 appear-animation" data-appear-animation="maskUp" data-appear-animation-delay="200">Lorem ipsum dolor sit amet, coctetur adipiscing elit.</p>
+                                </div>
+                                <p class="text-2 mb-0 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="400">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque rutrum pellentesque imperdiet. Nulla lacinia iaculis nulla non metus pulvinar.</p>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        }
+    </div>
+    <div class="container-fluid">
+        <div class="row featured-boxes-full featured-boxes-full-scale">
+            <div class="col-lg-3 featured-box-full featured-box-full-primary">
+                <i class="far fa-life-ring"></i>
+                <h4>Customer Support</h4>
+                <p class="font-weight-light">Lorem ipsum dolor sit amet, consectetur adipiscing metus elit. Quisque rutrum pellentesque imperdiet. Quisque rutrum pellentesque imperdiet.</p>
+            </div>
+            <div class="col-lg-3 featured-box-full featured-box-full-primary">
+                <i class="fas fa-film"></i>
+                <h4>Sliders</h4>
+                <p class="font-weight-light">Lorem ipsum dolor sit amet, consectetur adipiscing metus elit. Quisque rutrum pellentesque imperdiet. Quisque rutrum pellentesque imperdiet.</p>
+            </div>
+            <div class="col-lg-3 featured-box-full featured-box-full-primary">
+                <i class="far fa-star"></i>
+                <h4>Winner</h4>
+                <p class="font-weight-light">Lorem ipsum dolor sit amet, consectetur adipiscing metus elit. Quisque rutrum pellentesque imperdiet. </p>
+            </div>
+            <div class="col-lg-3 featured-box-full featured-box-full-primary">
+                <i class="far fa-edit"></i>
+                <h4>Customizable</h4>
+                <p class="font-weight-light">Lorem ipsum dolor sit amet, consectetur adipiscing metus elit. Quisque rutrum pellentesque imperdiet. Quisque rutrum pellentesque imperdiet.</p>
+            </div>
+        </div>
+    </div>
+    <section class="call-to-action call-to-action-strong-grey content-align-center call-to-action-in-footer">
+        <div class="container py-5">
+            <div class="row py-3">
+                <div class="col-md-9 col-lg-9">
+                    <div class="call-to-action-content">
+                        <h2 class="font-weight-normal text-7 mb-0">We always<strong> try </strong>to make <strong>awesome</strong> solution!</h2>
+                        <p class="mb-0">And provide you which one suits you best.</p>
+                    </div>
+                </div>
+                <div class="col-md-3 col-lg-3">
+                    <div class="call-to-action-btn">
+                        <a href="http://themeforest.net/item/porto-responsive-html5-template/4106987" target="_blank" class="btn btn-dark btn-lg text-3 font-weight-semibold px-4 py-3 mt-5">Conatct Us Now</a><span class="arrow hlb d-none d-md-block" data-appear-animation="rotateInUpLeft" style="top: -90px; left: 70%;"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>

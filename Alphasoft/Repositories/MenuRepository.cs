@@ -23,5 +23,10 @@ namespace Alphasoft.Repositories
         {
             return Context.Menus.Include(x => x.SubMenus).ToList();
         }
+
+        public List<Menu> GetAllActive()
+        {
+            return Context.Menus.Where(x => x.IsActive == true).ToList();
+        }
     }
 }

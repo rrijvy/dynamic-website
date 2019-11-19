@@ -9,6 +9,7 @@ namespace Alphasoft.Models
         public string Image { get; set; }
         public double? Price { get; set; }
         public string Description { get; set; }
+        public string IconClassName { get; set; }
 
         [Display(Name = "Short Description")]
         public string ShortDescription { get; set; }

@@ -60,7 +60,7 @@ namespace Alphasoft.Controllers
             return View(blogsVM);
         }
 
-        public IActionResult TeamView()
+        public IActionResult OurTeam()
         {
             OurTeamVM teamVm = new OurTeamVM
             {
@@ -82,10 +82,11 @@ namespace Alphasoft.Controllers
 
             return View(teamVm);
         }
-        public IActionResult AboutUsView()
+        public IActionResult AboutUs()
         {
             AboutUsVm aboutUsVm = new AboutUsVm
             {
+                Company = _work.Companies.FirstOrDefault(),
                 aboutUs = _work.AboutUs.GetWithAboutUs(),
                 about = _work.AboutUs.GetWithAbout(),
             };
@@ -102,6 +103,27 @@ namespace Alphasoft.Controllers
             productsViewModel.CategoryProducts = _work.QueryHelper.GetCategoryProducts(productsViewModel.Products);
 
             return View(productsViewModel);
+        }
+
+        public IActionResult Services()
+        {
+            ServiceVM serviceVM = new ServiceVM
+            {
+                Services = _work.Services.GetAll(),
+                ServiceCategories = _work.ServiceCategories.GetAll()
+            };
+            return View(serviceVM);
+        }
+
+        public IActionResult Clients()
+        {
+            var clients = _work.Client.GetAll();
+            return View(clients);
+        }
+
+        public IActionResult Career()
+        {
+            return View();
         }
 
         public IActionResult Section_1()

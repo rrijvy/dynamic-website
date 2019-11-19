@@ -10,5 +10,6 @@ namespace Alphasoft.IRepositories
     public interface IMenuRepository : IRepository<Menu>
     {
         List<Menu> GetAllWithSubMenus();
+        List<Menu> GetAllActive();
     }
 }
