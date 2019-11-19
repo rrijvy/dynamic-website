@@ -51,6 +51,7 @@ namespace Alphasoft.UnitOfWork
             AboutUs = new AboutUsRepository(_context);
 
             HostingPlan = new HostingPlanRepository(_context);
+            CustomerReview = new CustomerReviewRepository(_context);
 
             QueryHelper = new QueryHelper();
 
@@ -75,6 +76,7 @@ namespace Alphasoft.UnitOfWork
         public IClientProductRepository ClientProducts { get; private set; }
         public IAboutUsRepository AboutUs { get; private set; }
         public IHostingPlanRepository HostingPlan { get; private set; }
+        public ICustomerReviewRepository CustomerReview { get; private set; }
         public IQueryHelper QueryHelper { get; private set; }
 
         public int Complete()

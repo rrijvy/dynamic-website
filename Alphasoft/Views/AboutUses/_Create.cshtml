@@ -149,6 +149,7 @@
             success: function (response) {
                 $("#aboutus-createFormDiv").html(response);
                 dataTable.fnFilter();
+                $("#aboutUs-createModal").modal('hide');
             }
         });
     });

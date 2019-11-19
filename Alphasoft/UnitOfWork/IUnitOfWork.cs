@@ -26,6 +26,7 @@ namespace Alphasoft.UnitOfWork
         IClientProductRepository ClientProducts { get; }
         IAboutUsRepository AboutUs { get; }
         IHostingPlanRepository HostingPlan { get; }
+        ICustomerReviewRepository CustomerReview { get; }
         IQueryHelper QueryHelper { get; }
 
         int Complete();
