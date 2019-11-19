@@ -8,6 +8,7 @@ namespace Alphasoft.ViewModels.ClientViewModels
 {
     public class AboutUsVm
     {
+        public Company Company { get; set; }
         public AboutUs about { get; set; }
         public List<AboutUs> aboutUs { get; set; }
     }
