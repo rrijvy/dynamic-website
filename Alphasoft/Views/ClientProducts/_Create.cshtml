@@ -35,6 +35,7 @@
                 success: function (response) {
                     $("#clientprojects-createFormDiv").html(response);
                     dataTable.fnFilter();
+                   $("#clientproject-createModal").modal('hide');
                 }
             });
         });

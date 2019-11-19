@@ -40,14 +40,9 @@
 
 <script>
     (function () {
-        //let description = $(".description");
-        //let shortDescription = $(".shortDescription");
-
         $("serviceCategoryId").select2({
             dropdownParent: $("#service-editModal")
         });
-
-
         $(".shortDescription").summernote({
             height: 150
         });
@@ -58,9 +53,7 @@
 
         $("#service-editForm").on("submit", function (e) {
             e.preventDefault();
-
             let data = objectifyForm($(this).serializeArray());
-
             $.ajax({
                 type: "POST",
                 url: "/Services/Edit",
@@ -68,6 +61,7 @@
                 success: function (response) {
                     $("#service-editFormDiv").html(response);
                     dataTable.fnFilter();
+                    $("#service-editModal").modal('hide');
                 }
             });
         });

@@ -84,7 +84,6 @@
     <button class="btn btn-success form-control" type="submit">Save</button>
 </form>
 
-
 <script>
     (function () {
         let checkbox_value = $("#isPopular_edit").val();
@@ -121,10 +120,9 @@
             dropdownParent: $("#product-createModal")
         });
 
-         $(".description").summernote({
-            height:200
-         });
-
+        $(".description").summernote({
+            height: 200
+        });
         $("#product-editForm").on("submit", function (e) {
             e.preventDefault();
             let data = objectifyForm($(this).serializeArray());

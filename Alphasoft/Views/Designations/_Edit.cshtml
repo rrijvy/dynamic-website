@@ -1,7 +1,6 @@
 ﻿
 @model Designation
 
-
 <form id="designation-editForm" class="editForm" method="post">
     <div class="row">
         <input asp-for="Id" type="hidden" />
@@ -11,7 +10,6 @@
                 <input asp-for="Name" type="text" class="form-control" />
                 <span asp-validation-for="Name" class="text-danger"></span>
             </div>
-
         </div>
     </div>
 
@@ -32,8 +30,8 @@
             success: function (response) {
                 $("#designation-EditFormDiv").html(response);
                 dataTable.fnFilter();
+                $("#designation-EditModal").modal('hide');
             }
-
         });
 
     });

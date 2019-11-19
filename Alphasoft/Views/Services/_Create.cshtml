@@ -59,6 +59,7 @@
             success: function (response) {
                 $("#service-createFormDiv").html(response);
                 dataTable.fnFilter();
+                $("#service-createModal").modal('hide');
             }
         });
     });

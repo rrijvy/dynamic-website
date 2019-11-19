@@ -78,27 +78,15 @@ namespace Alphasoft.Migrations
 
                     b.Property<string>("AboutMainSologan");
 
-                    b.Property<string>("AboutMainSologanDescription");
-
-                    b.Property<string>("Description");
-
-                    b.Property<string>("ImageOne");
-
-                    b.Property<string>("ImageThree");
-
-                    b.Property<string>("ImageTwo");
-
-                    b.Property<string>("OurMission");
-
                     b.Property<string>("OurMissionDescription");
 
-                    b.Property<string>("OurVission");
+                    b.Property<string>("OurVisionDescription");
 
-                    b.Property<string>("OurVissionDescription");
+                    b.Property<string>("WhoWeAreDescription");
 
-                    b.Property<string>("WhoWeAre");
+                    b.Property<string>("WhoWeAreImageOne");
 
-                    b.Property<string>("WhyUs");
+                    b.Property<string>("WhoWeAreImageTwo");
 
                     b.Property<string>("WhyUsDescription");
 
@@ -318,6 +306,25 @@ namespace Alphasoft.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("ContactUs");
+                });
+
+            modelBuilder.Entity("Alphasoft.Models.CustomerRivew", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Email");
+
+                    b.Property<string>("Name");
+
+                    b.Property<double>("Rating");
+
+                    b.Property<string>("Review");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("CustomerRivew");
                 });
 
             modelBuilder.Entity("Alphasoft.Models.Department", b =>

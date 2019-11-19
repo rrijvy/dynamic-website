@@ -33,6 +33,7 @@ namespace Alphasoft.Data
         public DbSet<ClientProduct>ClientProducts { get; set; }
         public DbSet<AboutUs>AboutUs { get; set; }
         public DbSet<HostingPlan> HostingPlan { get; set; }
+        public DbSet<CustomerRivew> CustomerRivew { get; set; }
 
     }
 }

@@ -26,6 +26,7 @@
                 success: function (response) {
                     $("#serviceCategory-editFormDiv").html(response);
                     dataTable.fnFilter();
+                    $("#serviceCategory-editModal").modal('hide');
                 }
             });
         });

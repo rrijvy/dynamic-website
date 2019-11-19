@@ -17,18 +17,13 @@
     "columns": [
         { "data": "id", "name": "Id", "autowidth": true, "className": "text_center" },
         { "data": "aboutMainSologan", "name": "AboutMainSologan", "autowidth": true },
-        { "data": "aboutMainSologanDescription", "name": "AboutMainSologanDescription ", "autowidth": true },
-        { "data": "ourMission", "name": "OurMission", "autowidth": true },
         { "data": "ourMissionDescription", "name": "OurMissionDescription", "autowidth": true },
-        { "data": "ourVission", "name": "OurVission", "autowidth": true },
-        { "data": "ourVissionDescription", "name": "OurVissionDescription", "autowidth": true },
-        { "data": "whyUs", "name": "WhyUs", "autowidth": true },
+        { "data": "ourVisionDescription", "name": "OurVisionDescription", "autowidth": true },
         { "data": "whyUsDescription", "name": "WhyUsDescription", "autowidth": true },
-        { "data": "whoWeAre", "name": "WhoWeAre", "autowidth": true },
-        { "data": "description", "name": "Description", "autowidth": true },
-        { "data": "imageOne", "name": "ImageOne", "autowidth": true },
-        { "data": "imageTwo", "name": "ImageTwo", "autowidth": true },
-        { "data": "imageThree", "name": "ImageThree", "autowidth": true },
+        { "data": "whoWeAreDescription", "name": "WhoWeAreDescription", "autowidth": true },
+        { "data": "whoWeAreImageOne", "name": "WhoWeAreImageOne", "autowidth": true },
+        { "data": "whoWeAreImageTwo", "name": "WhoWeAreImageTwo", "autowidth": true },
+      
         {
             "render": function (data, type, full, meta) {
                 return `<button style="font-size: inherit;" class="btn btn-sm btn-rx btn-table detailsBtn" value="${full.id}" data-toggle="tooltip" title="Product details"><i class="fas fa-file-alt"></i></button>
@@ -38,7 +33,6 @@
         }
     ]
 });
-
 (function () {
 
     $("#aboutus-modalBtn").on("click", function (e) {

@@ -53,6 +53,7 @@
             success: function (response) {
                 $("#choseus-createFormDiv").html(response);
                 dataTable.fnFilter();
+                $("#chose-createModal").modal('hide');
             }
         });
 

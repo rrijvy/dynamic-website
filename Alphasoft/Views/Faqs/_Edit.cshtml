@@ -1,6 +1,4 @@
-﻿
-@model Faq
-
+﻿@model Faq
 <form id="faq-editForm" class="createForm">
     <div class="row">
         <div class="col-md-12">
@@ -15,14 +13,11 @@
                 <textarea class="answer" asp-for="Answer"></textarea>
                 <span asp-validation-for="Answer" class="text-danger"></span>
             </div>
-
         </div>
-
     </div>
     <div id="alert"></div>
     <button class="btn btn-success form-control" type="submit">Save</button>
 </form>
-
 <script>
      $(".answer").summernote({
         height:80
@@ -37,14 +32,9 @@
             success: function (response) {
 
                 $("#faq-editFormDiv").html(response);
-                  dataTable.fnFilter();
+                dataTable.fnFilter();
+                  $("#faqs-editModal").modal('hide');
             }
-
         });
-
-
     });
-
-    
-
 </script>

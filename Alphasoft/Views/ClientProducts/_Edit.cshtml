@@ -36,6 +36,7 @@
             success: function (response) {
                 $("#clientproject-editFormDiv").html(response);
                 dataTable.fnFilter();
+                $("#clientproject-editModal").modal('hide');
             }
         });
     });
