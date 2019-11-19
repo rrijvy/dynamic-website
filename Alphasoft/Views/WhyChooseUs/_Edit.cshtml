@@ -55,6 +55,7 @@
             success: function (response) {
                 $("#choseus-editFormDiv").html(response);
                 dataTable.fnFilter();
+                $("#choses-editModal").modal('hide');
             }
         });
 

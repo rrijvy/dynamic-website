@@ -146,6 +146,7 @@
             success: function (response) {
                 $("#company-createFormDiv").html(response);
                 dataTable.fnFilter();
+                $("#companies-createModal").modal('hide');
             }
         });
     });

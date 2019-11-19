@@ -78,6 +78,7 @@
                 success: function (response) {
                     $("#menu-createFormDiv").html(response);
                     dataTable.fnFilter();
+                    $("#menu-createModal").modal('hide');
                 },
             });
         });

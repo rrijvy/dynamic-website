@@ -33,6 +33,7 @@
                 success: function (response) {
                     $("#department-editFormDiv").html(response);
                     dataTable.fnFilter();
+                    $("#department-editModal").modal('hide');
                 }
             });
         });

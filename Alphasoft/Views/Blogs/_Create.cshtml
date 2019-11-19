@@ -1,31 +1,28 @@
 ﻿@model Blog
 
-<form id="blog-createForm" class="createForm">
-    <div class="row">
-        <div class="col-md-12">
-            <div class="form-group">
-                <label asp-for="Thumbnail"></label>
-                <input asp-for="Thumbnail" type="text" class="form-control" />
-                <span asp-validation-for="Thumbnail" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Title"></label>
-                <input asp-for="Title" type="text" class="form-control" />
-                <span asp-validation-for="Title" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Description"></label>
-                <input asp-for="Description" type="text" class="form-control" />
-                <span asp-validation-for="Description" class="text-danger"></span>
+    <form id="blog-createForm" class="createForm">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-group">
+                    <label asp-for="Thumbnail"></label>
+                    <input asp-for="Thumbnail" type="text" class="form-control" />
+                    <span asp-validation-for="Thumbnail" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Title"></label>
+                    <input asp-for="Title" type="text" class="form-control" />
+                    <span asp-validation-for="Title" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Description"></label>
+                    <input asp-for="Description" type="text" class="form-control" />
+                    <span asp-validation-for="Description" class="text-danger"></span>
+                </div>
             </div>
         </div>
-    </div>
-    <div id="alert"></div>
-    <button class="btn btn-success form-control" type="submit">Save</button>
-</form>
-
-
-
+        <div id="alert"></div>
+        <button class="btn btn-success form-control" type="submit">Save</button>
+    </form>
 <script>
     $("#blog-createForm").on("submit", function (e) {
 
@@ -39,6 +36,7 @@
 
                 $("#blog-createFormDiv").html(response);
                 dataTable.fnFilter();
+                $("#blog-createModal").modal('hide');
             }
 
         });

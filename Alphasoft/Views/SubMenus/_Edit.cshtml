@@ -41,8 +41,6 @@
     <div id="alert"></div>
     <button class="btn btn-success form-control" type="submit">Update</button>
 </form>
-
-
 <script>
       $("#menuId").select2({
         dropdownParent: $("#submenus-editModal")
@@ -52,18 +50,14 @@
         let data = objectifyForm($(this).serializeArray());
         console.log(data);
         $.ajax({
-
             url: "/SubMenus/Edit",
             type: "POST",
             data: data,
             success: function (response) {
                 $("#subMenu-editFormDiv").html(response);
                 dataTable.fnFilter();
-
+                $("#submenus-editModal").modal('hide');
             }
         });
-
     });
-
-
 </script>

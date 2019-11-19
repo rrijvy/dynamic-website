@@ -44,7 +44,6 @@
     $("#menuId").select2({
         dropdownParent: $("#submenus-createModal")
     });
-
     $("#subMenu-createForm").on("submit", function (e) {
         e.preventDefault();
         let data = objectifyForm($(this).serializeArray());
@@ -57,6 +56,7 @@
             success: function (response) {
                 $("#subMenu-createFormDiv").html(response);
                 dataTable.fnFilter();
+                $("#submenus-createModal").modal('hide');
             }
         });
     });

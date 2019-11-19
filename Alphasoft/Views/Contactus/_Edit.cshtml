@@ -46,6 +46,7 @@
             success: function (response) {
                 $("#contact-editFormDiv").html(response);
                 dataTable.fnFilter();
+                $("#contact-editModal").modal('hide');
             }
 
         });
