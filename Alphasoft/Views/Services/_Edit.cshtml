@@ -1,7 +1,8 @@
 ﻿@model Service
 
-<form id="service-createForm" class="createForm">
+<form id="service-editForm" class="createForm">
     <div class="row">
+        <input asp-for="Id" type="hidden" class="form-control" />
         <div class="col-md-6">
             <div class="form-group">
                 <label asp-for="Name"></label>
@@ -21,6 +22,11 @@
                     <option value="0">Select...</option>
                 </select>
                 <span asp-validation-for="ServiceCategoryId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="IconClassName"></label>
+                <input asp-for="IconClassName" type="text" class="form-control" />
+                <span asp-validation-for="IconClassName" class="text-danger"></span>
             </div>
         </div>
     </div>
@@ -53,14 +59,19 @@
 
         $("#service-editForm").on("submit", function (e) {
             e.preventDefault();
+
             let data = objectifyForm($(this).serializeArray());
+
             $.ajax({
                 type: "POST",
                 url: "/Services/Edit",
                 data: data,
                 success: function (response) {
+
                     $("#service-editFormDiv").html(response);
+
                     dataTable.fnFilter();
+
                     $("#service-editModal").modal('hide');
                 }
             });

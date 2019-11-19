@@ -9,5 +9,6 @@ namespace Alphasoft.ViewModels.ClientViewModels
     public class ServiceVM
     {
         public List<Service> Services { get; set; }
+        public List<ServiceCategory> ServiceCategories { get; set; }
     }
 }

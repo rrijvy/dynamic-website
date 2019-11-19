@@ -109,9 +109,16 @@ namespace Alphasoft.Controllers
         {
             ServiceVM serviceVM = new ServiceVM
             {
-                Services = _work.Services.GetAll()
+                Services = _work.Services.GetAll(),
+                ServiceCategories = _work.ServiceCategories.GetAll()
             };
             return View(serviceVM);
+        }
+
+        public IActionResult Clients()
+        {
+            var clients = _work.Client.GetAll();
+            return View(clients);
         }
 
         public IActionResult Career()

@@ -40,6 +40,7 @@ namespace Alphasoft.Controllers
             if (ModelState.IsValid)
             {
                 _work.Services.Add(service);
+
                 _work.Complete();
 
                 ModelState.Clear();
