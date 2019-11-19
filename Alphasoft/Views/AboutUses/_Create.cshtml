@@ -1,132 +1,78 @@
 ﻿
 @model AboutUs
 
-<form id="aboutUs-createForm" class="createForm" enctype="multipart/form-data">
-    <div class="row">
-        <div class="col-md-6">
-            <div class="form-group">
-                <label asp-for="AboutMainSologan"></label>
-                <input asp-for="AboutMainSologan" type="text" class="form-control" />
-                <span asp-validation-for="AboutMainSologan" class="text-danger"></span>
-            </div>
-            <br />
-            <div class="form-group">
-                <label asp-for="OurMission"></label>
-                <input asp-for="OurMission" type="text" class="form-control" />
-                <span asp-validation-for="OurMission" class="text-danger"></span>
-            </div>
-            <br />
-            <div class="form-group">
-                <label asp-for="OurVission"></label>
-                <input asp-for="OurVission" type="text" class="form-control" />
-                <span asp-validation-for="OurVission" class="text-danger"></span>
-            </div>
-            <br />
-            <div class="form-group">
-                <label asp-for="WhyUs"></label>
-                <input asp-for="WhyUs" type="text" class="form-control" />
-                <span asp-validation-for="WhyUs" class="text-danger"></span>
-            </div>
-            <br />
-            <div class="form-group">
-                <label asp-for="WhoWeAre"></label>
-                <input asp-for="WhoWeAre" type="text" class="form-control" />
-                <span asp-validation-for="WhoWeAre" class="text-danger"></span>
-            </div>
-            <br />
-            <div class="form-group">
-                <label asp-for="ImageOne"></label>
-                <input id="logo1" name="image1" type="file" class="form-control" />
-                <span asp-validation-for="ImageOne" class="text-danger"></span>
-            </div>
-            <br />
-            <div class="form-group">
-                <label asp-for="ImageTwo"></label>
-                <input id="logo2" name="image2" type="file" class="form-control" />
-                <span asp-validation-for="ImageTwo" class="text-danger"></span>
-            </div>
-            <br />
-            <div class="form-group">
-                <label asp-for="ImageThree"></label>
-                <input id="logo3" name="image3" type="file" class="form-control" />
-                <span asp-validation-for="ImageThree" class="text-danger"></span>
-            </div>
-            <br>
-            <div id="logo-preview" class="image-preview" style="display: none;">
-                <div id="text" style="display: none;"></div>
-                <img id="preview" src="#" />
-            </div>
-            <div id="logo-preview" class="image-preview" style="display: none;">
-                <div id="text" style="display: none;"></div>
-                <img id="preview" src="#" />
-            </div>
-            <div id="logo-preview" class="image-preview" style="display: none;">
-                <div id="text" style="display: none;"></div>
-                <img id="preview" src="#" />
-            </div>
-        </div>
-        <div class="col-md-6">
-           
+    <form id="aboutUs-createForm" class="createForm" enctype="multipart/form-data">
+        <div class="row">
+            <div class="col-md-12">
                 <div class="form-group">
-                    <label asp-for="AboutMainSologanDescription"></label>
-                    <textarea id="aboutdescription" asp-for="AboutMainSologanDescription"></textarea>
-                    <span asp-validation-for="AboutMainSologanDescription" class="text-danger"></span>
+                    <label asp-for="AboutMainSologan"></label>
+                    <textarea class="aboutsologan" asp-for="AboutMainSologan" type="text"></textarea>
+                    <span asp-validation-for="AboutMainSologan" class="text-danger"></span>
                 </div>
+                <br />
                 <div class="form-group">
                     <label asp-for="OurMissionDescription"></label>
-                    <textarea id="missionDescription" asp-for="OurMissionDescription"></textarea>
+                    <textarea class="missionDescription" asp-for="OurMissionDescription" type="text"></textarea>
                     <span asp-validation-for="OurMissionDescription" class="text-danger"></span>
                 </div>
+                <br />
                 <div class="form-group">
-                    <label asp-for="OurVissionDescription"></label>
-                    <textarea id="vissionDesscription" asp-for="OurVissionDescription"></textarea>
-                    <span asp-validation-for="OurVissionDescription" class="text-danger"></span>
+                    <label asp-for="OurVisionDescription"></label>
+                    <textarea class="visionDescription" asp-for="OurVisionDescription" type="text"></textarea>
+                    <span asp-validation-for="OurVisionDescription" class="text-danger"></span>
                 </div>
-             <div>
-                <input class="btn btn-primary" name="name" value="Hide Data" />
-            </div>
-            <br />
-            <div id="toggledata">
+                <br />
                 <div class="form-group">
                     <label asp-for="WhyUsDescription"></label>
-                    <textarea id="whyus" asp-for="WhyUsDescription"></textarea>
+                    <textarea class="whyDescription" asp-for="WhyUsDescription" type="text"></textarea>
                     <span asp-validation-for="WhyUsDescription" class="text-danger"></span>
                 </div>
-              
+                <br />
                 <div class="form-group">
-                    <label asp-for="Description"></label>
-                    <textarea id="description" asp-for="Description"></textarea>
-                    <span asp-validation-for="Description" class="text-danger"></span>
+                    <label asp-for="WhoWeAreDescription"></label>
+                    <textarea class="whoDescription" asp-for="WhoWeAreDescription" type="text"></textarea>
+                    <span asp-validation-for="WhoWeAreDescription" class="text-danger"></span>
+                </div>
+                <br />
+                <div class="form-group">
+                    <label asp-for="WhoWeAreImageOne"></label>
+                    <input id="logo1" name="image1" type="file" class="form-control" />
+                    <span asp-validation-for="WhoWeAreImageOne" class="text-danger"></span>
+                </div>
+                <br />
+                <div class="form-group">
+                    <label asp-for="WhoWeAreImageTwo"></label>
+                    <input id="logo2" name="image2" type="file" class="form-control" />
+                    <span asp-validation-for="WhoWeAreImageTwo" class="text-danger"></span>
+                </div>
+                <br />
+                <div id="logo-preview" class="image-preview" style="display: none;">
+                    <div id="text" style="display: none;"></div>
+                    <img id="preview" src="#" />
+                </div>
+                <div id="logo-preview" class="image-preview" style="display: none;">
+                    <div id="text" style="display: none;"></div>
+                    <img id="preview" src="#" />
                 </div>
             </div>
         </div>
-    </div>
-
-    <div id="alert"></div>
-    <button class="btn btn-success form-control" type="submit">Save</button>
-</form>
-
-
+        <div id="alert"></div>
+        <button class="btn btn-success form-control" type="submit">Save</button>
+    </form>
 <script>
-    $(".btn-primary").click(function () {
-        $("#toggledata").toggle();
-    });
-    $("#aboutdescription").summernote({
+    $(".aboutsologan").summernote({
         height:80
     });
-    $("#missionDescription").summernote({
+    $(".missionDescription").summernote({
         height:80
     });
-     $("#vissionDescription").summernote({
+     $(".visionDescription").summernote({
         height:80
      });
-     $("#vissionDesscription").summernote({
+     $(".whyDescription").summernote({
         height:80
      });
-    $("#whyus").summernote({
-        height: 80
-    });
-    $("#description").summernote({
+    $(".whoDescription").summernote({
         height: 80
     });
     $("#aboutUs-createForm").on("submit", function (e) {
@@ -136,7 +82,6 @@
         let aboutus = objectifyForm($(this).serializeArray());
          formData.append("image1", $("#logo1")[0].files[0]);
          formData.append("image2", $("#logo2")[0].files[0]);
-         formData.append("image3", $("#logo3")[0].files[0]);
         for (var key in aboutus) {
             formData.append(key, aboutus[key]);
         }
