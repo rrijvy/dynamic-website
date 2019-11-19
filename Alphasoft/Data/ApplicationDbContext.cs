@@ -34,6 +34,8 @@ namespace Alphasoft.Data
         public DbSet<AboutUs>AboutUs { get; set; }
         public DbSet<HostingPlan> HostingPlan { get; set; }
         public DbSet<CustomerRivew> CustomerRivew { get; set; }
+        public DbSet<Career> Careers { get; set; }
+        public DbSet<Job> Jobs { get; set; }
 
     }
 }

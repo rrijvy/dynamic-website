@@ -27,6 +27,8 @@ namespace Alphasoft.UnitOfWork
         IAboutUsRepository AboutUs { get; }
         IHostingPlanRepository HostingPlan { get; }
         ICustomerReviewRepository CustomerReview { get; }
+        ICareerRepository Career { get; }
+        IJobRepository Job { get; }
         IQueryHelper QueryHelper { get; }
 
         int Complete();
