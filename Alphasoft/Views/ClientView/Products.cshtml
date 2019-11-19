@@ -8,18 +8,19 @@
             <div class="col-lg-3">
                 <aside class="sidebar">
                     @*<form action="page-search-results.html" method="get">
-                        <div class="input-group mb-3 pb-1">
-                            <input class="form-control text-1" placeholder="Search..." name="s" id="s" type="text">
-                            <span class="input-group-append">
-                                <button type="submit" class="btn btn-dark text-1 p-2"><i class="fas fa-search m-2"></i></button>
-                            </span>
-                        </div>
-                    </form>*@
+                            <div class="input-group mb-3 pb-1">
+                                <input class="form-control text-1" placeholder="Search..." name="s" id="s" type="text">
+                                <span class="input-group-append">
+                                    <button type="submit" class="btn btn-dark text-1 p-2"><i class="fas fa-search m-2"></i></button>
+                                </span>
+                            </div>
+                        </form>*@
                     <h5 class="font-weight-bold pt-3">Categories</h5>
                     <ul class="nav nav-list flex-column">
+                        <li class="nav-item"><a class="nav-link" href="/ClientView/Products">Show all</a></li>
                         @foreach (var item in Model.CategoryProducts)
                         {
-                            <li class="nav-item"><a class="nav-link" href="/ClientView/CategoryProducts/@item.ProductCategory">@item.ProductCategoryName</a></li>
+                            <li class="nav-item"><a class="nav-link productCategory" href="/ClientView/CategoryProducts/@item.ProductCategory">@item.ProductCategoryName</a></li>
                         }
                     </ul>
                     <div class="row mb-5">
@@ -92,7 +93,7 @@
 @section Scripts{
     <script>
         (function () {
-            $(".nav-link").on("click", function (e) {
+            $(".productCategory").on("click", function (e) {
                 e.preventDefault();
 
                 $("#productLoadDiv").html(loader);
