@@ -1,0 +1,59 @@
+﻿@model Job
+<form id="job-createForm" class="createForm">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="form-group">
+                <label asp-for="Title"></label>
+                <input type="text" asp-for="Title" class="form-control" />
+                <span asp-validation-for="Title" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Description"></label>
+                <textarea class="description" asp-for="Description"></textarea>
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Location"></label>
+                <input type="text" asp-for="Location" class="form-control" />
+                <span asp-validation-for="Location" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Qualification"></label>
+                <input type="text" asp-for="Qualification" class="form-control" />
+                <span asp-validation-for="Qualification" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="JobCreateDate"></label>
+                <input type="date" asp-for="JobCreateDate" class="form-control" />
+                <span asp-validation-for="JobCreateDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DeadLine"></label>
+                <input type="date" asp-for="DeadLine" class="form-control" />
+                <span asp-validation-for="DeadLine" class="text-danger"></span>
+            </div>
+        </div>
+    </div>
+    <div id="alert"></div>
+    <button class="btn btn-success form-control" type="submit">Save</button>
+</form>
+
+<script>
+    $(".description").summernote({
+        height:60
+    });
+    $("#job-createForm").on("submit", function (e) {
+        e.preventDefault();
+        let data = objectifyForm($(this).serializeArray());
+        $.ajax({
+            url: "/Jobs/Create",
+            type: "GET",
+            data: data,
+            success: function (response) {
+                $("#job-createFormDiv").html(response);
+                dataTable.fnFilter();
+                $("#job-createModal").modal('hide');
+            }
+        });
+    });
+</script>
