@@ -1,4 +1,4 @@
-﻿var dataTable = $("#faqDatatable").dataTable({
+﻿var dataTable = $("#jobDatatable").dataTable({
     "processing": true,
     "serverSide": true,
     "filter": true,
@@ -7,7 +7,7 @@
     "lengthMenu": [[50, 100, 150, 200, 500, -1], [50, 100, 150, 200, 500, "All"]],
     "order": [[0, "desc"]],
     "ajax": {
-        "url": "/Faqs/FaqLoad/",
+        "url": "/Jobs/LoadJob/",
         "type": "POST",
         "data": function (data) {
         },
@@ -16,10 +16,12 @@
     },
     "columns": [
         { "data": "id", "name": "Id", "autowidth": true, "className": "text_center" },
-        { "data": "question", "name": "Question", "autowidth": true },
-        { "data": "answer", "name": "Answer", "autowidth": true },
-       
-
+        { "data": "title", "name": "Title", "autowidth": true },
+        { "data": "description", "name": "Description ", "autowidth": true },
+        { "data": "location", "name": "Location", "autowidth": true },
+        { "data": "qualification", "name": "Qualification", "autowidth": true },
+        { "data": "jobCreateDate", "name": "JobCreateDate", "autowidth": true },
+        { "data": "deadLine", "name": "DeadLine", "autowidth": true },
         {
             "render": function (data, type, full, meta) {
                 return `<button style="font-size: inherit;" class="btn btn-sm btn-rx btn-table detailsBtn" value="${full.id}" data-toggle="tooltip" title="Product details"><i class="fas fa-file-alt"></i></button>
@@ -30,40 +32,32 @@
     ]
 });
 
-
-$("#faq-modalBtn").on("click", function (e) {
-
+$("#job-createmodalBtn").on("click", function (e) {
     e.preventDefault();
     $.ajax({
-        url: "/Faqs/CreateView",
+        url: "/Jobs/CreateView",
         type: "GET",
         success: function (response) {
-            $("#faq-createFormDiv").html(response);
-
+            $("#job-createFormDiv").html(response);
         }
-
-
     });
-
 });
 
 $("body").on("click", ".editBtn", function (e) {
     e.preventDefault();
-    $("#faqs-editModal").modal('show');
+    $("#job-editModal").modal('show');
     let data = {
         id: $(this).val()
     };
     $.ajax({
-
-        url: "/Faqs/EditView",
+        url: "/Jobs/EditView",
         type: "GET",
         data: data,
         success: function (response) {
-            $("#faq-editFormDiv").html(response);
+            $("#job-editFormDiv").html(response);
         }
     });
 });
-
 
 $("body").on("click", ".deleteBtn", function (e) {
     e.preventDefault();
@@ -71,14 +65,11 @@ $("body").on("click", ".deleteBtn", function (e) {
         id: $(this).val()
     };
     $.ajax({
-        url: "/Faqs/Delete",
+        url: "/Jobs/Delete",
         type: "GET",
         data: data,
-        success: function (response) {
+        success: function () {
             dataTable.fnFilter();
         }
-
-
     });
-
 });

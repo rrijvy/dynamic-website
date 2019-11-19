@@ -8,11 +8,11 @@ namespace Alphasoft.ViewModels
     public class JobVm
     {
         public int Id { get; set; }
-        public int Title { get; set; }
+        public string Title { get; set; }
         public string Description { get; set; }
         public string Location { get; set; }
         public string Qualification { get; set; }
-        public string JobCreateDate { get; set; }
-        public string DeadLine { get; set; }
+        public DateTime JobCreateDate { get; set; }
+        public DateTime DeadLine { get; set; }
     }
 }

@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using Alphasoft.UnitOfWork;
 using Alphasoft.ViewModels;
 using Microsoft.AspNetCore.Mvc;
@@ -10,10 +9,10 @@ using Alphasoft.Models;
 
 namespace Alphasoft.Controllers
 {
-    public class CareersController : Controller
+    public class JobsController : Controller
     {
         private readonly IUnitOfWork _work;
-        public CareersController(IUnitOfWork  work)
+        public JobsController(IUnitOfWork work)
         {
             _work = work;
         }
@@ -23,44 +22,46 @@ namespace Alphasoft.Controllers
         }
         public IActionResult CreateView()
         {
-            Career career = new Career();
-            return PartialView("_CreateView", career);
+            Job job = new Job();
+            return PartialView("_Create", job);
         }
-        public IActionResult Create(Career careers)
+        public IActionResult Create(Job job)
         {
             if (ModelState.IsValid)
             {
-                _work.Career.Add(careers);
+                _work.Job.Add(job);
                 _work.Complete();
                 ModelState.Clear();
-                careers = new Career();
-                return PartialView("_CreateView", careers);
+                job = new Job();
+                return PartialView("_Create", job);
             }
-            return PartialView("_CreateView", careers);
+            return PartialView("_Create", job);
         }
+
         public IActionResult EditView(int id)
         {
-            var career = _work.Career.Get(id);
-            return PartialView("_Edit", career);
+            var job = _work.Job.Get(id);
+            return PartialView("_Edit", job);
         }
-        public IActionResult Edit(Career careers)
+        public IActionResult Edit(Job job)
         {
             if (ModelState.IsValid)
             {
-                _work.Career.Update(careers);
+                _work.Job.Update(job);
                 _work.Complete();
-                return PartialView("_Edit", careers);
+
+                return PartialView("_Edit", job);
             }
-            return PartialView("_Edit", careers);
+            return PartialView("_Edit", job);
         }
         public IActionResult Delete(int id)
         {
-            var career = _work.Career.Get(id);
-            _work.Career.Remove(career);
+            var job = _work.Job.Get(id);
+            _work.Job.Remove(job);
             _work.Complete();
-            return Json("Delete successfully");
+            return Json("Delete Successfuilly");
         }
-        public IActionResult LoadCareers()
+        public IActionResult LoadJob()
         {
             var draw = Request.Form["draw"].FirstOrDefault();
             var start = Request.Form["start"].FirstOrDefault();
@@ -68,49 +69,42 @@ namespace Alphasoft.Controllers
             var sortColumn = Request.Form["columns[" + Request.Form["order[0][column]"].FirstOrDefault() + "][name]"].FirstOrDefault();
             var sortColumnDir = Request.Form["order[0][dir]"].FirstOrDefault();
             var searchValue = Request.Form["search[value]"].FirstOrDefault();
-
             int pageSize = length != null ? Convert.ToInt32(length) : 0;
             int skip = start != null ? Convert.ToInt32(start) : 0;
             int recordsTotal = 0;
-
-            var career = _work.Career.GetAll();
-
-            var careerList = new List<CareerVm>();
-
+            var jobs = _work.Job.GetAll();
+            var jobsList = new List<JobVm>();
             //Sorting    
             if (!string.IsNullOrEmpty(sortColumn) && !string.IsNullOrEmpty(sortColumnDir))
             {
-                career = career.AsQueryable().OrderBy(sortColumn + " " + sortColumnDir).ToList();
+                jobs = jobs.AsQueryable().OrderBy(sortColumn + " " + sortColumnDir).ToList();
             }
             else
             {
-                career = career.OrderByDescending(x => x.Id).ToList();
+                jobs = jobs.OrderByDescending(x => x.Id).ToList();
             }
-
             //Search    
             if (!string.IsNullOrEmpty(searchValue))
             {
-                career = career.Where(x => x.OportunityDescription.Contains(searchValue)).ToList();
+                jobs = jobs.Where(x => x.Location.Contains(searchValue)).ToList();
             }
-
-            foreach (var item in career)
+            foreach (var item in jobs)
             {
-                careerList.Add(new CareerVm
+                jobsList.Add(new JobVm
                 {
                     Id = item.Id,
-                    OportunityDescription=item.OportunityDescription,
-                    OurBenifitDescription=item.OurBenifiteDescription,
-                    OurCultureDescription=item.OurCultureDescription,
-                });
+                    Title = item.Title,
+                    Description = item.Description,
+                    Qualification=item.Qualification,
+                    Location=item.Location,
+                    JobCreateDate=item.JobCreateDate,
+                    DeadLine=item.DeadLine,
+                }) ;
             }
-
             //total number of rows count     
-            recordsTotal = careerList.Count();
-
-
+            recordsTotal = jobsList.Count();
             //Paging     
-            var data = careerList.Skip(skip).Take(pageSize).ToList();
-
+            var data = jobsList.Skip(skip).Take(pageSize).ToList();
             //Returning Json Data    
             return Json(new { draw = draw, recordsFiltered = recordsTotal, recordsTotal = recordsTotal, data = data });
         }

@@ -1,0 +1,72 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewData["Title"] = "Index";
+}
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h4>Job Information</h4>
+        <button id="job-createmodalBtn" class="btn btn-primary panel-header-create-btn" data-toggle="modal" data-target="#job-createModal">Create</button>
+    </div>
+    <div class="panel-body">
+        <table id="jobDatatable" class="table table-bordered table-hover">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Title</th>
+                    <th>Description</th>
+                    <th>Location</th>
+                    <th>Qualification</th>
+                    <th>JobCreateDate</th>
+                    <th>DeadLine</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody id="jobTableBody"></tbody>
+        </table>
+    </div>
+</div>
+
+<div id="job-createModal"
+     class="modal fade"
+     tabindex="-1"
+     role="dialog"
+     aria-labelledby="myModalLabel">
+    <div class="modal-dialog modal-rx" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title">Create Job Description</h4>
+            </div>
+            <div class="modal-body">
+                <div id="job-createFormDiv"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="job-editModal"
+     class="modal fade"
+     tabindex="-1"
+     role="dialog"
+     aria-labelledby="myModalLabel">
+    <div class="modal-dialog modal-rx" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title">Edit job Description</h4>
+            </div>
+            <div class="modal-body">
+                <div id="job-editFormDiv"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+
+    <script src="~/js/Job/job.js"></script>
+}
