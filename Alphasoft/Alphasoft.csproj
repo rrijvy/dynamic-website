@@ -52,6 +52,7 @@
     <None Include="Views\ClientView\Section_8.cshtml" />
     <None Include="Views\ClientView\Services.cshtml" />
     <None Include="Views\ClientView\_CategoryWiseProducts.cshtml" />
+    <None Include="Views\ClientView\_GetCategoryWiseProducts.cshtml" />
     <None Include="Views\ClientView\_Section2.cshtml" />
     <None Include="Views\ClientView\OurTeam.cshtml" />
     <None Include="Views\ClientView\TeamViewDetails.cshtml" />
