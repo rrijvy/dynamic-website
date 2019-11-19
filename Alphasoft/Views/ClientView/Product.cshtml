@@ -8,19 +8,19 @@
         <div class="row">
             <div class="col-lg-3">
                 <aside class="sidebar">
-                    <form action="page-search-results.html" method="get">
+                    @*<form action="page-search-results.html" method="get">
                         <div class="input-group mb-3 pb-1">
                             <input class="form-control text-1" placeholder="Search..." name="s" id="s" type="text">
                             <span class="input-group-append">
                                 <button type="submit" class="btn btn-dark text-1 p-2"><i class="fas fa-search m-2"></i></button>
                             </span>
                         </div>
-                    </form>
+                    </form>*@
                     <h5 class="font-weight-bold pt-3">Categories</h5>
                     <ul class="nav nav-list flex-column">
                         @foreach (var item in Model.ProductCategories)
                         {
-                            <li class="nav-item"><a class="nav-link" href="#">@item.Name</a></li>
+                            <li class="nav-item"><a class="nav-link" href="/ClientView/CategoryWiseProduct/@item.Id">@item.Name</a></li>
                         }
                     </ul>
                     <div class="row mb-5">
@@ -127,7 +127,7 @@
                             <p class="mb-5">@Model.Product.ShortDescription</p>
 
                             <div class="product-meta">
-                                <span class="posted-in">Categories: <a rel="tag" href="#">@Model.Product.ProductCategory.Name</a></span>
+                                <span class="posted-in">Categories: <a rel="tag" href="/ClientView/CategoryWiseProduct/@Model.Product.ProductCategoryId">@Model.Product.ProductCategory.Name</a></span>
                             </div>
 
                         </div>

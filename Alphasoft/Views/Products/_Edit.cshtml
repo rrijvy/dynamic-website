@@ -134,14 +134,16 @@
                 success: function (response) {
                     $("#product-editFormDiv").html(response);
                     dataTable.fnFilter();
+
+                    $('#product-editModal').modal('hide');
                 }
             });
         });
 
         $("#image").on("change", function () {
 
-            let maxWidth = 640;
-            let maxHeight = 640;
+            let maxWidth = 5000;
+            let maxHeight = 5000;
 
             let input = $(this);
 

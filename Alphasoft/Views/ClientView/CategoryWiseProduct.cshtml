@@ -8,13 +8,13 @@
             <div class="col-lg-3">
                 <aside class="sidebar">
                     @*<form action="page-search-results.html" method="get">
-                        <div class="input-group mb-3 pb-1">
-                            <input class="form-control text-1" placeholder="Search..." name="s" id="s" type="text">
-                            <span class="input-group-append">
-                                <button type="submit" class="btn btn-dark text-1 p-2"><i class="fas fa-search m-2"></i></button>
-                            </span>
-                        </div>
-                    </form>*@
+                            <div class="input-group mb-3 pb-1">
+                                <input class="form-control text-1" placeholder="Search..." name="s" id="s" type="text">
+                                <span class="input-group-append">
+                                    <button type="submit" class="btn btn-dark text-1 p-2"><i class="fas fa-search m-2"></i></button>
+                                </span>
+                            </div>
+                        </form>*@
                     <h5 class="font-weight-bold pt-3">Categories</h5>
                     <ul class="nav nav-list flex-column">
                         @foreach (var item in Model.CategoryProducts)
@@ -52,7 +52,7 @@
 
             <div class="col-lg-9" id="productLoadDiv">
                 <div class="masonry-loader masonry-loader-loaded">
-                    <div class="row products product-thumb-info-list" data-plugin-masonry="" data-plugin-options="{'layoutMode': 'fitRows'}" style="position: relative; height: auto;">
+                    <div class="row products product-thumb-info-list" data-plugin-masonry="" data-plugin-options="{'layoutMode': 'fitRows'}" style="position: relative; height: 1088.95px;">
                         @foreach (var item in Model.Products)
                         {
                             <div class="col-sm-6 col-lg-4 product" style="position: absolute; left: 0px; top: 0px;">

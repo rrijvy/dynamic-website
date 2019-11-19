@@ -1,4 +1,12 @@
-﻿(function () {
+﻿let loader = `<div class="loader">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>`;
+
+(function () {
 
     const selector = {
         navigatonMenuBar: $("#navigationMenuBar"),
@@ -22,7 +30,6 @@
 
     let numberOfSections = 8;
     let numberOfVisitedSection = 2;
-
 
     let section = {
         _0: { position: $("#sec_0").position().top, visited: false },
