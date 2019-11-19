@@ -10,5 +10,6 @@ namespace Alphasoft.IServices
     public interface IQueryHelper
     {
         List<CategoryProduct> GetCategoryProducts(List<Product> products);
+        List<Product> GetPopularProducts(List<Product> products);
     }
 }

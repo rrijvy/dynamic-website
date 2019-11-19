@@ -10,5 +10,7 @@ namespace Alphasoft.IRepositories
         Product GetProductWithCategory(int productId);
 
         List<Product> GetPopularProducts();
+
+        List<Product> GetCategoryWiseProducts(int categoryId);
     }
 }

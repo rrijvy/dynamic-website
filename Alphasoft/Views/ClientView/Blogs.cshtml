@@ -1,0 +1,116 @@
+﻿@model BlogsVM
+
+@{
+    string[] images;
+}
+
+<div role="main" class="main">
+
+    <section class="page-header page-header-modern bg-color-light-scale-1 page-header-md">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 align-self-center p-static order-2 text-center">
+                    <h1 class="text-dark font-weight-bold text-8">Check out our Latest News!</h1>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="container py-4">
+
+        <div class="row">
+            <div class="col">
+                <div class="blog-posts">
+                    @if (Model.Blogs.Count() > 0)
+                    {
+                        foreach (var item in Model.Blogs)
+                        {
+                            images = item.Image.Split(",");
+
+                            <article class="post post-large">
+                                <div class="post-image">
+                                    <div class="owl-carousel owl-theme show-nav-hover dots-inside nav-inside nav-style-1 nav-light owl-loaded owl-drag owl-carousel-init" data-plugin-options="{'items': 1, 'margin': 10, 'loop': false, 'nav': true, 'dots': true}" style="height: auto;">
+                                        <div class="owl-stage-outer">
+                                            <div class="owl-stage" style="transform: translate3d(0px, 0px, 0px); transition: all 0s ease 0s; width: 3364px;">
+                                                @for (int i = 0; i < images.Count(); i++)
+                                                {
+                                                    <div class="owl-item active" style="width: 1111.11px; margin-right: 10px;">
+                                                        <div>
+                                                            <div class="img-thumbnail border-0 p-0 d-block">
+                                                                <img class="img-fluid border-radius-0" src="images[i]" alt="">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                }
+
+                                            </div>
+                                        </div><div class="owl-nav"><button type="button" role="presentation" class="owl-prev disabled"></button><button type="button" role="presentation" class="owl-next"></button></div><div class="owl-dots"><button role="button" class="owl-dot active"><span></span></button><button role="button" class="owl-dot"><span></span></button><button role="button" class="owl-dot"><span></span></button></div>
+                                    </div>
+                                </div>
+
+                                <div class="post-date">
+                                    <span class="day">@item.Date.ToString("dd")</span>
+                                    <span class="month">@item.Date.ToString("MMM")</span>
+
+                                </div>
+
+                                <div class="post-content">
+
+                                    <h2 class="font-weight-semibold text-6 line-height-3 mb-3"><a href="blog-post.html">@item.Title</a></h2>
+                                    <p>@Html.Raw(item.Description)</p>
+
+                                    <div class="post-meta">
+                                        <span><i class="far fa-user"></i> By <a href="#">@item.Creator</a> </span>
+                                        <span><i class="far fa-folder"></i> <a href="#">Lifestyle</a>, <a href="#">Design</a> </span>
+                                        @*<span><i class="far fa-comments"></i> <a href="#">12 Comments</a></span>*@
+                                        <span class="d-block d-sm-inline-block float-sm-right mt-3 mt-sm-0"><a href="blog-post.html" class="btn btn-xs btn-light text-1 text-uppercase">Read More</a></span>
+                                    </div>
+
+                                </div>
+                            </article>
+                        }
+                    }
+
+                    @*<article class="post post-large">
+                        <div class="post-image">
+                            <div class="embed-responsive embed-responsive-16by9">
+                                <iframe class="embed-responsive-item" src="https://player.vimeo.com/video/45830194?color=ffffff&amp;title=0&amp;byline=0&amp;portrait=0&amp;badge=0" width="640" height="360" allowfullscreen=""></iframe>
+                            </div>
+                        </div>
+
+                        <div class="post-date">
+                            <span class="day">7</span>
+                            <span class="month">Jan</span>
+                        </div>
+
+                        <div class="post-content">
+
+                            <h2 class="font-weight-semibold text-6 line-height-3 mb-3"><a href="blog-post.html">This is a standard embedded video post</a></h2>
+                            <p>Euismod atras vulputate iltricies etri elit. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Nulla nunc dui, tristique in semper vel, congue sed ligula. Nam dolor ligula, faucibus id sodales in, auctor fringilla libero. Pellentesque pellentesque tempor tellus eget hendrerit. Morbi id aliquam ligula. Aliquam id dui sem. Proin rhoncus consequat nisl, eu ornare mauris tincidunt vitae. [...]</p>
+
+                            <div class="post-meta">
+                                <span><i class="far fa-user"></i> By <a href="#">John Doe</a> </span>
+                                <span><i class="far fa-folder"></i> <a href="#">Lifestyle</a>, <a href="#">Design</a> </span>
+                                <span><i class="far fa-comments"></i> <a href="#">12 Comments</a></span>
+                                <span class="d-block d-sm-inline-block float-sm-right mt-3 mt-sm-0"><a href="blog-post.html" class="btn btn-xs btn-light text-1 text-uppercase">Read More</a></span>
+                            </div>
+
+                        </div>
+                    </article>*@
+
+                    @*<ul class="pagination float-right">
+                        <li class="page-item"><a class="page-link" href="#"><i class="fas fa-angle-left"></i></a></li>
+                        <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                        <li class="page-item"><a class="page-link" href="#">2</a></li>
+                        <li class="page-item"><a class="page-link" href="#">3</a></li>
+                        <a class="page-link" href="#"><i class="fas fa-angle-right"></i></a>
+                    </ul>*@
+
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>

@@ -50,6 +50,16 @@ namespace Alphasoft.Controllers
             return View(faqvm);
         }
 
+        public IActionResult Blogs()
+        {
+            BlogsVM blogsVM = new BlogsVM
+            {
+                Blogs = _work.Blogs.GetAll()
+            };
+
+            return View(blogsVM);
+        }
+
         public IActionResult TeamView()
         {
             OurTeamVM teamVm = new OurTeamVM
@@ -88,8 +98,9 @@ namespace Alphasoft.Controllers
                 Products = _work.Products.GetAllWithCategory(),
             };
 
+            productsViewModel.PopularProducts = _work.QueryHelper.GetPopularProducts(productsViewModel.Products);
             productsViewModel.CategoryProducts = _work.QueryHelper.GetCategoryProducts(productsViewModel.Products);
-            
+
             return View(productsViewModel);
         }
 
@@ -124,7 +135,6 @@ namespace Alphasoft.Controllers
             return PartialView("_Section5", ourProducts);
         }
 
-
         public IActionResult Section_6()
         {
             return PartialView("_Section6");
@@ -133,6 +143,26 @@ namespace Alphasoft.Controllers
         public IActionResult Section_7()
         {
             return PartialView("_Section7");
+        }
+
+        public IActionResult CategoryProducts(int id)
+        {
+            var products = _work.Products.GetCategoryWiseProducts(id);
+            return PartialView("_CategoryWiseProducts", products);
+        }
+
+        public IActionResult CategoryWiseProduct(int id)
+        {
+            ProductsViewModel productsViewModel = new ProductsViewModel
+            {
+                Products = _work.Products.GetAllWithCategory(),
+                CategoryWiseProducts = _work.Products.GetCategoryWiseProducts(id)
+            };
+
+            productsViewModel.PopularProducts = _work.QueryHelper.GetPopularProducts(productsViewModel.Products);
+            productsViewModel.CategoryProducts = _work.QueryHelper.GetCategoryProducts(productsViewModel.Products);
+
+            return View(productsViewModel);
         }
     }
 }

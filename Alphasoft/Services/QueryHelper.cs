@@ -21,5 +21,14 @@ namespace Alphasoft.Services
 
             return categoryProducts;
         }
+
+        public List<Product> GetPopularProducts(List<Product> products)
+        {
+            var popularProducts = products
+                .Where(x => x.IsPopular == true)
+                .ToList();
+
+            return popularProducts;
+        }
     }
 }

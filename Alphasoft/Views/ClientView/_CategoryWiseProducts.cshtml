@@ -1,0 +1,31 @@
+﻿@model List<Product>
+
+<div class="masonry-loader masonry-loader-loaded">
+    <div class="row products product-thumb-info-list" data-plugin-masonry="" data-plugin-options="{'layoutMode': 'fitRows'}" style="position: relative; height: auto;">
+        @foreach (var item in Model)
+        {
+            <div class="col-sm-6 col-lg-4 product" style="position: absolute; left: 0px; top: 0px;">
+                <span class="product-thumb-info border-0">
+                    <a href="/ClientView/Product/@item.Id" class="add-to-cart-product bg-color-primary">
+                        <span class="text-uppercase text-1">See Details</span>
+                    </a>
+                    <a href="/ClientView/Product/@item.Id">
+                        <span class="product-thumb-info-image">
+                            <img alt="" class="img-fluid" src="@item.Image">
+                        </span>
+                    </a>
+                    <span class="product-thumb-info-content product-thumb-info-content pl-0 bg-color-light">
+                        <a href="/ClientView/Product/@item.Id">
+                            <h4 class="text-4 text-primary">@item.Name</h4>
+                            <span class="price">
+                                <del><span class="amount">@item.RetailPrice</span></del>
+                                <ins><span class="amount text-dark font-weight-semibold">@item.PurchasePrice</span></ins>
+                            </span>
+                        </a>
+                    </span>
+                </span>
+            </div>
+        }
+    </div>
+    <div class="bounce-loader"><div class="bounce1"></div><div class="bounce2"></div><div class="bounce3"></div></div>
+</div>

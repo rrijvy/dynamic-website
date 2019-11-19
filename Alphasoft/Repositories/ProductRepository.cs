@@ -30,5 +30,10 @@ namespace Alphasoft.Repositories
         {
             return Context.Products.Where(x => x.IsPopular == true).ToList();
         }
+
+        public List<Product> GetCategoryWiseProducts(int categoryId)
+        {
+            return Context.Products.Where(x => x.ProductCategoryId == categoryId).ToList();
+        }
     }
 }

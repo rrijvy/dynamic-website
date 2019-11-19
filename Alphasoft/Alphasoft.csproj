@@ -43,10 +43,13 @@
     <None Include="Views\AboutUses\Index.cshtml" />
     <None Include="Views\AboutUses\_Create.cshtml" />
     <None Include="Views\ClientView\AboutUsView.cshtml" />
+    <None Include="Views\ClientView\Blogs.cshtml" />
+    <None Include="Views\ClientView\CategoryWiseProduct.cshtml" />
     <None Include="Views\ClientView\Faq.cshtml" />
     <None Include="Views\ClientView\Product.cshtml" />
     <None Include="Views\ClientView\Products.cshtml" />
     <None Include="Views\ClientView\Section_8.cshtml" />
+    <None Include="Views\ClientView\_CategoryWiseProducts.cshtml" />
     <None Include="Views\ClientView\_Section2.cshtml" />
     <None Include="Views\ClientView\TeamView.cshtml" />
     <None Include="Views\ClientView\TeamViewDetails.cshtml" />
