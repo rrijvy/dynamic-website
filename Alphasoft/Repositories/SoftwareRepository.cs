@@ -1,6 +1,7 @@
 ﻿using Alphasoft.Data;
 using Alphasoft.IRepositories;
 using Alphasoft.Models;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,15 +20,13 @@ namespace Alphasoft.Repositories
                 return _context as ApplicationDbContext;
             }
         }
-
-        public Software GetSoftware()
+        public List<Software> GetAllWithSoftware()
         {
-            return Context.Softwares.FirstOrDefault();
+            return Context.Softwares.Include(x => x.SoftwareCategory).ToList();
         }
 
-        public List<Software> GetWithSoftware()
-        {
-            return Context.Softwares.ToList();
-        }
+       
+
+   
     }
 }

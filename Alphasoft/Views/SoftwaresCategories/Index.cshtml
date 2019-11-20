@@ -1,0 +1,73 @@
+﻿
+@{
+    Layout = "_Layout";
+    ViewData["Title"] = "Software";
+}
+
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h4 class="text-info">Software Information</h4>
+        <button id="softwareCategory-createmodalBtn" class="btn btn-primary panel-header-create-btn" data-toggle="modal" data-target="#softwareCategory-createModal">Create</button>
+    </div>
+    <div class="panel-body">
+        <table id="softwareCategoryDatatable" class="table table-bordered table-hover table-responsive">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Name</th>
+                    <th>Image</th>
+                    <th>Thambnil</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody id="softwareCategoryTableBody"></tbody>
+        </table>
+    </div>
+</div>
+
+<div id="softwareCategory-createModal"
+     class="modal fade"
+     tabindex="-1"
+     role="dialog"
+     aria-labelledby="myModalLabel">
+    <div class="modal-dialog modal-rx" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title text-info">Create software Description</h4>
+            </div>
+            <div class="modal-body">
+                <div id="softwareCategory-createFormDiv"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="softwareCategory-editModal"
+     class="modal fade"
+     tabindex="-1"
+     role="dialog"
+     aria-labelledby="myModalLabel">
+    <div class="modal-dialog modal-rx" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title">Edit software Description</h4>
+            </div>
+            <div class="modal-body">
+                <div id="softwareCategory-editFormDiv"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+    <script src="~/js/SoftwareCategory/softwareCategories.js"></script>
+}
+
+

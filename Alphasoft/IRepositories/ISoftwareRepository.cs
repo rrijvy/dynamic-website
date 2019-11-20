@@ -8,7 +8,6 @@ namespace Alphasoft.IRepositories
 {
    public interface ISoftwareRepository:IRepository<Software>
     {
-        List<Software> GetWithSoftware();
-        Software GetSoftware();
+        List<Software> GetAllWithSoftware();
     }
 }

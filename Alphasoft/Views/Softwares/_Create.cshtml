@@ -1,0 +1,122 @@
+﻿@model Software
+
+<form id="software-createForm" class="createForm" enctype="multipart/form-data">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="form-group">
+                <label asp-for="Title"></label>
+                <input asp-for="Title" type="text" class="form-control" />
+                <span asp-validation-for="Title" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ShortDescription"></label>
+                <textarea id="shortdescription" asp-for="ShortDescription"></textarea>
+                <span asp-validation-for="ShortDescription" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Description"></label>
+                <textarea id="description" asp-for="Description"></textarea>
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SoftwareCategoryId"></label>
+                <select asp-for="SoftwareCategoryId" asp-items="ViewBag.Name" class="form-control">
+                    <option value="0">Select...</option>
+                </select>
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label asp-for="Icon"></label>
+                <input id="logo" name="image" type="file" class="form-control" />
+                <span asp-validation-for="Icon" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label asp-for="Image"></label>
+                <input id="favicon" type="file" class="form-control" />
+                <span asp-validation-for="Image" class="text-danger"></span>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div id="logo-preview" class="image-preview" style="display: none;">
+                <div id="text" style="display: none;"></div>
+                <img id="preview" src="#" />
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div id="fav-preview" class="image-preview" style="display: none;">
+                <div id="text" style="display: none;"></div>
+                <img id="imgpreview" src="#" />
+            </div>
+        </div>
+    </div>
+    <div id="alert"></div>
+    <button class="btn btn-success form-control" type="submit">Save</button>
+</form>
+<script>
+    $("#shortdescription").summernote({
+        height: 60
+    });
+    $("#description").summernote({
+        height: 80
+    });
+    $("#software-createForm").on("submit", function (e) {
+        e.preventDefault();
+         let formData = new FormData();
+
+        let company = objectifyForm($(this).serializeArray());
+         formData.append("logo", $("#logo")[0].files[0]);
+        formData.append("favicon", $("#favicon")[0].files[0]);
+
+        for (var key in company) {
+            formData.append(key, company[key]);
+        }
+
+      //  let data = objectifyForm($(this).serializeArray());
+        $.ajax({
+            url: "/Softwares/Create",
+            type: "POST",
+            data: formData,
+            processData: false,
+            contentType: false,
+            success: function (response) {
+                $("#software-createFormDiv").html(response);
+                dataTable.fnFilter();
+                $("#software-createModal").modal('hide');
+            }
+        });
+    });
+
+    $("#company-Description").summernote({
+
+        height: 140
+    });
+    $("#logo").on("change", function () {
+        let maxWidth = 5000;
+        let maxHeight = 5000;
+        let input = $(this);
+        let preview = $("#preview");
+        let logo_preview = $("#logo-preview");
+        fileOnSelect(input, maxWidth, maxHeight, preview, logo_preview);
+
+    });
+    $("#favicon").on("change", function () {
+        let maxWidth = 350;
+        let maxHeight = 350;
+        let input = $(this);
+        let imgpreview = $("#imgpreview");
+        let fav_preview = $("#fav-preview");
+        fileOnSelect(input, maxWidth, maxHeight, imgpreview, fav_preview);
+
+    });
+
+</script>

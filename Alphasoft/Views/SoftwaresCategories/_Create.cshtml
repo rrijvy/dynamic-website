@@ -1,0 +1,67 @@
+﻿@model SoftwareCategory
+
+<form id="softwareCategory-createForm" class="createForm" enctype="multipart/form-data">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="form-group">
+                <label asp-for="Name"></label>
+                <input asp-for="Name" type="text" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="form-group">
+                <label asp-for="Image"></label>
+                <input id="favicon" type="file" name="image" class="form-control" />
+                <span asp-validation-for="Image" class="text-danger"></span>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div id="fav-preview" class="image-preview" style="display: none;">
+                <div id="text" style="display: none;"></div>
+                <img id="imgpreview" src="#" />
+            </div>
+        </div>
+    </div>
+    <div id="alert"></div>
+    <button class="btn btn-success form-control" type="submit">Save</button>
+</form>
+<script>
+    $("#softwareCategory-createForm").on("submit", function (e) {
+        e.preventDefault();
+         let formData = new FormData();
+
+        let company = objectifyForm($(this).serializeArray());
+        formData.append("image", $("#favicon")[0].files[0]);
+
+        for (var key in company) {
+            formData.append(key, company[key]);
+        }
+        $.ajax({
+            url: "/SoftwaresCategories/Create",
+            type: "POST",
+            data: formData,
+            processData: false,
+            contentType: false,
+            success: function (response) {
+                $("#softwareCategory-createFormDiv").html(response);
+                dataTable.fnFilter();
+                $("#softwareCategory-createModal").modal('hide');
+            }
+        });
+    });
+    $("#favicon").on("change", function () {
+        let maxWidth = 5000;
+        let maxHeight = 5000;
+        let input = $(this);
+        let imgpreview = $("#imgpreview");
+        let fav_preview = $("#fav-preview");
+        fileOnSelect(input, maxWidth, maxHeight, imgpreview, fav_preview);
+
+    });
+
+</script>
