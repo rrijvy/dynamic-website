@@ -32,14 +32,14 @@
         <div class="col-md-6">
             <div class="form-group">
                 <label asp-for="Icon"></label>
-                <input id="logo" name="icon" type="file" class="form-control" />
+                <input id="icon" name="icon" type="file" class="form-control" />
                 <span asp-validation-for="Icon" class="text-danger"></span>
             </div>
         </div>
         <div class="col-md-6">
             <div class="form-group">
                 <label asp-for="Image"></label>
-                <input id="favicon" type="file" name="image" class="form-control" />
+                <input id="image" type="file" name="image" class="form-control" />
                 <span asp-validation-for="Image" class="text-danger"></span>
             </div>
         </div>
@@ -74,8 +74,8 @@
         e.preventDefault();
          let formData = new FormData();
         let company = objectifyForm($(this).serializeArray());
-         formData.append("icon", $("#logo")[0].files[0]);
-        formData.append("image", $("#favicon")[0].files[0]);
+         formData.append("icon", $("#icon")[0].files[0]);
+        formData.append("image", $("#image")[0].files[0]);
 
         for (var key in company) {
             formData.append(key, company[key]);
@@ -93,7 +93,7 @@
             }
         });
     });
-    $("#logo").on("change", function () {
+    $("#icon").on("change", function () {
         let maxWidth = 5000;
         let maxHeight = 5000;
         let input = $(this);
@@ -102,9 +102,9 @@
         fileOnSelect(input, maxWidth, maxHeight, preview, logo_preview);
 
     });
-    $("#favicon").on("change", function () {
-        let maxWidth = 350;
-        let maxHeight = 350;
+    $("#image").on("change", function () {
+        let maxWidth = 5000;
+        let maxHeight = 5000;
         let input = $(this);
         let imgpreview = $("#imgpreview");
         let fav_preview = $("#fav-preview");
