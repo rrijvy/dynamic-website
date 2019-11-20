@@ -10,5 +10,7 @@ namespace Alphasoft.IRepositories
     {
         List<SoftwareCategory> GetWithSoftwareCategories();
         SoftwareCategory GetSoftwareCategories();
+
+
     }
 }
