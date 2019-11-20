@@ -22,6 +22,15 @@ namespace Alphasoft.Services
             return categoryProducts;
         }
 
+        public List<Product> GetCategoryWiseProducts(List<Product> products, int propductCategoryId)
+        {
+            var categoryProducts = products
+                .Where(x => x.ProductCategoryId == propductCategoryId)
+                .ToList();
+
+            return categoryProducts;
+        }
+
         public List<Product> GetPopularProducts(List<Product> products)
         {
             var popularProducts = products

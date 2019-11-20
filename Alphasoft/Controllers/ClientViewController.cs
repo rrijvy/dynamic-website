@@ -92,7 +92,13 @@ namespace Alphasoft.Controllers
             };
             return View(aboutUsVm);
         }
-        public IActionResult Products()
+
+        public IActionResult Clients()
+        {
+            var clients = _work.Client.GetAll();
+            return View(clients);
+        }
+        public IActionResult Products(int id)
         {
             ProductsViewModel productsViewModel = new ProductsViewModel
             {
@@ -101,6 +107,11 @@ namespace Alphasoft.Controllers
 
             productsViewModel.PopularProducts = _work.QueryHelper.GetPopularProducts(productsViewModel.Products);
             productsViewModel.CategoryProducts = _work.QueryHelper.GetCategoryProducts(productsViewModel.Products);
+
+            if (id != 0)
+            {
+                productsViewModel.Products = _work.QueryHelper.GetCategoryWiseProducts(productsViewModel.Products, id);
+            }
 
             return View(productsViewModel);
         }
@@ -113,12 +124,6 @@ namespace Alphasoft.Controllers
                 ServiceCategories = _work.ServiceCategories.GetAll()
             };
             return View(serviceVM);
-        }
-
-        public IActionResult Clients()
-        {
-            var clients = _work.Client.GetAll();
-            return View(clients);
         }
 
         public IActionResult Career()

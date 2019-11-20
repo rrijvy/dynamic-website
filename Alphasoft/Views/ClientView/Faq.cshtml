@@ -10,18 +10,17 @@
 
                 <hr class="solid my-5">
 
-                <div id="accordion">
+                <div class="toggle toggle-primary" data-plugin-toggle>
                     @foreach (var item in Model.Faqs)
                     {
-                        <h3 class="collapse_jquery_h3">Q. @item.Question</h3>
-                        <div class="collapse_jquery_div">
-                            <p class="collapse_jquery_p">
-                                @Html.Raw(item.Answer)
-                            </p>
-                        </div>
+                        <section class="toggle">
+                            <label><span class="highlighted-word text-5">Question</span> : @item.Question</label>
+                            <div class="toggle-content">
+                                <span>@Html.Raw(item.Answer)</span>
+                            </div>
+                        </section>
                     }
                 </div>
-
             </div>
 
         </div>

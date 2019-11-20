@@ -11,5 +11,6 @@ namespace Alphasoft.IServices
     {
         List<CategoryProduct> GetCategoryProducts(List<Product> products);
         List<Product> GetPopularProducts(List<Product> products);
+        List<Product> GetCategoryWiseProducts(List<Product> products, int propductCategoryId);
     }
 }
