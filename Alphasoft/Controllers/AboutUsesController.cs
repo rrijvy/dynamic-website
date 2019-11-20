@@ -42,7 +42,7 @@ namespace Alphasoft.Controllers
                 if (image1 != null)
                 {
                     var fileName = ContentDispositionHeaderValue.Parse(image1.ContentDisposition).FileName.Trim('"').Replace(" ", string.Empty);
-                    var path = _imagePath.GetImagePath(fileName, "AboutUs", aboutus.WhoWeAreImageOne);
+                    var path = _imagePath.GetImagePath(fileName, "AboutUs", aboutus.Id.ToString());
                     using (var stream = new FileStream(path, FileMode.Create))
                     {
                         image1.CopyTo(stream);
@@ -52,7 +52,7 @@ namespace Alphasoft.Controllers
                 if (image2 != null)
                 {
                     var fileName = ContentDispositionHeaderValue.Parse(image2.ContentDisposition).FileName.Trim('"').Replace(" ", string.Empty);
-                    var path = _imagePath.GetImagePath(fileName, "AboutUs", aboutus.WhoWeAreImageTwo);
+                    var path = _imagePath.GetImagePath(fileName, "AboutUs", aboutus.Id.ToString());
                     using (var stream = new FileStream(path, FileMode.Create))
                     {
                         image2.CopyTo(stream);

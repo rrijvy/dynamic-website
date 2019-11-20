@@ -40,7 +40,7 @@ namespace Alphasoft.Controllers
                 if (image != null)
                 {
                     var fileName = ContentDispositionHeaderValue.Parse(image.ContentDisposition).FileName.Trim('"').Replace(" ", string.Empty);
-                    var path = _imagePath.GetImagePath(fileName, "Softwarecategory", softwareCategory.Image);
+                    var path = _imagePath.GetImagePath(fileName, "Softwarecategory", softwareCategory.Name.Replace(" ", string.Empty));
                     using (var stream = new FileStream(path, FileMode.Create))
                     {
                         image.CopyTo(stream);
@@ -73,7 +73,7 @@ namespace Alphasoft.Controllers
                 if (image != null)
                 {
                     var fileName = ContentDispositionHeaderValue.Parse(image.ContentDisposition).FileName.Trim('"').Replace(" ", string.Empty);
-                    var path = _imagePath.GetImagePath(fileName, "SoftwareCategory", softwareCategory.Id.ToString());
+                    var path = _imagePath.GetImagePath(fileName, "SoftwareCategory", softwareCategory.Name.Replace(" ", string.Empty));
                     using (var stream = new FileStream(path, FileMode.Create))
                     {
                         image.CopyTo(stream);

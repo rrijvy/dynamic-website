@@ -49,7 +49,7 @@ namespace Alphasoft.Controllers
                 {
                     var fileName = ContentDispositionHeaderValue.Parse(image.ContentDisposition).FileName.Trim('"').Replace(" ", string.Empty);
 
-                    var path = _imagePath.GetImagePath(fileName, "Products", product.Name);
+                    var path = _imagePath.GetImagePath(fileName, "Products", product.Name.Replace(" ", string.Empty));
 
                     using (var stream = new FileStream(path, FileMode.Create))
                     {
@@ -94,7 +94,7 @@ namespace Alphasoft.Controllers
                 {
                     var fileName = ContentDispositionHeaderValue.Parse(image.ContentDisposition).FileName.Trim('"').Replace(" ", string.Empty);
 
-                    var path = _imagePath.GetImagePath(fileName, "Products", productmodel.Name);
+                    var path = _imagePath.GetImagePath(fileName, "Products", productmodel.Name.Replace(" ", string.Empty));
 
                     using (var stream = new FileStream(path, FileMode.Create))
                     {

@@ -36,8 +36,11 @@ namespace Alphasoft.Controllers
             {
                 _work.Blogs.Add(blog);
                 _work.Complete();
+
                 ModelState.Clear();
+
                 blog = new Blog();
+
                 return PartialView("_Create", blog);
             }
            

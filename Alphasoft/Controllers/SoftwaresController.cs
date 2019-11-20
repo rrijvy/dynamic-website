@@ -41,7 +41,7 @@ namespace Alphasoft.Controllers
                 if (icon != null)
                 {
                     var fileName = ContentDispositionHeaderValue.Parse(icon.ContentDisposition).FileName.Trim('"').Replace(" ", string.Empty);
-                    var path = _imagePath.GetImagePath(fileName, "Software", software.Icon);
+                    var path = _imagePath.GetImagePath(fileName, "Software", software.Title.Replace(" ", string.Empty));
                     using (var stream = new FileStream(path, FileMode.Create))
                     {
                         icon.CopyTo(stream);
@@ -51,7 +51,7 @@ namespace Alphasoft.Controllers
                 if (image != null)
                 {
                     var fileName = ContentDispositionHeaderValue.Parse(image.ContentDisposition).FileName.Trim('"').Replace(" ", string.Empty);
-                    var path = _imagePath.GetImagePath(fileName, "Software", software.Image);
+                    var path = _imagePath.GetImagePath(fileName, "Software", software.Title.Replace(" ", string.Empty));
                     using (var stream = new FileStream(path, FileMode.Create))
                     {
                         image.CopyTo(stream);
@@ -86,7 +86,7 @@ namespace Alphasoft.Controllers
                 if (icon != null)
                 {
                     var fileName = ContentDispositionHeaderValue.Parse(icon.ContentDisposition).FileName.Trim('"').Replace(" ", string.Empty);
-                    var path = _imagePath.GetImagePath(fileName, "Software", software.Id.ToString());
+                    var path = _imagePath.GetImagePath(fileName, "Software", software.Title.Replace(" ", string.Empty));
                     using (var stream = new FileStream(path, FileMode.Create))
                     {
                         icon.CopyTo(stream);
@@ -96,7 +96,7 @@ namespace Alphasoft.Controllers
                 if (image != null)
                 {
                     var fileName = ContentDispositionHeaderValue.Parse(image.ContentDisposition).FileName.Trim('"').Replace(" ", string.Empty);
-                    var path = _imagePath.GetImagePath(fileName, "Software", software.Id.ToString());
+                    var path = _imagePath.GetImagePath(fileName, "Software", software.Title.Replace(" ", string.Empty));
                     using (var stream = new FileStream(path, FileMode.Create))
                     {
                         image.CopyTo(stream);

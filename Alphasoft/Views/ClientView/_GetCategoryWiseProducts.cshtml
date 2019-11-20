@@ -11,14 +11,14 @@
                             <article class="post post-medium border-0 pb-0 mb-2">
                                 <div class="post-image">
                                     <a href="/ClientView/Product/@item.Id">
-                                        <img src="@item.Image" class="img-fluid img-thumbnail img-thumbnail-no-borders rounded-0" alt="" />
+                                        <img src="@item.Image" class="img-fluid img-thumbnail img-thumbnail-no-borders rounded-0" alt="" style="height: 180px; width: 100%;"/>
                                     </a>
                                 </div>
 
-                                <div class="post-content">
+                                <div class="post-content" >
 
-                                    <h2 class="font-weight-semibold text-5 line-height-6 mt-3 mb-2"><a href="/ClientView/Product/@item.Id">@item.Name</a></h2>
-                                    <p>@item.ShortDescription</p>
+                                    <h2 class="font-weight-semibold text-3 line-height-6 mt-3 mb-2"><a href="/ClientView/Product/@item.Id">@item.Name</a></h2>
+                                    <p class="text-2" style="height: 80px; overflow: hidden;">@item.ShortDescription</p>
 
                                     <div class="post-meta">
                                         <span><i class="far fa-user"></i> Category <a href="/ClientView/Products/@item.ProductCategoryId">@item.ProductCategory.Name</a> </span>

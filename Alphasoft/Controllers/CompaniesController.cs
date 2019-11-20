@@ -21,7 +21,7 @@ namespace Alphasoft.Controllers
         private readonly IUnitOfWork _work;
         private readonly IImagePath _imagePath;
 
-        public CompaniesController(IUnitOfWork work,IImagePath imagePath)
+        public CompaniesController(IUnitOfWork work, IImagePath imagePath)
         {
             _work = work;
             _imagePath = imagePath;
@@ -44,7 +44,7 @@ namespace Alphasoft.Controllers
                 if (logo != null)
                 {
                     var fileName = ContentDispositionHeaderValue.Parse(logo.ContentDisposition).FileName.Trim('"').Replace(" ", string.Empty);
-                    var path = _imagePath.GetImagePath(fileName, "Company", company.Name);
+                    var path = _imagePath.GetImagePath(fileName, "Company", company.Name.Replace(" ", string.Empty));
                     using (var stream = new FileStream(path, FileMode.Create))
                     {
                         logo.CopyTo(stream);
@@ -54,7 +54,7 @@ namespace Alphasoft.Controllers
                 if (favicon != null)
                 {
                     var fileName = ContentDispositionHeaderValue.Parse(favicon.ContentDisposition).FileName.Trim('"').Replace(" ", string.Empty);
-                    var path = _imagePath.GetImagePath(fileName, "Company", company.Name);
+                    var path = _imagePath.GetImagePath(fileName, "Company", company.Name.Replace(" ", string.Empty));
                     using (var stream = new FileStream(path, FileMode.Create))
                     {
                         favicon.CopyTo(stream);
@@ -62,8 +62,8 @@ namespace Alphasoft.Controllers
                     company.Favicon = _imagePath.GetImagePathForDb(path);
                 }
 
-               
-        _work.Companies.Add(company);
+
+                _work.Companies.Add(company);
                 _work.Complete();
                 ModelState.Clear();
                 company = new Company();
@@ -89,17 +89,17 @@ namespace Alphasoft.Controllers
                 if (logo != null)
                 {
                     var fileName = ContentDispositionHeaderValue.Parse(logo.ContentDisposition).FileName.Trim('"').Replace(" ", string.Empty);
-                    var path = _imagePath.GetImagePath(fileName, "Company", company.Logo);
+                    var path = _imagePath.GetImagePath(fileName, "Company", company.Name.Replace(" ", string.Empty));
                     using (var stream = new FileStream(path, FileMode.Create))
                     {
-                      logo.CopyTo(stream);
+                        logo.CopyTo(stream);
                     }
-                    company.Logo = _imagePath.GetImagePathForDb(path);  
+                    company.Logo = _imagePath.GetImagePathForDb(path);
                 }
                 if (favicon != null)
                 {
                     var fileName = ContentDispositionHeaderValue.Parse(favicon.ContentDisposition).FileName.Trim('"').Replace(" ", string.Empty);
-                    var path = _imagePath.GetImagePath(fileName, "Company", company.Favicon);
+                    var path = _imagePath.GetImagePath(fileName, "Company", company.Name.Replace(" ", string.Empty));
                     using (var stream = new FileStream(path, FileMode.Create))
                     {
                         favicon.CopyTo(stream);
@@ -107,18 +107,18 @@ namespace Alphasoft.Controllers
                     company.Favicon = _imagePath.GetImagePathForDb(path);
                 }
 
-                    company.Name = model.Name;
-                    company.Email = model.Email;
-                    company.Slogan = model.Slogan;
-                    company.Phone = model.Phone;
-                    company.Address = model.Address;
-                    company.Facebook = model.Facebook;
-                    company.LinkedIn = model.LinkedIn;
-                    company.Twitter = model.Twitter;
-                    company.Youtube = model.Youtube;
-                    company.ShortDescription = model.ShortDescription;
-                    company.Description = model.Description;
-                    company.GoogleMapLocation = model.GoogleMapLocation;
+                company.Name = model.Name;
+                company.Email = model.Email;
+                company.Slogan = model.Slogan;
+                company.Phone = model.Phone;
+                company.Address = model.Address;
+                company.Facebook = model.Facebook;
+                company.LinkedIn = model.LinkedIn;
+                company.Twitter = model.Twitter;
+                company.Youtube = model.Youtube;
+                company.ShortDescription = model.ShortDescription;
+                company.Description = model.Description;
+                company.GoogleMapLocation = model.GoogleMapLocation;
 
                 _work.Companies.Update(company);
                 _work.Complete();
@@ -130,7 +130,7 @@ namespace Alphasoft.Controllers
 
         public IActionResult Delete(int id)
         {
-            if (id!=0)
+            if (id != 0)
             {
                 var company = _work.Companies.Get(id);
                 _work.Companies.Remove(company);
@@ -177,16 +177,16 @@ namespace Alphasoft.Controllers
                 {
                     Id = item.Id,
                     Name = item.Name,
-                    Logo=item.Logo,
+                    Logo = item.Logo,
                     Slogan = item.Slogan,
                     Address = item.Address,
                     Phone = item.Phone,
                     Email = item.Email,
-                    Facebook=item.Facebook,
-                    LinkedIn=item.LinkedIn,
-                    Twitter=item.Twitter,
-                    Youtube=item.Youtube,
-                    Favicon=item.Favicon,
+                    Facebook = item.Facebook,
+                    LinkedIn = item.LinkedIn,
+                    Twitter = item.Twitter,
+                    Youtube = item.Youtube,
+                    Favicon = item.Favicon,
                     ShortDescription = item.ShortDescription,
                     Description = item.Description,
                     GoogleMapLocation = item.GoogleMapLocation
