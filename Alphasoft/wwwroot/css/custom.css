@@ -92,3 +92,10 @@ a p{
     z-index: 500;
     display: none;
 }
+
+@media (min-width: 576px) {
+    .modal-dialog {
+        max-width: 500px;
+        margin: 15.75rem auto;
+    }
+}

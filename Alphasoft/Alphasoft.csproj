@@ -46,6 +46,7 @@
     <None Include="Views\ClientView\Blogs.cshtml" />
     <None Include="Views\ClientView\Career.cshtml" />
     <None Include="Views\ClientView\CategoryWiseProduct.cshtml" />
+    <None Include="Views\ClientView\Clients.cshtml" />
     <None Include="Views\ClientView\Faq.cshtml" />
     <None Include="Views\ClientView\Product.cshtml" />
     <None Include="Views\ClientView\Products.cshtml" />

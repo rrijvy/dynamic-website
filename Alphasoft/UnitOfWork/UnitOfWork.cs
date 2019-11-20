@@ -51,10 +51,15 @@ namespace Alphasoft.UnitOfWork
             AboutUs = new AboutUsRepository(_context);
 
             HostingPlan = new HostingPlanRepository(_context);
+
             CustomerReview = new CustomerReviewRepository(_context);
+
             Career = new CareerRepository(_context);
+
             Job = new JobRepository(_context);
+
             Softwares = new SoftwareRepository(_context);
+
             SoftwareCategories = new SoftwareCategoriesRepository(_context);
 
             QueryHelper = new QueryHelper();
