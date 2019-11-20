@@ -5,23 +5,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="Views\ClientView\**" />
-    <Content Remove="Views\ClientView\**" />
-    <EmbeddedResource Remove="Views\ClientView\**" />
-    <None Remove="Views\ClientView\**" />
-    <TypeScriptCompile Remove="Views\ClientView\**" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Compile Remove="Migrations\20191103072617_Script0101.cs" />
-    <Compile Remove="Migrations\20191103072617_Script0101.Designer.cs" />
-    <Compile Remove="Migrations\20191103073519_HostingPlan.cs" />
-    <Compile Remove="Migrations\20191103073519_HostingPlan.Designer.cs" />
-    <Compile Remove="Migrations\20191118050127_Menus.cs" />
-    <Compile Remove="Migrations\20191118050127_Menus.Designer.cs" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.App" />
     <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.1.2" PrivateAssets="All" />
     <PackageReference Include="Microsoft.TypeScript.MSBuild" Version="3.6.3">

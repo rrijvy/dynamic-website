@@ -181,7 +181,7 @@
 
                                                                                     if (reminder == 0)
                                                                                     {
-                                                                                        columnNo = 12 / subMenus.Count();
+                                                                                        columnNo = 12 / softwareList.GroupBy(x=>x.SoftwareCategoryId).Count();
                                                                                     }
                                                                                     else
                                                                                     {
