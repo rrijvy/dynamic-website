@@ -14,7 +14,7 @@
         <div class="col-md-12">
             <div class="form-group">
                 <label asp-for="Image"></label>
-                <input id="favicon" type="file" name="image" class="form-control" />
+                <input id="image" type="file" name="image" class="form-control" />
                 <span asp-validation-for="Image" class="text-danger"></span>
             </div>
         </div>
@@ -36,7 +36,7 @@
          let formData = new FormData();
 
         let company = objectifyForm($(this).serializeArray());
-        formData.append("image", $("#favicon")[0].files[0]);
+        formData.append("image", $("#image")[0].files[0]);
 
         for (var key in company) {
             formData.append(key, company[key]);
@@ -54,7 +54,7 @@
             }
         });
     });
-    $("#favicon").on("change", function () {
+    $("#image").on("change", function () {
         let maxWidth = 5000;
         let maxHeight = 5000;
         let input = $(this);
