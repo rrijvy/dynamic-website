@@ -36,6 +36,8 @@ namespace Alphasoft.Data
         public DbSet<CustomerRivew> CustomerRivew { get; set; }
         public DbSet<Career> Careers { get; set; }
         public DbSet<Job> Jobs { get; set; }
+        public DbSet<Software> Softwares { get; set; }
+        public DbSet<SoftwareCategory> SoftwareCategories { get; set; }
 
     }
 }
