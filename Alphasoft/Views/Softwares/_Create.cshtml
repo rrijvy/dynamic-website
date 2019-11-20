@@ -31,14 +31,14 @@
         <div class="col-md-6">
             <div class="form-group">
                 <label asp-for="Icon"></label>
-                <input id="logo" name="image" type="file" class="form-control" />
+                <input id="logo" name="icon" type="file" class="form-control" />
                 <span asp-validation-for="Icon" class="text-danger"></span>
             </div>
         </div>
         <div class="col-md-6">
             <div class="form-group">
                 <label asp-for="Image"></label>
-                <input id="favicon" type="file" class="form-control" />
+                <input id="favicon" name="image" type="file" class="form-control" />
                 <span asp-validation-for="Image" class="text-danger"></span>
             </div>
         </div>
@@ -74,8 +74,8 @@
          let formData = new FormData();
 
         let company = objectifyForm($(this).serializeArray());
-         formData.append("logo", $("#logo")[0].files[0]);
-        formData.append("favicon", $("#favicon")[0].files[0]);
+         formData.append("icon", $("#logo")[0].files[0]);
+        formData.append("image", $("#favicon")[0].files[0]);
 
         for (var key in company) {
             formData.append(key, company[key]);
