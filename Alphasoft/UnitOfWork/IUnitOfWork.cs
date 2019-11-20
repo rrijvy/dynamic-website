@@ -30,7 +30,7 @@ namespace Alphasoft.UnitOfWork
         ICareerRepository Career { get; }
         IJobRepository Job { get; }
         ISoftwareRepository Softwares { get; }
-        ISoftwareCategoriesRepository SoftwareCategory { get; }
+        ISoftwareCategoriesRepository SoftwareCategories { get; }
         IQueryHelper QueryHelper { get; }
 
         int Complete();

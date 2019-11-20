@@ -55,7 +55,7 @@ namespace Alphasoft.UnitOfWork
             Career = new CareerRepository(_context);
             Job = new JobRepository(_context);
             Softwares = new SoftwareRepository(_context);
-            SoftwaresCategory = new SoftwareCategoryRepository(_context);
+            SoftwareCategories = new SoftwareCategoriesRepository(_context);
 
             QueryHelper = new QueryHelper();
 
@@ -84,7 +84,7 @@ namespace Alphasoft.UnitOfWork
         public ICareerRepository Career { get; private set; }
         public IJobRepository Job { get; private set; }
         public ISoftwareRepository Softwares { get; private set; }
-        public ISoftwareCategoriesRepository SoftwareCategory { get; private set; }
+        public ISoftwareCategoriesRepository SoftwareCategories { get; private set; }
         public IQueryHelper QueryHelper { get; private set; }
 
         public int Complete()
