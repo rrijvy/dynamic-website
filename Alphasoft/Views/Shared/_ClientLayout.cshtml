@@ -9,6 +9,7 @@
 
     List<Menu> menuList = _work.Menus.GetAllActive();
     List<Menu> menus = menuList.Where(x => x.ParentId == 0).ToList();
+    List<Software> softwareList = _work.Softwares.GetAllWithSoftware();
     List<Menu> subMenus = new List<Menu>();
 
 }
@@ -172,10 +173,10 @@
                                                                     <li>
                                                                         <div class="dropdown-mega-content">
                                                                             <div class="row">
-                                                                                @foreach (var subMenu in subMenus)
+                                                                                @foreach (var softwareCategory in softwareList.GroupBy(x=>x.SoftwareCategoryId))
                                                                                 {
-
-                                                                                    var subMenuList = menuList.Where(x => x.ParentId == subMenu.Id).ToList();
+                                                                                    var softwareCategoryName = softwareCategory.Select(x => x.SoftwareCategory.Name).FirstOrDefault();
+                                                                                    var softwares = softwareCategory.Select(x => x).ToList();
                                                                                     ++index;
 
                                                                                     if (reminder == 0)
@@ -192,11 +193,11 @@
                                                                                         if (index % 2 == 0)
                                                                                         {
                                                                                             <div class="col-lg-@columnNo">
-                                                                                                <span class="dropdown-mega-sub-title">@subMenu.Name</span>
+                                                                                                <span class="dropdown-mega-sub-title">@softwareCategoryName</span>
                                                                                                 <ul class="dropdown-mega-sub-nav">
-                                                                                                    @foreach (var item in subMenuList)
+                                                                                                    @foreach (var item in softwares)
                                                                                                     {
-                                                                                                        <li><a class="dropdown-item" href="/ClientView/CategoryWiseSoftware/@item.Id">@item.Name</a></li>
+                                                                                                        <li><a class="dropdown-item" href="/ClientView/CategoryWiseSoftware/@item.Id">@item.Title</a></li>
                                                                                                     }
                                                                                                 </ul>
                                                                                             </div>
@@ -206,11 +207,11 @@
                                                                                             --reminder;
                                                                                             double newColumnNo = columnNo + 1;
                                                                                             <div class="col-lg-@newColumnNo">
-                                                                                                <span class="dropdown-mega-sub-title">@subMenu.Name</span>
+                                                                                                <span class="dropdown-mega-sub-title">@softwareCategoryName</span>
                                                                                                 <ul class="dropdown-mega-sub-nav">
-                                                                                                    @foreach (var item in subMenuList)
+                                                                                                    @foreach (var item in softwares)
                                                                                                     {
-                                                                                                        <li><a class="dropdown-item" href="/ClientView/CategoryWiseSoftware/@item.Id">@item.Name</a></li>
+                                                                                                        <li><a class="dropdown-item" href="/ClientView/CategoryWiseSoftware/@item.Id">@item.Title</a></li>
                                                                                                     }
                                                                                                 </ul>
                                                                                             </div>
@@ -219,11 +220,11 @@
                                                                                     else
                                                                                     {
                                                                                         <div class="col-lg-@columnNo">
-                                                                                            <span class="dropdown-mega-sub-title">@subMenu.Name</span>
+                                                                                            <span class="dropdown-mega-sub-title">@softwareCategoryName</span>
                                                                                             <ul class="dropdown-mega-sub-nav">
-                                                                                                @foreach (var item in subMenuList)
+                                                                                                @foreach (var item in softwares)
                                                                                                 {
-                                                                                                    <li><a class="dropdown-item" href="/ClientView/CategoryWiseSoftware/@item.Id">@item.Name</a></li>
+                                                                                                    <li><a class="dropdown-item" href="/ClientView/CategoryWiseSoftware/@item.Id">@item.Title</a></li>
                                                                                                 }
                                                                                             </ul>
                                                                                         </div>
