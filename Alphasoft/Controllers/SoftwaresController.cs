@@ -34,27 +34,27 @@ namespace Alphasoft.Controllers
             Software software = new Software();
             return PartialView("_Create", software);
         }
-        public IActionResult Create(IFormFile logo, IFormFile favicon, Software software)
+        public IActionResult Create(IFormFile icon, IFormFile image, Software software)
         {
             if (ModelState.IsValid)
             {
-                if (logo != null)
+                if (icon != null)
                 {
-                    var fileName = ContentDispositionHeaderValue.Parse(logo.ContentDisposition).FileName.Trim('"').Replace(" ", string.Empty);
+                    var fileName = ContentDispositionHeaderValue.Parse(icon.ContentDisposition).FileName.Trim('"').Replace(" ", string.Empty);
                     var path = _imagePath.GetImagePath(fileName, "Software", software.Icon);
                     using (var stream = new FileStream(path, FileMode.Create))
                     {
-                        logo.CopyTo(stream);
+                        icon.CopyTo(stream);
                     }
                     software.Icon = _imagePath.GetImagePathForDb(path);
                 }
-                if (favicon != null)
+                if (image != null)
                 {
-                    var fileName = ContentDispositionHeaderValue.Parse(favicon.ContentDisposition).FileName.Trim('"').Replace(" ", string.Empty);
+                    var fileName = ContentDispositionHeaderValue.Parse(image.ContentDisposition).FileName.Trim('"').Replace(" ", string.Empty);
                     var path = _imagePath.GetImagePath(fileName, "Software", software.Image);
                     using (var stream = new FileStream(path, FileMode.Create))
                     {
-                        favicon.CopyTo(stream);
+                        image.CopyTo(stream);
                     }
                     software.Image = _imagePath.GetImagePathForDb(path);
                 }
@@ -77,29 +77,29 @@ namespace Alphasoft.Controllers
             return PartialView("_Edit", software);
         }
 
-        public IActionResult Edit(IFormFile logo, IFormFile favicon, Software model)
+        public IActionResult Edit(IFormFile icon, IFormFile image, Software model)
         {
             var software = _work.Softwares.Get(model.Id);
 
             if (ModelState.IsValid)
             {
-                if (logo != null)
+                if (icon != null)
                 {
-                    var fileName = ContentDispositionHeaderValue.Parse(logo.ContentDisposition).FileName.Trim('"').Replace(" ", string.Empty);
+                    var fileName = ContentDispositionHeaderValue.Parse(icon.ContentDisposition).FileName.Trim('"').Replace(" ", string.Empty);
                     var path = _imagePath.GetImagePath(fileName, "Software", software.Id.ToString());
                     using (var stream = new FileStream(path, FileMode.Create))
                     {
-                        logo.CopyTo(stream);
+                        icon.CopyTo(stream);
                     }
                     software.Icon = _imagePath.GetImagePathForDb(path);
                 }
-                if (favicon != null)
+                if (image != null)
                 {
-                    var fileName = ContentDispositionHeaderValue.Parse(favicon.ContentDisposition).FileName.Trim('"').Replace(" ", string.Empty);
+                    var fileName = ContentDispositionHeaderValue.Parse(image.ContentDisposition).FileName.Trim('"').Replace(" ", string.Empty);
                     var path = _imagePath.GetImagePath(fileName, "Software", software.Id.ToString());
                     using (var stream = new FileStream(path, FileMode.Create))
                     {
-                        favicon.CopyTo(stream);
+                        image.CopyTo(stream);
                     }
                     software.Image = _imagePath.GetImagePathForDb(path);
                 }
@@ -114,6 +114,14 @@ namespace Alphasoft.Controllers
             }
             ViewData["Name"] = new SelectList(_work.SoftwareCategories.GetAll(), "Id", "Name");
             return PartialView("_Edit", software);
+        }
+
+        public IActionResult Delete(int id)
+        {
+            var software = _work.Softwares.Get(id);
+            _work.Softwares.Remove(software);
+            _work.Complete();
+            return Json("Delete Successfully");
         }
         public IActionResult LoadSoftware()
         {

@@ -60,3 +60,18 @@ $("body").on("click", ".editBtn", function (e) {
         }
     });
 });
+
+$("body").on("click", ".deleteBtn", function (e) {
+    e.preventDefault();
+    let data = {
+        id: $(this).val()
+    };
+    $.ajax({
+        url: "/Softwares/Delete",
+        type: "GET",
+        data: data,
+        success: function () {
+            dataTable.fnFilter();
+        }
+    })
+});
