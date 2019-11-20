@@ -123,18 +123,37 @@
         $(".description").summernote({
             height: 200
         });
+
         $("#product-editForm").on("submit", function (e) {
             e.preventDefault();
-            let data = objectifyForm($(this).serializeArray());
+
+            let formData = new FormData();
+
+            let product = objectifyForm($(this).serializeArray());
+
+            formData.append("image", $("#image")[0].files[0]);
+
+            for (var key in product) {
+
+                formData.append(key, product[key]);
+
+            }
+
+
             $.ajax({
                 type: "POST",
                 url: "/Products/Edit",
-                data: data,
+                processData: false,
+                contentType: false,
+                data: formData,
                 success: function (response) {
+
                     $("#product-editFormDiv").html(response);
+
                     dataTable.fnFilter();
 
                     $('#product-editModal').modal('hide');
+
                 }
             });
         });
@@ -148,9 +167,9 @@
 
             let preview = $("#preview");
 
-            let image_preview = $("#image-preview");            
+            let image_preview = $("#image-preview");
 
-            fileOnSelect(input, maxWidth, maxHeight, preview, image_preview);                     
+            fileOnSelect(input, maxWidth, maxHeight, preview, image_preview);
         });
     })();
 </script>

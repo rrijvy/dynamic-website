@@ -1,70 +1,70 @@
 ﻿
 @model AboutUs
 
-    <form id="aboutUs-EditForm" class="createForm" enctype="multipart/form-data">
-        <div class="row">
-            <div class="col-md-12">
-                <input asp-for="Id" type="hidden" class="form-control" />
-                <div class="form-group">
-                    <label asp-for="AboutMainSologan"></label>
-                    <textarea id="aboutsologan" asp-for="AboutMainSologan" type="text"></textarea>
-                    <span asp-validation-for="AboutMainSologan" class="text-danger"></span>
-                </div>
-                <br />
-                <div class="form-group">
-                    <label asp-for="OurMissionDescription"></label>
-                    <textarea id="missionDescription" asp-for="OurMissionDescription" type="text"></textarea>
-                    <span asp-validation-for="OurMissionDescription" class="text-danger"></span>
-                </div>
-                <br />
-                <div class="form-group">
-                    <label asp-for="OurVisionDescription"></label>
-                    <textarea id="visionDescription" asp-for="OurVisionDescription" type="text"></textarea>
-                    <span asp-validation-for="OurVisionDescription" class="text-danger"></span>
-                </div>
-                <br />
-                <div class="form-group">
-                    <label asp-for="WhyUsDescription"></label>
-                    <textarea id="whyDescription" asp-for="WhyUsDescription" type="text" ></textarea>
-                    <span asp-validation-for="WhyUsDescription" class="text-danger"></span>
-                </div>
-                <br />
-                <div class="form-group">
-                    <label asp-for="WhoWeAreDescription"></label>
-                    <textarea id="whoDescription" asp-for="WhoWeAreDescription" type="text" ></textarea>
-                    <span asp-validation-for="WhoWeAreDescription" class="text-danger"></span>
-                </div>
-                <br />
-                <div class="form-group">
-                    <label asp-for="WhoWeAreImageOne"></label>
-                    <input id="logo1" name="image1" type="file" class="form-control" />
-                    <span asp-validation-for="WhoWeAreImageOne" class="text-danger"></span>
-                </div>
-                <br />
-                <div class="form-group">
-                    <label asp-for="WhoWeAreImageTwo"></label>
-                    <input id="logo2" name="image2" type="file" class="form-control" />
-                    <span asp-validation-for="WhoWeAreImageTwo" class="text-danger"></span>
-                </div>
-                <br />
-                <div id="logo-preview" class="image-preview" style="display: none;">
-                    <div id="text" style="display: none;"></div>
-                    <img id="preview" src="#" />
-                </div>
-                <div id="logo-preview" class="image-preview" style="display: none;">
-                    <div id="text" style="display: none;"></div>
-                    <img id="preview" src="#" />
-                </div>
-                @*<div id="logo-preview" class="image-preview" style="display: none;">
-            <div id="text" style="display: none;"></div>
-            <img id="preview" src="#" />
-        </div>*@
+<form id="aboutUs-EditForm" class="createForm" enctype="multipart/form-data">
+    <div class="row">
+        <div class="col-md-12">
+            <input asp-for="Id" type="hidden" class="form-control" />
+            <div class="form-group">
+                <label asp-for="AboutMainSologan"></label>
+                <textarea id="aboutsologan" asp-for="AboutMainSologan" type="text"></textarea>
+                <span asp-validation-for="AboutMainSologan" class="text-danger"></span>
             </div>
+            <br />
+            <div class="form-group">
+                <label asp-for="OurMissionDescription"></label>
+                <textarea id="missionDescription" asp-for="OurMissionDescription" type="text"></textarea>
+                <span asp-validation-for="OurMissionDescription" class="text-danger"></span>
+            </div>
+            <br />
+            <div class="form-group">
+                <label asp-for="OurVisionDescription"></label>
+                <textarea id="visionDescription" asp-for="OurVisionDescription" type="text"></textarea>
+                <span asp-validation-for="OurVisionDescription" class="text-danger"></span>
+            </div>
+            <br />
+            <div class="form-group">
+                <label asp-for="WhyUsDescription"></label>
+                <textarea id="whyDescription" asp-for="WhyUsDescription" type="text"></textarea>
+                <span asp-validation-for="WhyUsDescription" class="text-danger"></span>
+            </div>
+            <br />
+            <div class="form-group">
+                <label asp-for="WhoWeAreDescription"></label>
+                <textarea id="whoDescription" asp-for="WhoWeAreDescription" type="text"></textarea>
+                <span asp-validation-for="WhoWeAreDescription" class="text-danger"></span>
+            </div>
+            <br />
+            <div class="form-group">
+                <label asp-for="WhoWeAreImageOne"></label>
+                <input id="logo1" name="image1" type="file" class="form-control" />
+                <span asp-validation-for="WhoWeAreImageOne" class="text-danger"></span>
+            </div>
+            <br />
+            <div class="form-group">
+                <label asp-for="WhoWeAreImageTwo"></label>
+                <input id="logo2" name="image2" type="file" class="form-control" />
+                <span asp-validation-for="WhoWeAreImageTwo" class="text-danger"></span>
+            </div>
+            <br />
+            <div id="logo-preview" class="image-preview" style="display: none;">
+                <div id="text" style="display: none;"></div>
+                <img id="preview" src="#" />
+            </div>
+            <div id="logo-preview" class="image-preview" style="display: none;">
+                <div id="text" style="display: none;"></div>
+                <img id="preview" src="#" />
+            </div>
+            @*<div id="logo-preview" class="image-preview" style="display: none;">
+                    <div id="text" style="display: none;"></div>
+                    <img id="preview" src="#" />
+                </div>*@
         </div>
+    </div>
 
-        <div id="alert"></div>
-        <button class="btn btn-success form-control" type="submit">Save</button>
-    </form>
+    <div id="alert"></div>
+    <button class="btn btn-success form-control" type="submit">Save</button>
+</form>
 <script>
     $("#aboutsologan").summernote({
         height: 80
@@ -83,10 +83,10 @@
     });
     $("#aboutUs-EditForm").on("submit", function (e) {
         e.preventDefault();
-       let formData = new FormData();
+        let formData = new FormData();
         let aboutus = objectifyForm($(this).serializeArray());
-         formData.append("image1", $("#logo1")[0].files[0]);
-         formData.append("image2", $("#logo2")[0].files[0]);
+        formData.append("image1", $("#logo1")[0].files[0]);
+        formData.append("image2", $("#logo2")[0].files[0]);
         for (var key in aboutus) {
             formData.append(key, aboutus[key]);
         }
