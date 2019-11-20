@@ -153,7 +153,7 @@ namespace Alphasoft.Controllers
 
         public IActionResult Section_5()
         {
-            var ourProducts = _work.Products.GetAll();
+            var ourProducts = _work.Products.GetAllWithCategory();
             return PartialView("_Section5", ourProducts);
         }
 
@@ -185,6 +185,20 @@ namespace Alphasoft.Controllers
             productsViewModel.CategoryProducts = _work.QueryHelper.GetCategoryProducts(productsViewModel.Products);
 
             return View(productsViewModel);
+        }
+
+        public IActionResult GetCategoryWiseProducts(int id, int number = 8)
+        {
+            List<Product> products = new List<Product>();
+
+            if (id == 0)
+            {
+                products = _work.Products.GetAllWithCategory().TakeLast(number).ToList();
+                return PartialView("_GetCategoryWiseProducts", products);
+            }
+
+            products = _work.Products.GetCategoryWiseProducts(id).TakeLast(number).ToList();
+            return PartialView("_GetCategoryWiseProducts", products);
         }
     }
 }

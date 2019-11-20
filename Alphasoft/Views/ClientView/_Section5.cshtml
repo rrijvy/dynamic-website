@@ -1,48 +1,89 @@
 ﻿@model List<Product>
 
+
 <div class="container py-1">
     <h2 class="font-weight-normal text-color-dark text-center text-7 pb-1 pt-1">Our <strong class="font-weight-extra-bold">Products</strong></h2>
+    <section class="section border-0 mt-0 mb-2" style="padding: 10px 0px 20px 0px;">
+        <div class="container">
+            <div class="row">
+                <div class="col pt-2 text-center text-lg-left text-center">
+                    <h3 class="text-3 text-dark m-0 font-weight-bold d-inline-block pr-4 mb-3">BROWSE ALL CATEGORIES:</h3>
+                    <div class="d-inline-block">
+                        <a href="#" class="btn py-3 px-4 text-1 text-dark btn-light bg-transparent text-uppercase font-weight-bold mr-2 mb-2 productCategory" data-id="0">Latest</a>
+                        @foreach (var item in Model.GroupBy(x => x.ProductCategoryId))
+                        {
+                            int productCategoryId = item.Select(x => x.ProductCategoryId).FirstOrDefault();
+                            string productCategory = item.Select(x => x.ProductCategory.Name).FirstOrDefault();
+                            <a href="#" class="btn py-3 px-4 text-1 text-dark btn-light bg-transparent text-uppercase font-weight-bold mr-2 mb-2 productCategory" data-id="@productCategoryId">@productCategory</a>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
     <div class="row">
         @if (Model.Count() > 0)
         {
-            <div class="owl-carousel owl-theme mb-0 pt-2" data-plugin-options="{'responsive': {'0': {'items': 1}, '476': {'items': 2}, '768': {'items': 4}, '992': {'items': 4}, '1200': {'items': 4}}, 'autoplay': true, 'autoplayTimeout': 3000, 'dots': true}">
-                @foreach (var item in Model)
-                {
-                    <div class="col-sm-12 col-md-12 mb-4 mb-md-0">
-                        <article>
-                            <div class="row" style="height: 170px;">
-                                <div class="col">
-                                    <a href="/ClientView/Product/@item.Id" class="text-decoration-none">
-                                        <img src="@item.Image" class="img-fluid hover-effect-2 mb-3" alt="" style="width: 100%; height: 100%; object-fit: contain;">
-                                    </a>
+            <div id="products" style="width: 100%;">
+                <div class="owl-carousel owl-theme mb-0 pt-2" data-plugin-options="{'responsive': {'0': {'items': 1}, '476': {'items': 2}, '768': {'items': 4}, '992': {'items': 4}, '1200': {'items': 4}}, 'autoplay': true, 'autoplayTimeout': 3000, 'dots': true}">
+                    @foreach (var item in Model)
+                    {
+                        <div class="col-sm-12 col-md-12 mb-4 mb-md-0">
+                            <article>
+                                <div class="row" style="height: 170px;">
+                                    <div class="col">
+                                        <a href="/ClientView/Product/@item.Id" class="text-decoration-none">
+                                            <img src="@item.Image" class="img-fluid hover-effect-2 mb-3" alt="" style="width: 100%; height: 100%; object-fit: contain;">
+                                        </a>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="row">
-                                <div class="col">
-                                    <h5 class="text-color-primary text-4 mb-1">
-                                        <a href="/ClientView/Product/@item.Id">@item.Name</a>
-                                    </h5>
-                                    <p class="text-color-dark text-2 opacity-7 mb-3">@Html.Raw(item.ShortDescription)</p>
-                                    <a href="/ClientView/Product/@item.Id" class="read-more text-color-primary font-weight-semibold text-2">VIEW MORE <i class="fas fa-chevron-right text-3 ml-2"></i></a>
+                                <div class="row">
+                                    <div class="col">
+                                        <h5 class="text-color-primary text-4 mb-1">
+                                            <a href="/ClientView/Product/@item.Id">@item.Name</a>
+                                        </h5>
+                                        <p class="text-color-dark text-2 opacity-7 mb-3">@Html.Raw(item.ShortDescription)</p>
+                                        <a href="/ClientView/Product/@item.Id" class="read-more text-color-primary font-weight-semibold text-2">VIEW MORE <i class="fas fa-chevron-right text-3 ml-2"></i></a>
+                                    </div>
                                 </div>
-                            </div>
 
-                        </article>
-                    </div>
-                }
+                            </article>
+                        </div>
+                    }
+                </div>
             </div>
         }
     </div>
 </div>
 
 <script>
-    var owl = $('.owl-carousel');
-    owl.owlCarousel({
-        items: 4,
-        loop: true,
-        margin: 10,
-        autoplay: true,
-        autoplayTimeout: 1000,
-        autoplayHoverPause: true
-    });
+    (function () {
+        var owl = $('.owl-carousel');
+        owl.owlCarousel({
+            items: 4,
+            loop: true,
+            margin: 10,
+            autoplay: true,
+            autoplayTimeout: 1000,
+            autoplayHoverPause: true
+        });
+
+        $(".productCategory").on("click", function (e) {
+            e.preventDefault();
+
+            let data = { id: $(this).attr("data-id") };
+
+            $("#products").html(loader);
+
+            $.ajax({
+                url: "/ClientView/GetCategoryWiseProducts/",
+                type: "GET",
+                data: data,
+                success: function (response) {
+                    console.log(response);
+                    $("#products").html(response);
+                }
+            })
+        })
+    })();
 </script>
