@@ -17,6 +17,8 @@
     "columns": [
         { "data": "id", "name": "Id", "autowidth": true, "className": "text_center" },
         { "data": "name", "name": "Name", "autowidth": true },
+        { "data": "description", "Description": "Name", "autowidth": true },
+        { "data": "image", "name": "Image", "autowidth": true },
         {
             "render": function (data, type, full, meta) {
                 return `<button style="font-size: inherit;" class="btn btn-sm btn-rx btn-table detailsBtn" value="${full.id}" data-toggle="tooltip" title="Product details"><i class="fas fa-file-alt"></i></button>

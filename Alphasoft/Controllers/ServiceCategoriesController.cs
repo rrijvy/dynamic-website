@@ -10,16 +10,23 @@ using Alphasoft.Models;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Alphasoft.UnitOfWork;
+using System.Net.Http.Headers;
+using Alphasoft.IServices;
+using System.IO;
+using Microsoft.AspNetCore.Http;
 
 namespace Alphasoft.Controllers
 {
     public class ServiceCategoriesController : Controller
     {
         private readonly IUnitOfWork _work;
+        private readonly IImagePath _imagePath;
 
-        public ServiceCategoriesController(IUnitOfWork work)
+        public ServiceCategoriesController(IUnitOfWork work, IImagePath imagepath)
         {
             _work = work;
+
+            _imagePath = imagepath;
         }
 
         public IActionResult Index()
@@ -34,10 +41,21 @@ namespace Alphasoft.Controllers
             return PartialView("_Create", serviceCategory);
         }
 
-        public IActionResult Create(ServiceCategory serviceCategory)
+        public IActionResult Create(IFormFile image, ServiceCategory serviceCategory)
         {
             if (ModelState.IsValid)
             {
+                if (image != null)
+                {
+                    var fileName = ContentDispositionHeaderValue.Parse(image.ContentDisposition).FileName.Trim('"').Replace(" ", string.Empty);
+                    var path = _imagePath.GetImagePath(fileName, "ServiceCategories", serviceCategory.Id.ToString());
+                    using (var stream = new FileStream(path, FileMode.Create))
+                    {
+                        image.CopyTo(stream);
+                    }
+
+                    serviceCategory.Image = _imagePath.GetImagePathForDb(path);
+                }
                 _work.ServiceCategories.Add(serviceCategory);
                 _work.Complete();
 
@@ -58,10 +76,30 @@ namespace Alphasoft.Controllers
             return PartialView("_Edit", serviceCategory);
         }
 
-        public IActionResult Edit(ServiceCategory serviceCategory)
+        public IActionResult Edit(IFormFile image, ServiceCategory serviceCategory)
         {
             if (ModelState.IsValid)
             {
+                if (image != null)
+                {
+                    var fileName = ContentDispositionHeaderValue.Parse(image.ContentDisposition).FileName.Trim('"').Replace(" ", string.Empty);
+                    var path = _imagePath.GetImagePath(fileName, "ServiceCategories", serviceCategory.Id.ToString());
+                    using (var stream = new FileStream(path, FileMode.Create))
+                    {
+                        image.CopyTo(stream);
+                    }
+                    serviceCategory.Image = _imagePath.GetImagePathForDb(path);
+                }
+                if (image == null)
+                {
+                    var serviceCategoryimage = _work.ServiceCategories.Get(serviceCategory.Id);
+
+                    serviceCategoryimage.Image = serviceCategory.Image;
+
+                    _work.ServiceCategories.Update(serviceCategoryimage);
+                    _work.Complete();
+                    return PartialView("_Edit", serviceCategoryimage);
+                }
                 _work.ServiceCategories.Update(serviceCategory);
 
                 _work.Complete();
@@ -120,7 +158,9 @@ namespace Alphasoft.Controllers
                 serviceCategoryList.Add(new ServiceCategoriesViewModel
                 {
                     Id = item.Id,
-                    Name = item.Name
+                    Name = item.Name,
+                    Description = item.Description,
+                    Image = item.Image
                 });
             }
 

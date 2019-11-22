@@ -1,62 +1,64 @@
 ﻿@model Banner
-    <form id="banner-createForm" class="createForm" enctype="multipart/form-data">
+<form id="banner-createForm" class="createForm" enctype="multipart/form-data">
 
-        <div class="row">
-            <div class="col-md-12">
-                <div id="logo-preview" class="image-preview " style="display: none;">
-                    <div id="text" style="display: none;"></div>
-                    <img id="preview" src="#" />
-                </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div id="logo-preview" class="image-preview " style="display: none;">
+                <div id="text" style="display: none;"></div>
+                <img id="preview" src="#" />
             </div>
         </div>
-        <div class="row">
-            <div class="col-md-12">
-                <div class="form-group">
-                    <label asp-for="SolganOne"></label>
-                    <textarea class="sologan1" asp-for="SolganOne"></textarea>
-                    <span asp-validation-for="SolganOne" class="text-danger"></span>
-                </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="form-group">
+                <label asp-for="SolganOne"></label>
+                <textarea class="sologan1" asp-for="SolganOne"></textarea>
+                <span asp-validation-for="SolganOne" class="text-danger"></span>
+            </div>
 
-                <div class="form-group">
-                    <label asp-for="SolganTwo"></label>
-                    <textarea class="sologan2" asp-for="SolganTwo"></textarea>
-                    <span asp-validation-for="SolganTwo" class="text-danger"></span>
-                </div>
+            <div class="form-group">
+                <label asp-for="SolganTwo"></label>
+                <textarea class="sologan2" asp-for="SolganTwo"></textarea>
+                <span asp-validation-for="SolganTwo" class="text-danger"></span>
+            </div>
 
-                <div class="form-group">
-                    <label asp-for="SolganThree"></label>
-                    <textarea class="sologan3" asp-for="SolganThree"></textarea>
-                    <span asp-validation-for="SolganThree" class="text-danger"></span>
-                </div>
-                <div class="form-group">
-                    <label asp-for="Image"></label>
-                    <input id="logo" name="image" type="file" class="form-control" />
-                    <span asp-validation-for="Image" class="text-danger"></span>
-                </div>
+            <div class="form-group">
+                <label asp-for="SolganThree"></label>
+                <textarea class="sologan3" asp-for="SolganThree"></textarea>
+                <span asp-validation-for="SolganThree" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Image"></label>
+                <input id="logo" name="image" type="file" class="form-control" />
+                <span asp-validation-for="Image" class="text-danger"></span>
             </div>
         </div>
-        <div id="alert"></div>
-        <button class="btn btn-success form-control" type="submit">Save</button>
-    </form>
+    </div>
+    <div id="alert"></div>
+    <button class="btn btn-success form-control" type="submit">Save</button>
+</form>
 
 <script>
-  
+
 
     $(".sologan1").summernote({
-        height:60
+        height: 60
     });
-     $(".sologan2").summernote({
-          height:60
-     });
-     $(".sologan3").summernote({
-          height:60
+    $(".sologan2").summernote({
+        height: 60
+    });
+    $(".sologan3").summernote({
+        height: 60
     });
     $("#banner-createForm").on("submit", function (e) {
         e.preventDefault();
-         let formData = new FormData();
+
+        let formData = new FormData();
+        formData.append("image", $("#logo")[0].files[0]);
 
         let banner = objectifyForm($(this).serializeArray());
-         formData.append("image", $("#logo")[0].files[0]);
+
 
         for (var key in banner) {
             formData.append(key, banner[key]);
@@ -74,7 +76,7 @@
             }
         });
     });
-   $("#logo").on("change", function () {
+    $("#logo").on("change", function () {
         let maxWdth = 5000;
         let maxHeight = 5000;
         let input = $(this);

@@ -1,6 +1,7 @@
 ﻿@model ServiceVM
 @{
     int animationDelay = 500;
+    int categoryIndex = 0;
 }
 <div role="main" class="main">
     <div class="container pb-1">
@@ -59,50 +60,63 @@
     <div class="container-fluid">
         @foreach (var item in Model.ServiceCategories)
         {
-        <div class="container-fluid">
-            <div class="row align-items-center bg-color-grey">
-                <div class="col-lg-6 p-0">
-                    <section class="parallax section section-parallax custom-parallax-bg-pos-left custom-sec-left h-100 m-0" data-plugin-parallax data-plugin-options="{'speed': 1.5, 'horizontalPosition': '100%'}" data-image-src="img/generic/generic-corporate-3-1-full.jpg" style="min-height: 315px;">
-                    </section>
-                </div>
-                <div class="col-lg-6 p-0">
-                    <section class="section section-no-border h-100 m-0">
-                        <div class="row m-0">
-                            <div class="col-half-section col-half-section-left">
-                                <div class="overflow-hidden">
-                                    <h4 class="mb-0 appear-animation" data-appear-animation="maskUp"><a href="#" class="text-4 font-weight-bold pt-2 d-block text-dark text-decoration-none pb-1">Mobile Apps</a></h4>
-                                </div>
-                                <div class="overflow-hidden mb-2">
-                                    <p class="mb-0 lead text-4 appear-animation" data-appear-animation="maskUp" data-appear-animation-delay="200">Lorem ipsum dolor sit amet, coctetur adipiscing elit.</p>
-                                </div>
-                                <p class="text-2 mb-0 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="400">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque rutrum pellentesque imperdiet. Nulla lacinia iaculis nulla non metus pulvinar.</p>
-                            </div>
+            categoryIndex++;
+
+            string image = item.Image;
+
+            if (string.IsNullOrEmpty(item.Image) || item.Image == "undefined")
+            {
+                image = "porto_7.4.0/img/generic/generic-corporate-3-1-full.jpg";
+            }
+
+            <div class="container-fluid">
+                @if (categoryIndex % 2 != 0)
+                {
+                    <div class="row align-items-center bg-color-grey">
+                        <div class="col-lg-6 p-0">
+                            <section class="parallax section section-parallax custom-parallax-bg-pos-left custom-sec-left h-100 m-0" data-plugin-parallax data-plugin-options="{'speed': 1.5, 'horizontalPosition': '100%'}" data-image-src="@image" style="min-height: 315px;">
+                            </section>
                         </div>
-                    </section>
-                </div>
+                        <div class="col-lg-6 p-0">
+                            <section class="section section-no-border h-100 m-0">
+                                <div class="row m-0">
+                                    <div class="col-half-section col-half-section-left">
+                                        <div class="overflow-hidden">
+                                            <h4 class="mb-0 appear-animation" data-appear-animation="maskUp"><a href="#" class="text-4 font-weight-bold pt-2 d-block text-dark text-decoration-none pb-1">@item.Name</a></h4>
+                                        </div>
+                                        <div class="overflow-hidden mb-2">
+                                            <p class="mb-0 lead text-4 appear-animation" data-appear-animation="maskUp" data-appear-animation-delay="200">@item.Description</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </section>
+                        </div>
+                    </div>
+                }
+                else
+                {
+                    <div class="row align-items-center bg-color-grey">
+                        <div class="col-lg-6 order-2 order-lg-1 p-0">
+                            <section class="section section-no-border h-100 m-0">
+                                <div class="row justify-content-end m-0">
+                                    <div class="col-half-section col-half-section-right custom-text-align-right">
+                                        <div class="overflow-hidden">
+                                            <h4 class="mb-0appear-animation" data-appear-animation="maskUp"><a href="#" class="text-4 font-weight-bold pt-2 d-block text-dark text-decoration-none pb-1">@item.Name</a></h4>
+                                        </div>
+                                        <div class="overflow-hidden mb-2">
+                                            <p class="mb-0 lead text-4 appear-animation" data-appear-animation="maskUp" data-appear-animation-delay="200">@item.Description</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </section>
+                        </div>
+                        <div class="col-lg-6 order-1 order-lg-2 p-0">
+                            <section class="parallax section section-parallax h-100 m-0" data-plugin-parallax data-plugin-options="{'speed': 1.5, 'horizontalPosition': '100%'}" data-image-src="@image style="min-height: 315px;">
+                            </section>
+                        </div>
+                    </div>
+                }
             </div>
-            <div class="row align-items-center bg-color-grey">
-                <div class="col-lg-6 order-2 order-lg-1 p-0">
-                    <section class="section section-no-border h-100 m-0">
-                        <div class="row justify-content-end m-0">
-                            <div class="col-half-section col-half-section-right custom-text-align-right">
-                                <div class="overflow-hidden">
-                                    <h4 class="mb-0appear-animation" data-appear-animation="maskUp"><a href="#" class="text-4 font-weight-bold pt-2 d-block text-dark text-decoration-none pb-1">Creative Websites</a></h4>
-                                </div>
-                                <div class="overflow-hidden mb-2">
-                                    <p class="mb-0 lead text-4 appear-animation" data-appear-animation="maskUp" data-appear-animation-delay="200">Lorem ipsum dolor sit amet, coctetur adipiscing elit.</p>
-                                </div>
-                                <p class="text-2 mb-0 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="400">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque rutrum pellentesque imperdiet. Nulla lacinia iaculis nulla non metus pulvinar.</p>
-                            </div>
-                        </div>
-                    </section>
-                </div>
-                <div class="col-lg-6 order-1 order-lg-2 p-0">
-                    <section class="parallax section section-parallax h-100 m-0" data-plugin-parallax data-plugin-options="{'speed': 1.5, 'horizontalPosition': '100%'}" data-image-src="img/generic/generic-corporate-3-2-full.jpg" style="min-height: 315px;">
-                    </section>
-                </div>
-            </div>            
-        </div>
         }
     </div>
     <div class="container-fluid">

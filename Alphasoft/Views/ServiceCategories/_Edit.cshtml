@@ -7,6 +7,16 @@
         <input asp-for="Name" type="text" class="form-control" />
         <span asp-validation-for="Name" class="text-danger"></span>
     </div>
+    <div class="form-group">
+        <label asp-for="Description"></label>
+        <textarea asp-for="Description" class="form-control"></textarea>
+        <span asp-validation-for="Description" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Image"></label>
+        <input id="image-edit" type="file" class="form-control" />
+        <span asp-validation-for="Image" class="text-danger"></span>
+    </div>
     <div id="alert"></div>
     <button class="btn btn-success form-control" type="submit">Save</button>
 </form>
@@ -17,12 +27,21 @@
         $("#serviceCategory-editForm").on("submit", function (e) {
             e.preventDefault();
 
+            let formData = new FormData();
+            formData.append("image", $("#image-edit")[0].files[0]);
+
             let data = objectifyForm($(this).serializeArray());
+
+            for (var key in data) {
+                formData.append(key, data[key]);
+            }
 
             $.ajax({
                 type: "POST",
                 url: "/ServiceCategories/Edit",
-                data: data,
+                data: formData,
+                processData: false,
+                contentType: false,
                 success: function (response) {
                     $("#serviceCategory-editFormDiv").html(response);
                     dataTable.fnFilter();

@@ -6,26 +6,48 @@
         <input asp-for="Name" type="text" class="form-control" />
         <span asp-validation-for="Name" class="text-danger"></span>
     </div>
+    <div class="form-group">
+        <label asp-for="Description"></label>
+        <textarea asp-for="Description" class="form-control"></textarea>
+        <span asp-validation-for="Description" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Image"></label>
+        <input id="image-create" type="file" class="form-control" />
+        <span asp-validation-for="Image" class="text-danger"></span>
+    </div>
     <div id="alert"></div>
     <button class="btn btn-success form-control" type="submit">Save</button>
 </form>
 
 
 <script>
-    $("#serviceCategory-createForm").on("submit", function (e) {
-        e.preventDefault();
+    (function () {
+        $("#serviceCategory-createForm").on("submit", function (e) {
+            e.preventDefault();
 
-        let data = objectifyForm($(this).serializeArray());
+            let formData = new FormData();
+            formData.append("image", $("#image-create")[0].files[0]);
 
-        $.ajax({
-            type: "POST",
-            url: "/ServiceCategories/Create",
-            data: data,
-            success: function (response) {
-                $("#serviceCategory-createFormDiv").html(response);
-                dataTable.fnFilter();
-                $("#serviceCategory-createModal").modal('hide');
+            let data = objectifyForm($(this).serializeArray());
+
+            for (var key in data) {
+                formData.append(key, data[key]);
             }
+
+
+            $.ajax({
+                type: "POST",
+                url: "/ServiceCategories/Create",
+                data: formData,
+                processData: false,
+                contentType: false,
+                success: function (response) {
+                    $("#serviceCategory-createFormDiv").html(response);
+                    dataTable.fnFilter();
+                    $("#serviceCategory-createModal").modal('hide');
+                }
+            });
         });
-    });
+    })();
 </script>
