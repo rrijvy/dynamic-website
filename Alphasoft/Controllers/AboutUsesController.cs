@@ -1,17 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Alphasoft.Data;
+﻿using Alphasoft.Data;
 using Alphasoft.UnitOfWork;
 using Alphasoft.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using System.Linq.Dynamic.Core;
 using Alphasoft.Models;
-using Microsoft.AspNetCore.Http;
 using System.Net.Http.Headers;
 using Alphasoft.IServices;
-using System.IO;
 
 namespace Alphasoft.Controllers
 {

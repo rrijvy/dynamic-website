@@ -1,22 +1,16 @@
 ﻿using Alphasoft.IServices;
-using Microsoft.AspNetCore.Hosting;
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace Alphasoft.Services
 {
     public class ImagePath : IImagePath
     {
-        private readonly IHostingEnvironment _environment;
-        public ImagePath(IHostingEnvironment environment)
+        private readonly IWebHostEnvironment _environment;
+        public ImagePath(IWebHostEnvironment environment)
         {
             _environment = environment;
         }
 
-        public string GetImagePath(string fileName, string parentFolderName ,string folderName)
+        public string GetImagePath(string fileName, string parentFolderName, string folderName)
         {
             string path = _environment.WebRootPath + "\\" + "images" + "\\" + parentFolderName + "\\" + folderName;
 

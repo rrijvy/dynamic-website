@@ -1,5 +1,4 @@
 ﻿using Alphasoft.Models;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
@@ -30,8 +29,8 @@ namespace Alphasoft.Data
         public DbSet<Company> Companies { get; set; }
         public DbSet<ChooseUs> ChooseUs { get; set; }
         public DbSet<Banner> Banners { get; set; }
-        public DbSet<ClientProduct>ClientProducts { get; set; }
-        public DbSet<AboutUs>AboutUs { get; set; }
+        public DbSet<ClientProduct> ClientProducts { get; set; }
+        public DbSet<AboutUs> AboutUs { get; set; }
         public DbSet<HostingPlan> HostingPlan { get; set; }
         public DbSet<CustomerRivew> CustomerRivew { get; set; }
         public DbSet<Career> Careers { get; set; }

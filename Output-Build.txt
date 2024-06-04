@@ -1,1 +1,0 @@
-﻿1>------ Build started: Project: Alphasoft, Configuration: Debug Any CPU ------
